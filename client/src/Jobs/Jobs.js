@@ -9,6 +9,7 @@ import { Icon } from "flwww";
 
 
 
+
 class Jobs extends Component {
 
   componentDidMount() {
@@ -20,12 +21,13 @@ class Jobs extends Component {
     let { jobs } = this.props;
 
     return (
+
       <div>
-        <h1>Jobs</h1>
+        <Link to={`${this.props.match.url}/new`}><h1>Add a Job</h1></Link>
         {
           jobs.map((job) => {
             return (
-              <JobCard className="card" style={{ "width": "18rem", "min-height": "30vh" }}>
+              <JobCard className="card" style={{ "width": "18rem", "height": "30vh" }}>
                 <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
                 <div className="card-body">
                   <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
@@ -41,6 +43,8 @@ class Jobs extends Component {
 
 
       </div>
+
+
     );
   }
 }
