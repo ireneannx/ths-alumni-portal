@@ -20,7 +20,10 @@ class AddJob extends Component {
   render() {
     return (
       <div className="">
-        <div class="container contact">
+        <div class="container contact" style={{
+          marginTop: "5%",
+          justifyContent: "center"
+        }}>
           <div class="row">
             <div class="col-md-3" style={{ backgroundImage: "url('https://cms-assets.tutsplus.com/uploads/users/107/posts/26488/image/41-space-scrolling-background850.jpg')" }}>
 
