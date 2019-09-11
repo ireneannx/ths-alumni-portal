@@ -27,7 +27,7 @@ class Jobs extends Component {
         {
           jobs.map((job) => {
             return (
-              <JobCard className="card" style={{ "width": "18rem", "height": "30vh" }}>
+              <JobCard className="card" style={{ "width": "18rem", "height": "70vh" }}>
                 <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
                 <div className="card-body">
                   <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
@@ -68,10 +68,11 @@ display: inline-block;
   border-radius: 3px;
   position: relative;
   min-height: 320px;
-  margin: 10px 0 7px 10px;
+  margin: 10px 10px 7px 10px;
   -webkit-box-shadow: 0 1px 1px 0 rgba(159, 167, 194, 0.6);
   -moz-box-shadow: 0 1px 1px 0 rgba(159, 167, 194, 0.6);
   box-shadow: 0 1px 1px 0 rgba(159, 167, 194, 0.6);
+  
 `
 export const AlignCenter = styled.div`
 text-align: center`

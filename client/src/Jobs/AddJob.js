@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from "react-datepicker";
+import { Link } from 'react-router-dom'
+import '../App.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,7 +19,7 @@ class AddJob extends Component {
   };
   render() {
     return (
-      <>
+      <div className="">
         <div class="container contact">
           <div class="row">
             <div class="col-md-3" style={{ backgroundImage: "url('https://cms-assets.tutsplus.com/uploads/users/107/posts/26488/image/41-space-scrolling-background850.jpg')" }}>
@@ -65,13 +67,14 @@ class AddJob extends Component {
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-secondary">Submit</button>
+                    <Link to="/jobs"><button type="submit" class="btn btn-danger" style={{ marginLeft: "5px" }}>Cancel</button></Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </>
+      </div>
     )
   }
 }
