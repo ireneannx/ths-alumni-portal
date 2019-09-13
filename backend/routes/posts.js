@@ -9,11 +9,14 @@ router.get('/', function (req, res) {
     .catch((err) => res.send(err))
 });
 
+//to be deleted after userschema is enabled
 router.post('/', (req, res) => {
   console.log('from the back', req.body)
   db.Posts.create(req.body)
     .then(res.json({ status: 'successfully created post' }))
 })
+
+//to be enabled after userschema is enabled
 
 // router.post('/', (req, res) => {
 //   db.Posts.create(req.body)

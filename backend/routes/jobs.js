@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../models/index')
 
+//path: /jobs
 router.get('/', function (req, res, next) {
     db.Job.find()
         .then((data) => {
@@ -22,14 +23,30 @@ router.get('/:jobid', function (req, res, next) {
         })
 })
 
-router.post('/:userid', function (req, res, next) {
+// to be uncommented once userschema is enabled
+
+// router.post('/:userid', function (req, res, next) {
+//     db.Job.create({
+//         user_id: req.params.userid,
+//         job_type: req.body.job_type,
+//         job_description: req.body.job_description,
+//         // upvote_count: 0,
+//         company_name: req.body.company_name,
+//         url: req.body.url
+//     })
+//     res.send(req.body)
+// })
+
+//to be deleted once user schema is enabled
+
+router.post('/', function (req, res, next) {
     db.Job.create({
-        user_id: req.params.userid,
         job_type: req.body.job_type,
         job_description: req.body.job_description,
         // upvote_count: 0,
         company_name: req.body.company_name,
-        url: req.body.url
+        url: req.body.url,
+        deadline: req.body.deadline
     })
     res.send(req.body)
 })
@@ -49,16 +66,18 @@ router.put('/:jobid', function (req, res) {
 
 })
 
+//upvote button
 router.post('/like/:userid/:jobid', async function (req, res, next) {
-    let like = await db.Job.findOneAndUpdate({_id : req.params.jobid},
-       { $push: {upvote_count : req.params.userid}}
+    let like = await db.Job.findOneAndUpdate({ _id: req.params.jobid },
+        { $push: { upvote_count: req.params.userid } }
     )
-    .then((res)=>{
-    console.log(res)
-    res.send(res)})
-    .catch((err)=>{
-        res.send(err)
-    })
+        .then((res) => {
+            console.log(res)
+            res.send(res)
+        })
+        .catch((err) => {
+            res.send(err)
+        })
 })
 
 router.delete('/:jobid', function (req, res, next) {

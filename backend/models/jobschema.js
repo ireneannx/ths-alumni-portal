@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const jobschema = new mongoose.Schema({
     user_id: {
         type: String,
-        required: true
+        // required: true
     },
     job_type: String,
     job_description: String,
@@ -13,6 +13,7 @@ const jobschema = new mongoose.Schema({
     }],
     company_name: String,
     url: String,
+    deadline: Date
 })
 
 const Job = new mongoose.model("Job", jobschema)
