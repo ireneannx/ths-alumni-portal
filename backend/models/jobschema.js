@@ -4,7 +4,7 @@ const jobschema = new mongoose.Schema({
     user_id :{
         type : String,
         required : true
-    },
+    }],
     job_type : String,
     job_description : String,
     upvote_count : [{
