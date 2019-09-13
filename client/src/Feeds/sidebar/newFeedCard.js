@@ -11,7 +11,7 @@ class NewFeedCard extends React.Component {
 
     render() {
         // console.log('data from editor', props.data)
-        console.log('from show card', this.props)    
+        console.log('from show card', this.props)
 
         if (this.props.data) {
             return (
@@ -36,11 +36,11 @@ class NewFeedCard extends React.Component {
                                 </div>
 
                                 <div className="card-body">
-                                    <div className="text-muted h7 mb-2"> <i className="fa fa-clock-o"></i>10 min ago</div>
+                                    <div className="text-muted h7 mb-2"> <i className="fa fa-clock-o"></i>{Date.now - Date.now(posts.timeStamp)}</div>
 
-                                    <p key={posts._id}>
+                                    <div key={posts._id}>
                                         {posts.content}
-                                    </p>
+                                    </div>
 
                                 </div>
                                 <div className="card-footer">

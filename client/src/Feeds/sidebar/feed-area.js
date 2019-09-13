@@ -6,17 +6,17 @@ import NewFeedCard from './newFeedCard';
 class FeedArea extends React.Component {
     render() {
         return (
-            <div>
+            <div style={{ backgroundColor: '#F7F9F9' }}>
                 <div className="row">
-                    <div className="col" style={{ backgroundColor: '#F7F9F9' }}>
-                        will be used later on
-                </div>
-                    <div className="col-5" style={{ backgroundColor: '#F7F9F9' }}>
+                    <div className="col" >
+                    </div>
+
+                    <div className="col-5">
                         <NewTextEditor />
                         <NewFeedCard />
                     </div>
-                    <div className="col" style={{ backgroundColor: '#F7F9F9' }}>
-                        will be used later on
+
+                    <div className="col" >
                     </div>
                 </div>
 

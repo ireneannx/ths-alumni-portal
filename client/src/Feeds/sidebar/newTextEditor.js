@@ -32,11 +32,11 @@ class NewTextEditor extends React.Component {
 
         // let text = draftToHtml(this.state.editorState.getCurrentContent().getPlainText());
         let text = this.state.editorState.getCurrentContent().getPlainText();
-        console.log('written in editor',text);
+        console.log('written in editor', text);
 
         await this.props.addFeedPost(text);
         await this.props.getFeedPosts();
-        
+
         console.log("form submitted");
     };
 
@@ -57,7 +57,13 @@ class NewTextEditor extends React.Component {
                                 />
                             </div>
                             <div className='toolbar-options'>
-                                <button type="submit" className="btn btn-primary btn-sm" >Submit Post</button>
+
+                                {
+                                    (this.state.editorState.getCurrentContent().getPlainText().length >= 1)
+                                        ? <button type="submit" className="btn btn-primary btn-sm" >Submit Post</button>
+                                        : <button type="submit" className="btn btn-primary btn-sm" disabled>Submit Post</button>
+                                }
+
                                 <div style={{ marginLeft: '10px', marginTop: '2px' }}>
                                     <EmojiSelect />
                                     <InlineToolbar />
