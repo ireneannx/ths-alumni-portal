@@ -39,7 +39,7 @@ class Jobs extends Component {
                       <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
                       <p className="card-text">{job.job_type}.</p>
                       <AlignCenter>
-                        <a href={job.url} className="btn" style={{ "background": "#99CC00", "color": "#FFFFFF", marginBottom: "10px" }}>Apply Now</a>
+                        <a href={job.url} target="blank" className="btn" style={{ "background": "#99CC00", "color": "#FFFFFF", marginBottom: "10px" }}>Apply Now</a>
                         <span><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
                           View Job Description
                   </button></span>
