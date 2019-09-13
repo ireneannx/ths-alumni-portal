@@ -31,3 +31,13 @@
     transform: rotate(360deg);
   }
 }
+
+.white {
+  color: white !important;
+}
+
+.toolbar-options {
+  text-align: center;
+  display: flex;
+  margin-top: 20px;
+}

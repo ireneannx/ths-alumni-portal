@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import '../node_modules/draft-js-emoji-plugin/lib/plugin.css';
+import '../node_modules/draft-js-inline-toolbar-plugin/lib/plugin.css';
 
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
