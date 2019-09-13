@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 import '../App.css'
 
 
-
-
-
 class Jobs extends Component {
 
   componentDidMount() {
@@ -60,6 +57,7 @@ class Jobs extends Component {
                             </button>
                           </div>
                           <div class="modal-body">
+                            <p>Posted by: (populate and get user avatarUrl+ name OR direct link)</p>
                             <p>{job.job_description}</p>
                           </div>
                           <div class="modal-footer">
