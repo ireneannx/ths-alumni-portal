@@ -5,7 +5,7 @@ import '../App.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import axios from 'axios'
+//import axios from 'axios'
 
 class AddJob extends Component {
   state = {

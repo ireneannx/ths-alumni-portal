@@ -27,22 +27,38 @@ router.post('/:userid', function (req, res, next) {
         user_id: req.params.userid,
         job_type: req.body.job_type,
         job_description: req.body.job_description,
-        upvote_count: 0,
+        // upvote_count: 0,
         company_name: req.body.company_name,
         url: req.body.url
     })
     res.send(req.body)
 })
 
-router.put('/:jobid', function (req, res, next) {
+router.put('/:jobid', function (req, res) {
     db.Job.findOneAndUpdate({ _id: req.params.jobid }, {
         job_type: req.body.job_type,
         job_description: req.body.job_description,
-        upvote_count: 0,
+        // upvote_count: 0,
         company_name: req.body.company_name,
         url: req.body.url
     })
-    res.send("Update was successful", req.body)
+        .then(() => {
+            res.end()
+            console.log("Update was successful", req.body)
+        })
+
+})
+
+router.post('/like/:userid/:jobid', async function (req, res, next) {
+    let like = await db.Job.findOneAndUpdate({_id : req.params.jobid},
+       { $push: {upvote_count : req.params.userid}}
+    )
+    .then((res)=>{
+    console.log(res)
+    res.send(res)})
+    .catch((err)=>{
+        res.send(err)
+    })
 })
 
 router.delete('/:jobid', function (req, res, next) {
