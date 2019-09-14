@@ -9,3 +9,4 @@ module.exports.Job = require('./jobschema');
 module.exports.Posts = require('./postSchema');
 module.exports.User = require('./User');
 module.exports.Token = require('./Token');
+module.exports.UserProfile = require('./userProfile');

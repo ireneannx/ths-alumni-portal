@@ -7,6 +7,8 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user');
+var usersRouter = require('./routes/users');
+var userProfileRouter = require('./routes/userProfile');
 var jobsRouter = require('./routes/jobs');
 var postsRouter = require('./routes/posts');
 var authRouter = require('./routes/auth');
@@ -31,6 +33,7 @@ app.use('/user', usersRouter);
 app.use('/jobs', jobsRouter)
 app.use('/posts', postsRouter);
 app.use('/auth', authRouter);
+app.use('/api/users', userProfileRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
