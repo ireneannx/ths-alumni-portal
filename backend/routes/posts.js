@@ -16,12 +16,12 @@ router.post('/', (req, res) => {
     .then(res.json({ status: 'successfully created post' }))
 })
 
-//to be enabled after userschema is enabled
+// to be enabled after userschema is enabled
 
-// router.post('/', (req, res) => {
+// router.post('/:id', (req, res) => {
 //   db.Posts.create(req.body)
-//   .then((post) => {
-//     db.Posts.findOneAndUpdate({_id: data.id},
+//   .then((data) => {
+//     db.Posts.findOneAndUpdate({_id: req.params.id},
 //       {$push: {posts: data._id}})
 //       res.json({status: 'successfully created post'})
 //   })

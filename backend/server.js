@@ -7,7 +7,7 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user');
-var usersRouter = require('./routes/users');
+// var usersRouter = require('./routes/users');
 var userProfileRouter = require('./routes/userProfile');
 var jobsRouter = require('./routes/jobs');
 var postsRouter = require('./routes/posts');

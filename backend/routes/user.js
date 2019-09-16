@@ -4,7 +4,7 @@ var router = express.Router();
 const { check, validationResult } = require('express-validator');
 const transporter = require('../middleware/nodemailer');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const config = require('../config/default');
 const bcrypt = require('bcryptjs');
 
 const db = require('../models/index');
@@ -82,6 +82,7 @@ router.post('/resetpassword', (req, res) => {
         id: user.id
       }
     };
+
     jwt.sign(
       payload,
       config.get('jwtSecret'),
@@ -95,7 +96,7 @@ router.post('/resetpassword', (req, res) => {
         });
 
         // Save the token
-        await tokenDocument.save(function(err) {
+        await tokenDocument.save(function (err) {
           if (err) {
             return res.status(500).json({ errors: [{ msg: err.message }] });
           }
@@ -170,8 +171,8 @@ router.post(
               errors: [{ msg: 'Invalid Token' }]
             });
           user.password = req.body.password;
-          bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(user.password, salt, function(err, hash) {
+          bcrypt.genSalt(10, function (err, salt) {
+            bcrypt.hash(user.password, salt, function (err, hash) {
               if (err) throw err;
               else {
                 user.password = hash;
