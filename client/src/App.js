@@ -9,7 +9,10 @@ import { Link, Route, Switch } from 'react-router-dom'
 import Navbar from './Navbar';
 import CreateUser from './UserProfile/CreateUser'
 import AddJob from './Jobs/AddJob'
-import FeedArea from './Feeds/sidebar/feed-area';
+import FeedArea from './Feeds/components/feed-area';
+
+//auth components
+import SignUpForm from './Login-Signup Frontend/StartPage'
 
 
 function App() {
@@ -24,8 +27,10 @@ function App() {
         <Route exact path="/jobs" component={Jobs} />
         <Route path="/jobs/new" component={AddJob} />
         <Route path="/feeds" component={FeedArea} />
-          <Route path="/edit/:id" component={CreateUser} />
-          <Route path="/loggedIn" exact component={LoggedIn} />
+        <Route path="/edit/:id" component={CreateUser} />
+        <Route path="/loggedIn" exact component={LoggedIn} />
+        <Route path="/" component={SignUpForm} />
+        {/* note: first page is signup page */}
       </Switch>
 
     </div>

@@ -20,7 +20,7 @@ export function addFeedPost(data) {
     }
 
     return async function (dispatch) {
-        await axios.post('/posts', text)
+        await axios.post('/posts', text) //user id needs to be attached here 
             .then(() => {
                 return dispatch({
                     type: "ADD",

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: unsteadyOversteer;
+  src: url("./unsteadyoversteer.ttf");
+}
+
 .App {
   text-align: center;
 }

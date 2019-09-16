@@ -9,7 +9,7 @@ import {
 import LogNav from "./LoginNav";
 import Profile from "../UserProfile/Profile";
 import Jobs from "../Jobs/Jobs";
-import Posts from "../Feeds/sidebar/feed-area";
+import Posts from "../Feeds/components/feed-area";
 class LoggedIn extends Component {
   render() {
     console.log("LoggedIn", this.props.posts);
@@ -19,7 +19,7 @@ class LoggedIn extends Component {
         {/* <h1>LoggedIn</h1> */}
         <div className="row" style={{ marginTop: "10%" }}>
           <div class="col-md-4">
-            <Profile/>
+            <Profile />
           </div>
           <div class="col-md-8">
             <Switch>
