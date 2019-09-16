@@ -31,7 +31,7 @@ class Profile extends Component {
         <div>
           <img src={display.avatarURL} style={{borderRadius:"50%", width:"200px"}}></img>
         </div>
-        <div>
+        <div> 
           {/* Add pictures */}
           <table class="table table-borderless">
             <thead>

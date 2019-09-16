@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 const mongoose = require('mongoose');
 const userProfileSchema = new Schema({
-    _userId: {
-        type: mongoose.Schema.Types.ObjectId,
+    _id: {
+        type: String,
         required: true,
-        ref: 'User'
+        // ref: 'User'
     },
     bio: {
         type: String

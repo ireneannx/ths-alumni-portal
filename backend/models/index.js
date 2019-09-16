@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 mongoose.connect(
   'mongodb://localhost/alumni-test',
-  { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false }
+  { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false },
+  () => console.log('Connected to mongoDB')  
 );
 
 module.exports.Job = require('./jobschema');

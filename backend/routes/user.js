@@ -11,12 +11,14 @@ const db = require('../models/index');
 
 // @route /user/test
 // @desc Testing route
+
 router.get('/test', (req, res) => {
   res.send('User route working');
 });
 
 // @route /user/register
 // @desc Registering user
+
 router.post(
   '/register',
   [
@@ -57,7 +59,18 @@ router.post(
 
       user.password = await bcrypt.hash(password, salt);
 
-      await user.save();
+      // await console.log(user);
+
+      await user.save(function (err, data) {
+        if (!err) {
+          db.UserProfile.create({ _id: data._id })
+        }
+      })
+
+      /**
+       ** Add a method to create a document in userProfile collection when a new user registers.
+       *! What is the 'token' collection for?
+       */
 
       res.status(200).send('User registration successful');
     } catch (err) {

@@ -16,7 +16,7 @@ class LoggedIn extends Component {
     return (
       <div>
         <LogNav />
-        <h1>LoggedIn</h1>
+        {/* <h1>LoggedIn</h1> */}
         <div className="row" style={{ marginTop: "10%" }}>
           <div class="col-md-4">
             <Profile/>
@@ -25,7 +25,7 @@ class LoggedIn extends Component {
             <Switch>
               <Route path="/jobs" component={Jobs} />
               <Route path="/posts" component={Posts} />
-              <Route path="/" component={Jobs} />
+              <Route exact path="/" component={Jobs} />
             </Switch>
           </div>
         </div>
