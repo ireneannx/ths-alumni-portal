@@ -4,7 +4,7 @@ export function getFeedPosts() {
 
     return async function (dispatch) {
         axios.defaults.headers.common['Authorization'] =  localStorage.getItem('thsToken')
-        const res = await axios.get('http://localhost:4000/posts')
+        const res = await axios.get('/posts')
         return dispatch({
             type: "GET",
             payload: res.data
@@ -20,7 +20,7 @@ export function addFeedPost(data) {
     }
 
     return async function (dispatch) {
-        await axios.post('http://localhost:4000/posts', text, {
+        await axios.post('/posts', text, {
             headers: {
                 "Authorization": localStorage.getItem('thsToken')
             }
