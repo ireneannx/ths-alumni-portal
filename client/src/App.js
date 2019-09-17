@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Profile from './UserProfile/Profile';
+import UserApp from './UserApp'
 
 import LoggedIn from './Pages/LoggedIn';
 

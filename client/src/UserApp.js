@@ -16,7 +16,7 @@ const UserApp = () => {
 
         <Route exact path="/jobs" component={Jobs} />
         <Route path="/jobs/new" component={AddJob} />
-        <Route path="/feeds" component={FeedArea} />
+        <Route path="/posts" component={FeedArea} />
         <Route path="/edit/:id" component={CreateUser} />
       </Switch>
     </Router>
