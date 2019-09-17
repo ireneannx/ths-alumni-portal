@@ -3,15 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 import Profile from './UserProfile/Profile';
 import UserApp from './UserApp'
-
 import LoggedIn from './Pages/LoggedIn';
-
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import SignUpForm from './Login-Signup Frontend/components/StartPage'
+import jwt_decode from 'jwt-decode'
+import { changeAuth } from './Login-Signup Frontend/authaction'
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 
 //auth components
-import SignUpForm from './Login-Signup Frontend/components/StartPage'
 
 
 function App() {
@@ -36,4 +38,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  changeAuth
+}, dispatch)
+
+export default connect(mapDispatchToProps)(App);

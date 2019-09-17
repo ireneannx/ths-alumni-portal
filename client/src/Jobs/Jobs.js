@@ -93,6 +93,7 @@ class Jobs extends Component {
 const mapStateToProps = state => ({
   jobs: state.jobreducer.jobs,
   isLoaded: state.jobreducer.isLoaded,
+  authData: state.Auth.authData
 })
 
 //mapDispatchToProps
