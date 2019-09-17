@@ -2,8 +2,6 @@ import React from "react";
 import {
   NavLink
 } from "react-router-dom";
-// import Register from './Register'
-// import Login from './Login'
 
 const Navbar = () => {
   return (
@@ -33,20 +31,31 @@ const Navbar = () => {
               <NavLink
                 className="nav-link white"
                 exact
-                to="/login"
+                to="/jobs"
                 activeClassName="active"
               >
-                Login
-              </NavLink>
+                Jobs
+                </NavLink>
             </li>
             <li class="nav-item">
               <NavLink
                 className="nav-link white"
                 exact
-                to="/register"
+                to="/feeds"
                 activeClassName="active"
               >
-                Register
+                Posts
+                </NavLink>
+            </li>
+            <li class="nav-item">
+              <NavLink
+                className="nav-link white"
+                exact
+                to="/logout"
+                activeClassName="active"
+              >
+                Logout
+                {/* to do: change auth state to false, delete token from local storage and redirect */}
               </NavLink>
             </li>
           </ul>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import SignUpForm from './Signup';
 import SignInForm from './Signin';
-
+import { withRouter } from 'react-router'
 
 class StartPage extends PureComponent {
   state = {
@@ -9,6 +9,7 @@ class StartPage extends PureComponent {
   }
 
   clickButton = (e) => {
+
     this.setState({
       isClicked: !this.state.isClicked
     })
@@ -45,4 +46,4 @@ class StartPage extends PureComponent {
 }
 
 
-export default StartPage
+export default withRouter(StartPage)
