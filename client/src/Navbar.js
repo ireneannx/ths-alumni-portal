@@ -41,7 +41,7 @@ const Navbar = () => {
               <NavLink
                 className="nav-link white"
                 exact
-                to="/feeds"
+                to="/posts"
                 activeClassName="active"
               >
                 Posts
