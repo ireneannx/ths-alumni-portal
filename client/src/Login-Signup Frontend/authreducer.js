@@ -1,14 +1,18 @@
 const initialState = {
   isLoggedIn: false,
+  authData: {} 
 }
 
-export default function (state = initialState, action) {
+
+const Auth = function (state = initialState, action) {
   switch (action.type) {
     case "CHANGE_AUTH":
       return {
-        ...state, isLoggedIn: !state.isLoggedIn
+        ...state, authData: action.payload, isLoggedIn: !state.isLoggedIn
       }
     default:
       return { ...state }
   }
 }
+
+export default Auth

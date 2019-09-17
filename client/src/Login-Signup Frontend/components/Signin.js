@@ -27,12 +27,13 @@ class SignInForm extends React.PureComponent {
     // console.log(authData)
     await axios.post("/auth", authData)
       .then((res) => {
+        console.log('userData', res.data)
         localStorage.setItem("thsToken", res.data.token);
         this.setState({
           email: '',
           password: ''
         })
-        this.props.changeAuth();
+        this.props.changeAuth(res.data.user);
       })
       .catch((err) => console.log(err))
 
@@ -40,6 +41,7 @@ class SignInForm extends React.PureComponent {
   }
 
   render() {
+    console.log(this.props)
     return (
 
       <div class="container">
@@ -82,8 +84,12 @@ class SignInForm extends React.PureComponent {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {data : state.Auth}
+}
+
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   changeAuth
 }, dispatch)
 
-export default connect(null, mapDispatchToProps)(SignInForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);

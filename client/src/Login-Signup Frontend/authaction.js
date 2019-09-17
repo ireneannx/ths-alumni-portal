@@ -1,5 +1,9 @@
-export function changeAuth() {
+import axios from 'axios';
+
+export function changeAuth(data) {
     return {
-        type: 'CHANGE_AUTH'
+        type: 'CHANGE_AUTH',
+        payload: data
     }
 }
+
