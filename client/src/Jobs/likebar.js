@@ -16,7 +16,7 @@ const LikeBar = (props) => {
     else {
         return (
             <div style={{ width: "50px", margin: "0 auto", marginTop: "-26px", display: "flex" }}>
-                <div style={{ color: "red" }}>
+                <div style={{ color: "white" }}>
                     <p>&#9829;</p>
                 </div>
                 <div style={{ marginLeft: "10px", color: "white" }}>
