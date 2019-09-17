@@ -3,8 +3,8 @@ import axios from "axios"
 export function getFeedPosts() {
 
     return async function (dispatch) {
-        const res = await axios.get('/posts')
-        console.log('recieving from DB', res.data)
+        axios.defaults.headers.common['Authorization'] =  localStorage.getItem('thsToken')
+        const res = await axios.get('http://localhost:4000/posts')
         return dispatch({
             type: "GET",
             payload: res.data
@@ -20,13 +20,17 @@ export function addFeedPost(data) {
     }
 
     return async function (dispatch) {
-        await axios.post('/posts', text) //user id needs to be attached here 
+        await axios.post('http://localhost:4000/posts', text, {
+            headers: {
+                "Authorization": localStorage.getItem('thsToken')
+            }
+        }) //user id needs to be attached here 
             .then(() => {
                 return dispatch({
                     type: "ADD",
                     payload: data
                 })
             })
-            .catch((err) => console.log(err))
+            .catch((err) => console.log(err.response))
     }
 }

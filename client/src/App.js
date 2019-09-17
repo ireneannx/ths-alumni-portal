@@ -11,7 +11,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 
 //auth components
-import SignUpForm from './Login-Signup Frontend/StartPage'
+import SignUpForm from './Login-Signup Frontend/components/StartPage'
 
 
 function App() {
