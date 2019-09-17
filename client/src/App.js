@@ -12,7 +12,7 @@ import AddJob from './Jobs/AddJob'
 import FeedArea from './Feeds/components/feed-area';
 
 //auth components
-import SignUpForm from './Login-Signup Frontend/StartPage'
+import SignUpForm from './Login-Signup Frontend/components/StartPage'
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
       <Switch>
         <Route exact path="/jobs" component={Jobs} />
         <Route path="/jobs/new" component={AddJob} />
-        <Route path="/feeds" component={FeedArea} />
+        <Route path="/posts" component={FeedArea} />
         <Route path="/edit/:id" component={CreateUser} />
         <Route path="/loggedIn" exact component={LoggedIn} />
         <Route path="/" component={SignUpForm} />

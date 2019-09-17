@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 const db = require('../models/index')
 
+const authMidWare = require('../middleware/auth')
+
+
 //path: /jobs
-router.get('/', function (req, res, next) {
+router.get('/', authMidWare, function (req, res, next) {
     db.Job.find()
         .then((data) => {
             res.send(data)
@@ -13,7 +16,7 @@ router.get('/', function (req, res, next) {
         })
 });
 
-router.get('/:jobid', function (req, res, next) {
+router.get('/:jobid', authMidWare, function (req, res, next) {
     db.Job.findById(req.params.jobid)
         .then((data) => {
             res.send(data)
@@ -25,7 +28,7 @@ router.get('/:jobid', function (req, res, next) {
 
 // to be uncommented once userschema is enabled
 
-router.post('/:userid', function (req, res, next) {
+router.post('/:userid', authMidWare, function (req, res, next) {
     db.Job.create({
         user_id: req.params.userid,
         job_type: req.body.job_type,
@@ -56,7 +59,7 @@ router.post('/:userid', function (req, res, next) {
 //     res.send(req.body)
 // })
 
-router.put('/:jobid', function (req, res) {
+router.put('/:jobid', authMidWare, function (req, res) {
     db.Job.findOneAndUpdate({ _id: req.params.jobid }, {
         job_type: req.body.job_type,
         job_description: req.body.job_description,
@@ -72,7 +75,7 @@ router.put('/:jobid', function (req, res) {
 })
 
 //upvote button
-router.post('/like/:userid/:jobid', async function (req, res, next) {
+router.post('/like/:userid/:jobid', authMidWare, async function (req, res, next) {
     let like = await db.Job.findOneAndUpdate({ _id: req.params.jobid },
         { $push: { upvote_count: req.params.userid } }
     )
@@ -85,7 +88,7 @@ router.post('/like/:userid/:jobid', async function (req, res, next) {
         })
 })
 
-router.delete('/:jobid', function (req, res, next) {
+router.delete('/:jobid', authMidWare, function (req, res, next) {
     db.Job.findByIdAndRemove(req.params.jobid)
         .then((data) => {
             res.send(data)
