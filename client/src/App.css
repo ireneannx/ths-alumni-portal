@@ -1,3 +1,8 @@
+@font-face {
+  font-family: unsteadyOversteer;
+  src: url("./unsteadyoversteer.ttf");
+}
+
 .App {
   text-align: center;
 }
@@ -30,4 +35,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.white {
+  color: white !important;
+}
+
+.toolbar-options {
+  text-align: center;
+  display: flex;
+  margin-top: 20px;
 }
