@@ -3,8 +3,10 @@ var express = require('express');
 var router = express.Router();
 const db = require('../models')
 
+const authMidWare = require('../middleware/auth')
+
 //path: /api/users
-router.get('/', function(req,res){
+router.get('/', authMidWare, function(req,res){
     db.UserProfile.find()
        .then((data)=>{
            res.send(data)
@@ -14,7 +16,7 @@ router.get('/', function(req,res){
     })
 })
 //get a particular user
-router.get('/:userid', function (req, res) {
+router.get('/:userid', authMidWare, function (req, res) {
     db.UserProfile.findById(req.params.id)
         .then((data) => {
             res.send(data)
@@ -26,7 +28,7 @@ router.get('/:userid', function (req, res) {
 
 
 //add userprofile
-router.post('/', function (req, res, next) {
+router.post('/', authMidWare, function (req, res, next) {
     const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
     db.UserProfile.create({
         bio,
@@ -48,7 +50,7 @@ router.post('/', function (req, res, next) {
 
 // update 
 
-router.put('/:userid', function (req, res) {
+router.put('/:userid', authMidWare, function (req, res) {
     const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
     db.UserProfile.findOneAndUpdate({ _id: req.params.id }, {
         bio,
