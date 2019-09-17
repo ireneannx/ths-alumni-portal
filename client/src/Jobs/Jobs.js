@@ -19,8 +19,6 @@ class Jobs extends Component {
 
     return (
       <div>
-
-
         <div style={{ paddingInlineStart: "15%" }}>
           <Link to={`${this.props.match.url}/new`}><img src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/document_add.png" height="40rem"></img></Link></div>
         <div className="container text-center" style={{ margin: "0 auto" }}>

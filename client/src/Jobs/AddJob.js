@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import DatePicker from "react-datepicker";
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addJob, getJobs } from './JobAction';
+import { bindActionCreators } from 'redux';
 import '../App.css';
+import Jobs from './Jobs'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -9,16 +13,33 @@ import "react-datepicker/dist/react-datepicker.css";
 
 class AddJob extends Component {
   state = {
-    startDate: new Date()
+    deadline: new Date(),
+    company_name: "",
+    job_type: "",
+    job_description: "",
+    url: ""
   };
 
-  handleChange = date => {
+  handleChange = e => {
     this.setState({
-      startDate: date
+      [e.target.name]: e.target.value
     });
   };
-  handleSubmit = date => {
+
+  handleChange2 = date => {
+    this.setState({
+      deadline: date
+    });
+  };
+
+
+  handleSubmit = async e => {
     //should push using axios.push from here INCLUDING startDate
+    e.preventDefault();
+
+    await this.props.addJob(this.state, this.props.history)
+
+
   }
   render() {
     return (
@@ -40,33 +61,34 @@ class AddJob extends Component {
                   <div class="form-group">
                     <label class="control-label col-sm-2">Company</label>
                     <div class="col-sm-10">
-                      <input type="text" name="company_name" class="form-control" placeholder="enter company name" />
+                      <input type="text" name="company_name" value={this.state.company_name} class="form-control" placeholder="enter company name" onChange={this.handleChange} />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="control-label col-sm-3" name="job_type">Available Position/s</label>
+                    <label class="control-label col-sm-3">Available Position/s</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="lname" placeholder="Eg: Front-end" />
+                      <input type="text" class="form-control" value={this.state.job_type} name="job_type" placeholder="Eg: Front-end" onChange={this.handleChange} />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="control-label col-sm-3" name="job_description">Job Description</label>
+                    <label class="control-label col-sm-3" >Job Description</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" rows="5" id="comment"></textarea>
+                      <textarea class="form-control" rows="5" id="comment" name="job_description" value={this.state.job_description} onChange={this.handleChange}></textarea>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="control-label col-sm-3" name="url">Application link</label>
+                    <label class="control-label col-sm-3">Application link</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" placeholder="Enter application url or company website" name="email" />
+                      <input class="form-control" placeholder="Enter application url or company website" name="url" onChange={this.handleChange} value={this.state.url} />
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-sm-3" >Deadline</label>
                     <div class="col-sm-10">
                       <DatePicker class="col-sm-2 form-group"
-                        selected={this.state.startDate}
-                        onChange={this.handleChange}
+                        selected={this.state.deadline}
+                        onChange={this.handleChange2}
+
                         minDate={new Date()}
                       />
                     </div>
@@ -90,4 +112,8 @@ class AddJob extends Component {
   }
 }
 
-export default AddJob
+
+//mapDispatchToProps
+const mapDispatchToProps = dispatch => bindActionCreators({ addJob, getJobs }, dispatch)
+
+export default connect(null, mapDispatchToProps)(AddJob);
