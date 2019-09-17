@@ -4,6 +4,7 @@ import { getJobs } from './JobAction'
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import LikeBar from './likebar';
 import '../App.css'
 
 
@@ -32,7 +33,7 @@ class Jobs extends Component {
                 return (
                   <JobCard className="card" style={{ "width": "18rem", overflow: "hidden", margin: "15px" }}>
                     <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
-
+                    {/* <LikeBar upvote_count={job} /> */}
                     <div className="card-body">
                       <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
                       <p className="card-text">{job.job_type}.</p>
