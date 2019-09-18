@@ -1,4 +1,3 @@
-
 export function changeAuth(data) {
     return {
         type: 'CHANGE_AUTH',
@@ -6,3 +5,8 @@ export function changeAuth(data) {
     }
 }
 
+export function changeAuthValue() {
+    return {
+        type: 'CHANGE_AUTH_STATE',
+    }
+}

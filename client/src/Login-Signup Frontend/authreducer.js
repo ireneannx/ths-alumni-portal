@@ -10,6 +10,10 @@ const Auth = function (state = initialState, action) {
       return {
         ...state, authData: action.payload, isLoggedIn: !state.isLoggedIn
       }
+    case "CHANGE_AUTH_STATE":
+      return {
+        ...state, isLoggedIn: false
+      }
     default:
       return { ...state }
   }
