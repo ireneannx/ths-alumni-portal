@@ -18,11 +18,11 @@ class LoggedIn extends Component {
         <div className="row" style={{ marginTop: "10%" }}>
           <div class="col-md-4">
             <Profile />
+            {/* <h1>From LoggedIn</h1> */}
           </div>
           <div class="col-md-8">
             <Switch>
-              <Route path="/jobs" component={Jobs} />
-              <Route path="/posts" component={Posts} />
+            
               <Route exact path="/" component={Jobs} />
               <Route path="/jobs/new" component={AddJob} />
             </Switch>

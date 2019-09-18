@@ -1,10 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { BrowserRouter as Router,NavLink, Route, Switch } from "react-router-dom";
+import Jobs from "../Jobs/Jobs";
+import Posts from "../Feeds/components/feed-area";
+import UserProfile from "./UserProfile";
 class Profile extends React.Component {
+
   state = {
     user: []
   };
@@ -16,35 +20,39 @@ class Profile extends React.Component {
     await this.setState({
       user: res.data
     });
-    
-    // console.log("******* user profile dara",this.state.user)
-  };
-  render() {
-    console.log('coming from redux store', this.props);
-    // const data = this.state.users;
-    //  const feeduser = this.props.feeds.filter()
-    // const user = data.filter(data => data._id == this.props.feeds);
-    console.log("user", this.state.user);
-    // const display = user[0];
-    //display = JSON.parse(display)
-    // if (this.state.users.length == 0) {
-    //   return null;
-    // }
-    // console.log("display", display._id);
 
+  
+  };
+
+  render() {
     return (
       <div>
-        <h1>This is the  user profile</h1>
-        <h2>{this.state.user.current_company}</h2>
+        {/* <h1>LoggedIn</h1> */}
+        <div className="row" style={{ marginTop: "10%" }}>
+          <div class="col-md-4">
+            <UserProfile user={this.state.user}/>
+          </div>
+          <div class="col-md-8">
+            {/* <NavLink to="/profile/jobs">Jobs</NavLink> */}
+            {/* <NavLink to="profile/posts">Posts</NavLink> */}
+            <Switch>
+              {/* <Route path="/profile/jobs" component={JobsProfile} /> */}
+              {/* <Route path="/profile/posts" component={PostsProfile} /> */}
+            </Switch>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    data : state.Feed.feeds
-  }
-}
+    data: state.Feed.feeds
+  };
+};
 
-export default connect(mapStateToProps, null)(Profile) ;
+export default connect(
+  mapStateToProps,
+  null
+)(Profile);
