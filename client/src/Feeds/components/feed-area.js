@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './navbar';
 import NewTextEditor from './newTextEditor';
 import NewFeedCard from './newFeedCard';
 

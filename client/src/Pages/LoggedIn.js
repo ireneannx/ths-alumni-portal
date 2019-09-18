@@ -3,10 +3,9 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
-  NavLink
 } from "react-router-dom";
-import LogNav from "./LoginNav";
+import AddJob from '../Jobs/AddJob'
+
 import Profile from "../UserProfile/Profile";
 import Jobs from "../Jobs/Jobs";
 import Posts from "../Feeds/components/feed-area";
@@ -15,7 +14,6 @@ class LoggedIn extends Component {
     console.log("LoggedIn", this.props.posts);
     return (
       <div>
-        <LogNav />
         {/* <h1>LoggedIn</h1> */}
         <div className="row" style={{ marginTop: "10%" }}>
           <div class="col-md-4">
@@ -26,6 +24,7 @@ class LoggedIn extends Component {
               <Route path="/jobs" component={Jobs} />
               <Route path="/posts" component={Posts} />
               <Route exact path="/" component={Jobs} />
+              <Route path="/jobs/new" component={AddJob} />
             </Switch>
           </div>
         </div>

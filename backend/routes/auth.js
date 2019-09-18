@@ -39,7 +39,7 @@ router.post(
     }
 
     const { email, password } = req.body;
-
+    console.log('line 42 backend', req.body)
     try {
       let user = await db.User.findOne({ email });
 
@@ -59,13 +59,21 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
+          id: user.id,
+          name: user.name,
+          email: user.email
         }
       };
 
+      const newUser = {
+        _id: user._id,
+        name: user.name,
+        email: user.email
+      }
+
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.jwtSecret,
         { expiresIn: 360000 },
         (err, token) => {
           if (err) {
@@ -73,7 +81,8 @@ router.post(
           } else {
             return res.status(200).json({
               success: true,
-              token: token
+              token: token,
+              user: newUser
             });
           }
         }

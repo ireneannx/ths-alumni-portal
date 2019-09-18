@@ -9,7 +9,7 @@ const Feed = (state = initialState, action) => {
         case 'GET':
             return { ...state, feeds: action.payload }
         case 'ADD':
-            return { ...state, feeds: [action.payload, ...state.feeds] }
+            return { ...state, feeds: [action.payload, ...state.feeds]}
         default:
             return { ...state }
     }

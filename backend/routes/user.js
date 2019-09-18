@@ -67,11 +67,6 @@ router.post(
         }
       })
 
-      /**
-       ** Add a method to create a document in userProfile collection when a new user registers.
-       *! What is the 'token' collection for?
-       */
-
       res.status(200).send('User registration successful');
     } catch (err) {
       console.error(err.message);

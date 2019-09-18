@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
@@ -26,7 +25,7 @@ export default class CreateUserProfile extends Component {
   async componentDidMount() {
     if (this.props.match.params.id) {
       console.log("line 22", this.props.match.params.id);
-      const url = `http://localhost:4000/api/users/${this.props.match.params.id}`;
+      const url = `/api/users/${this.props.match.params.id}`;
       console.log("line24", url);
      
       const res = await axios.get(url);
@@ -59,7 +58,7 @@ export default class CreateUserProfile extends Component {
         date: this.state.date
       };
       
-      const url = `http://localhost:4000/api/users/${this.state._id}`;
+      const url = `/api/users/${this.state._id}`;
       await axios.put(url, updatedUser);
     } else {
       const newUser = {
@@ -72,7 +71,7 @@ export default class CreateUserProfile extends Component {
         linkedIn: this.state.linkedIn,
         date: this.state.date
       };
-      axios.post("http://localhost:4000/api/users", newUser);
+      axios.post("/api/users", newUser);
     }
     window.location.href = "/";
   };
