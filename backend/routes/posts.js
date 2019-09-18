@@ -23,12 +23,12 @@ router.get('/', authMidWare, function (req, res) {
 
 router.post('/', authMidWare, (req, res) => {
   db.Posts.create(req.body)
-  .then((data) => {
-    console.log(data)
-    db.UserProfile.findOneAndUpdate({_id: data.author}, {$push: {posts: data._id}}).exec()
-    // .then((user)=> console.log(user))
-      res.json({status: 'successfully created post'})
-  })
+    .then((data) => {
+      console.log(data)
+      db.UserProfile.findOneAndUpdate({ _id: data.author }, { $push: { posts: data._id } }).exec()
+      // .then((user)=> console.log(user))
+      res.json({ status: 'successfully created post' })
+    })
 })
 
 

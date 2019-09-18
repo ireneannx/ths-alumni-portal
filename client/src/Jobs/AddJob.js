@@ -36,12 +36,14 @@ class AddJob extends Component {
   handleSubmit = async e => {
     //should push using axios.push from here INCLUDING startDate
     e.preventDefault();
-    // await this.props.addJob(this.state, this.props.history)
+    //accessing userID from the redux store props
+    console.log("for author id", this.props)
+    await this.props.addJob(this.state, this.props.history)
 
 
   }
   render() {
-    console.log("props from AddJob" ,this.props);
+    console.log("props from AddJob", this.props);
     return (
       <div className="">
         <div class="container contact" style={{
@@ -111,12 +113,11 @@ class AddJob extends Component {
     )
   }
 }
-
-const mapStateToProps = (state) => (
-  {
-    authData: state.Auth.authData
+const mapStateToProps = state => {
+  return {
+    data: state.Auth.authData //redux store with user_id
   }
-)
+}
 
 const mapDispatchToProps = dispatch => bindActionCreators({ addJob, getJobs }, dispatch)
 
