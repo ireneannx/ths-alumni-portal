@@ -1,84 +1,50 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-class Profile extends Component {
+class Profile extends React.Component {
   state = {
-    users: []
+    user: []
   };
   async componentDidMount() {
-    this.getUsers();
+    await this.getUsers();
   }
   getUsers = async () => {
-    const res = await axios.get("/api/users");
-    this.setState({
-      users: res.data
+    const res = await axios.get(`/users/${this.props.match.params.id}`);
+    await this.setState({
+      user: res.data
     });
+    
+    // console.log("******* user profile dara",this.state.user)
   };
   render() {
-    console.log(this.state.users);
-    const data = this.state.users;
-    const user = data.filter(data => data._id == this.props._id);
-    console.log("user", user);
-    const display = user[0];
+    console.log('coming from redux store', this.props);
+    // const data = this.state.users;
+    //  const feeduser = this.props.feeds.filter()
+    // const user = data.filter(data => data._id == this.props.feeds);
+    console.log("user", this.state.user);
+    // const display = user[0];
     //display = JSON.parse(display)
-    if (this.state.users.length == 0) {
-      return null;
-    } else {
-      console.log("display", display._id);
-      return (
-        <div>
-          <div>
-            <img src={display.avatarURL} style={{ borderRadius: "50%", width: "200px" }}></img>
-          </div>
-          <div>
-            {/* Add pictures */}
-            <table class="table table-borderless">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">:</th>
-                  <th scope="col">Maria Jamal</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Bio</td>
-                  <td>:</td>
-                  <td>{display.bio}</td>
-                </tr>
-                <tr>
-                  <td>Company</td>
-                  <td>:</td>
-                  <td>{display.current_company}</td>
-                </tr>
-                <tr>
-                  <td>Employment Status</td>
-                  <td>:</td>
-                  <td>
-                    {display.employment_status == true
-                      ? "Employed"
-                      : "Unemployed"}
-                  </td>
-                </tr>
+    // if (this.state.users.length == 0) {
+    //   return null;
+    // }
+    // console.log("display", display._id);
 
-              </tbody>
-            </table>
-          </div>
-          {/* Add Social Media */}
-          <div>
-            <a href={display.twitter} className="black padding"><i class="fab fa-twitter fa-2x"></i></a>
-            <a href={display.github} className="black padding"><i class="fab fa-github fa-2x"></i></a>
-            <a href={display.linkedIn} className="black padding"><i class="fab fa-linkedin fa-2x "></i></a>
-          </div>
-          <br />
-          <Link to={"/edit/" + display._id} className="btn btn-secondary">
-            Edit Profile
-        </Link>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <h1>This is the  user profile</h1>
+        <h2>{this.state.user.current_company}</h2>
+      </div>
+    );
   }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+  return {
+    data : state.Feed.feeds
+  }
+}
+
+export default connect(mapStateToProps, null)(Profile) ;

@@ -11,7 +11,15 @@ export function getFeedPosts() {
         })
     }
 }
-
+export function getAuthorData(author){
+    return async function(dispatch){
+        const res = await axios.get(`/api/users/${author}`)
+    return dispatch({
+        type: "GET USER",
+        payload:res.data
+    })
+    }
+}
 export function addFeedPost(data) {
     console.log('recieved by action', data)
 

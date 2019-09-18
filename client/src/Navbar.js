@@ -66,6 +66,16 @@ class Navbar extends React.PureComponent {
                 </NavLink>
               </li>
               <li class="nav-item">
+                <NavLink
+                  className="nav-link white"
+                  exact
+                  to="/loggedIn"
+                  activeClassName="active"
+                >
+                  User Profile
+                </NavLink>
+              </li>
+              <li class="nav-item">
                 <button
                   onClick={(e) => this.onClick(e)}
                   className="btn btn-primary"

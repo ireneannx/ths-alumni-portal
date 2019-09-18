@@ -5,6 +5,7 @@ import CreateUser from './UserProfile/CreateUser'
 import Jobs from './Jobs/Jobs';
 import FeedArea from './Feeds/components/feed-area';
 import LoggedIn from './Pages/LoggedIn'
+import Profile from './UserProfile/Profile'
 const UserApp = () => {
   return (
     <Router basename='/user'>
@@ -17,6 +18,7 @@ const UserApp = () => {
         
         <Route path="/posts" component={FeedArea} />
         <Route path="/edit/:id" component={CreateUser} />
+        <Route path="/profiles/:id" component={Profile} />
       </Switch>
     </Router>
   );
