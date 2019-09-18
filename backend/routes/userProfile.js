@@ -9,6 +9,7 @@ const authMidWare = require('../middleware/auth')
 router.get('/', authMidWare, function (req, res) {
     db.UserProfile.find()
         .populate('posts')
+        .populate('jobs') //this allows all the job details to be accessed in userProfile rather than just the job_id posts that the particular user created
         .then((data) => {
             res.send(data)
         })

@@ -12,15 +12,6 @@ router.get('/', authMidWare, function (req, res) {
     .catch((err) => res.send(err))
 });
 
-//to be deleted after userschema is enabled
-// router.post('/', authMidWare, (req, res) => {
-//   console.log('from the back', req.body)
-//   db.Posts.create(req.body)
-//     .then(res.json({ status: 'successfully created post' }))
-// })
-
-// to be enabled after userschema is enabled
-
 router.post('/', authMidWare, (req, res) => {
   db.Posts.create(req.body)
     .then((data) => {
@@ -29,6 +20,7 @@ router.post('/', authMidWare, (req, res) => {
       // .then((user)=> console.log(user))
       res.json({ status: 'successfully created post' })
     })
+    .catch((err) => res.send(err))
 })
 
 
