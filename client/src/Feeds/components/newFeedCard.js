@@ -2,16 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getFeedPosts } from '../action'
-
+import { isThisQuarter } from 'date-fns';
+import {withRouter} from 'react-router'
 class NewFeedCard extends React.Component {
 
     componentDidMount() {
         this.props.getFeedPosts()
     }
 
+    handleClick=(posts)=>{
+        // console.log('author is ',this.props)
+        this.props.history.push(`/profiles/${posts.author}`)
+    }
+
     render() {
-        // console.log('data from editor', props.data)
-        console.log('from show card', this.props)
+        // console.log('d   ata from editor', props.data)
+        // console.log('from show card', this.props)
 
         if (this.props.data) {
             return (
@@ -20,6 +26,9 @@ class NewFeedCard extends React.Component {
 
                         <div style={{ margin: '10px -15px 10px -15px' }}>
                             {/* CARD */}
+                            {/* <li>
+                                {posts.content}
+                            </li> */}
                             <div className="card gedf-card">
                                 <div className="card-header">
                                     <div className="d-flex justify-content-between align-items-center">
@@ -28,7 +37,7 @@ class NewFeedCard extends React.Component {
                                                 <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="" />
                                             </div>
                                             <div className="ml-2">
-                                                <div className="h5 m-0">Lorem Ipsum</div>
+                                                <div className="h5 m-0" onClick={()=>this.handleClick(posts)}>Lorem Ipsum</div>
                                                 <div className="h7 text-muted">@loremIpsum</div>
                                             </div>
                                         </div>
@@ -44,8 +53,8 @@ class NewFeedCard extends React.Component {
 
                                 </div>
                                 <div className="card-footer">
-                                    {/* <a className="card-link"><i className="fa fa-gittip"></i> Like</a>
-                                <a className="card-link"><i className="fa fa-comment"></i> Comment</a> */}
+                                    <a className="card-link"><i className="fa fa-gittip"></i> Like</a>
+                                <a className="card-link"><i className="fa fa-comment"></i> Comment</a>
                                 </div>
                             </div>
                         </div>
@@ -69,4 +78,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     getFeedPosts
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewFeedCard);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewFeedCard));

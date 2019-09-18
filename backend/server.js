@@ -33,7 +33,7 @@ app.use('/user', usersRouter);
 app.use('/jobs', jobsRouter)
 app.use('/posts', postsRouter);
 app.use('/auth', authRouter);
-app.use('/api/users', userProfileRouter)
+app.use('/users', userProfileRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

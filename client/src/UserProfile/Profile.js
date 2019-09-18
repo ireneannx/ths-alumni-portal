@@ -1,84 +1,58 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { BrowserRouter as Router,NavLink, Route, Switch } from "react-router-dom";
+import Jobs from "../Jobs/Jobs";
+import Posts from "../Feeds/components/feed-area";
+import UserProfile from "./UserProfile";
+class Profile extends React.Component {
 
-class Profile extends Component {
   state = {
-    users: []
+    user: []
   };
   async componentDidMount() {
-    this.getUsers();
+    await this.getUsers();
   }
   getUsers = async () => {
-    const res = await axios.get("http://localhost:4000/api/users");
-    this.setState({
-      users: res.data
+    const res = await axios.get(`/users/${this.props.match.params.id}`);
+    await this.setState({
+      user: res.data
     });
+
+  
   };
+
   render() {
-    console.log(this.state.users);
-    const data = this.state.users;
-    const user = data.filter(data => data._id == "5d78b5e11dc9696cde9b851d");
-    console.log("user", user);
-    const display = user[0];
-    //display = JSON.parse(display)
-    if (this.state.users.length == 0) {
-      return null;
-    }
-    console.log("display", display._id);
     return (
       <div>
-        <div>
-          <img src={display.avatarURL} style={{borderRadius:"50%", width:"200px"}}></img>
+        {/* <h1>LoggedIn</h1> */}
+        <div className="row" style={{ marginTop: "10%" }}>
+          <div class="col-md-4">
+            <UserProfile user={this.state.user}/>
+          </div>
+          <div class="col-md-8">
+            {/* <NavLink to="/profile/jobs">Jobs</NavLink> */}
+            {/* <NavLink to="profile/posts">Posts</NavLink> */}
+            <Switch>
+              {/* <Route path="/profile/jobs" component={JobsProfile} /> */}
+              {/* <Route path="/profile/posts" component={PostsProfile} /> */}
+            </Switch>
+          </div>
         </div>
-        <div> 
-          {/* Add pictures */}
-          <table class="table table-borderless">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">:</th>
-                <th scope="col">Maria Jamal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Bio</td>
-                <td>:</td>
-                <td>{display.bio}</td>
-              </tr>
-              <tr>
-                <td>Company</td>
-                <td>:</td>
-                <td>{display.current_company}</td>
-              </tr>
-              <tr>
-                <td>Employment Status</td>
-                <td>:</td>
-                <td>
-                  {display.employment_status == true
-                    ? "Employed"
-                    : "Unemployed"}
-                </td>
-              </tr>
-              
-            </tbody>
-          </table>
-        </div>
-        {/* Add Social Media */}
-        <div>
-        <a href={display.twitter} className="black padding"><i class="fab fa-twitter fa-2x"></i></a>
-        <a href={display.github} className="black padding"><i class="fab fa-github fa-2x"></i></a>
-        <a href={display.linkedIn} className="black padding"><i class="fab fa-linkedin fa-2x "></i></a>
-
-        </div>
-        <br/>
-        <Link to={"/edit/" + display._id} className="btn btn-secondary">
-          Edit Profile
-        </Link>
       </div>
     );
   }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+  return {
+    data: state.Feed.feeds
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Profile);

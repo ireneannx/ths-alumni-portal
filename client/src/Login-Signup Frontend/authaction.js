@@ -1,14 +1,12 @@
-import axios from 'axios'
+export function changeAuth(data) {
+    return {
+        type: 'CHANGE_AUTH',
+        payload: data
+    }
+}
 
-export const changeAuth = () => {
-  return async function (dispatch) {
-
-    const res = await axios.get("http://localhost:4000/jobs");
-    console.log("here is the res for jobs", res)
-
-    return dispatch({
-      type: "GET_JOBS",
-      payload: res.data
-    })
-  }
+export function changeAuthValue() {
+    return {
+        type: 'CHANGE_AUTH_STATE',
+    }
 }
