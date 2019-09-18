@@ -6,18 +6,20 @@ const db = require('../models')
 const authMidWare = require('../middleware/auth')
 
 //path: /users
-router.get('/', authMidWare, function(req,res){
+router.get('/', authMidWare, function (req, res) {
     db.UserProfile.find()
-       .then((data)=>{
-           res.send(data)
-       })
-       .catch((err) => {
-        res.send(err)
-    })
+        .populate('posts')
+        .then((data) => {
+            res.send(data)
+        })
+        .catch((err) => {
+            res.send(err)
+        })
 })
 //get a particular user
 router.get('/:userid', authMidWare, function (req, res) {
     db.UserProfile.findById(req.params.userid)
+        .populate('posts')
         .then((data) => {
             console.log("in backend", data)
             res.send(data)
@@ -39,12 +41,12 @@ router.post('/', authMidWare, function (req, res, next) {
         twitter,
         linkedIn,
         avatarURL
-      
+
     })
         .then(() => {
             res.send(req.body)
         })
-        .catch((err)=>{
+        .catch((err) => {
             res.send(err)
         })
 })

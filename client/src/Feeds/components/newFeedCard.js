@@ -11,13 +11,13 @@ class NewFeedCard extends React.Component {
     }
 
     handleClick=(posts)=>{
-        console.log('author is ',this.props)
+        // console.log('author is ',this.props)
         this.props.history.push(`/profiles/${posts.author}`)
     }
 
     render() {
         // console.log('d   ata from editor', props.data)
-        console.log('from show card', this.props)
+        // console.log('from show card', this.props)
 
         if (this.props.data) {
             return (
@@ -26,6 +26,9 @@ class NewFeedCard extends React.Component {
 
                         <div style={{ margin: '10px -15px 10px -15px' }}>
                             {/* CARD */}
+                            {/* <li>
+                                {posts.content}
+                            </li> */}
                             <div className="card gedf-card">
                                 <div className="card-header">
                                     <div className="d-flex justify-content-between align-items-center">
@@ -47,13 +50,11 @@ class NewFeedCard extends React.Component {
                                     <div key={posts._id}>
                                         {posts.content}
                                     </div>
-                                    <div key={posts._id}> author: {posts.author}</div>
-                                    <div key={posts._id}> feed _id: {posts._id}</div>
 
                                 </div>
                                 <div className="card-footer">
-                                    {/* <a className="card-link"><i className="fa fa-gittip"></i> Like</a>
-                                <a className="card-link"><i className="fa fa-comment"></i> Comment</a> */}
+                                    <a className="card-link"><i className="fa fa-gittip"></i> Like</a>
+                                <a className="card-link"><i className="fa fa-comment"></i> Comment</a>
                                 </div>
                             </div>
                         </div>

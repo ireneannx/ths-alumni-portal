@@ -3,18 +3,15 @@ import { EditorState } from 'draft-js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFeedPost, getFeedPosts } from '../action'
-import draftToHtml from "draftjs-to-html";
+// import draftToHtml from "draftjs-to-html";
 import '../../App.css'
+import { withRouter } from 'react-router'
 
 import Editor from 'draft-js-plugins-editor';
-
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
-
-
 const inlineToolbarPlugin = createInlineToolbarPlugin();
 const { InlineToolbar } = inlineToolbarPlugin;
-
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSelect } = emojiPlugin;
 
@@ -32,16 +29,20 @@ class NewTextEditor extends React.Component {
 
         // let text = draftToHtml(this.state.editorState.getCurrentContent().getPlainText());
         let text = this.state.editorState.getCurrentContent().getPlainText();
-        console.log('written in editor', text);
+        // console.log('written in editor', text);
 
-        await this.props.addFeedPost(text);
+        let id = this.props.auth.user.id
+
+        // console.log('for user id', id)
+
+        await this.props.addFeedPost(text, id);
         await this.props.getFeedPosts();
 
         console.log("form submitted");
     };
 
     render() {
-        // console.log(this.state.editorState.getCurrentContent().getPlainText())
+        
         return (
             <div>
                 <form onSubmit={(e) => this.onSubmit(e)}>
@@ -79,7 +80,8 @@ class NewTextEditor extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.Feed.feeds
+        data: state.Feed.feeds,
+        auth: state.Auth.authData
     }
 }
 
