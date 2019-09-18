@@ -4,6 +4,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import AddJob from '../Jobs/AddJob'
+
 import Profile from "../UserProfile/Profile";
 import Jobs from "../Jobs/Jobs";
 import Posts from "../Feeds/components/feed-area";
@@ -22,6 +24,7 @@ class LoggedIn extends Component {
               <Route path="/jobs" component={Jobs} />
               <Route path="/posts" component={Posts} />
               <Route exact path="/" component={Jobs} />
+              <Route path="/jobs/new" component={AddJob} />
             </Switch>
           </div>
         </div>

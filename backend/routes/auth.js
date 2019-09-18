@@ -44,7 +44,6 @@ router.post(
       let user = await db.User.findOne({ email });
 
       if (!user) {
-        console.log('from auth backend', user)
         return res
           .status(400)
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
@@ -60,9 +59,17 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
+          id: user.id,
+          name: user.name,
+          email: user.email
         }
       };
+
+      const newUser = {
+        _id: user._id,
+        name: user.name,
+        email: user.email
+      }
 
       jwt.sign(
         payload,
@@ -74,7 +81,8 @@ router.post(
           } else {
             return res.status(200).json({
               success: true,
-              token: token
+              token: token,
+              user: newUser
             });
           }
         }
