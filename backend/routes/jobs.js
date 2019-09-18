@@ -16,33 +16,42 @@ router.get('/', authMidWare, function (req, res, next) {
         })
 });
 
-router.get('/:jobid', authMidWare, function (req, res, next) {
-    db.Job.findById(req.params.jobid)
-        .then((data) => {
-            res.send(data)
-        })
-        .catch((err) => {
-            res.send(err)
-        })
-})
+// router.get('/:jobid', authMidWare, function (req, res, next) {
+//     db.Job.findById(req.params.jobid)
+//         .then((data) => {
+//             res.send(data)
+//         })
+//         .catch((err) => {
+//             res.send(err)
+//         })
+// })
 
 // to be uncommented once userschema is enabled
 
-router.post('/:userid', authMidWare, function (req, res, next) {
-    db.Job.create({
-        user_id: req.params.userid,
-        job_type: req.body.job_type,
-        job_description: req.body.job_description,
-        // upvote_count: 0,
-        company_name: req.body.company_name,
-        url: req.body.url
-    })
-        .then(() => {
-            res.send(req.body)
-        })
-        .catch((err)=>{
-            res.send(err)
-        })
+// router.post('/:userid', authMidWare, function (req, res, next) {
+//     db.Job.create({
+//         user_id: req.params.userid,
+//         job_type: req.body.job_type,
+//         job_description: req.body.job_description,
+//         // upvote_count: 0,
+//         company_name: req.body.company_name,
+//         url: req.body.url
+//     })
+//         .then(() => { 
+//             res.send(req.body)
+//         })
+//         .catch((err)=>{
+//             res.send(err)
+//         })
+// })
+
+//changing above code
+router.post('/', (req, res) => {
+    db.Job.create(req.body);
+    console.log(req);
+    // .then((data)=>{
+    //     db.UserProfile.findOneAndUpdate({_id: req})
+    // })
 })
 
 //to be deleted once user schema is enabled

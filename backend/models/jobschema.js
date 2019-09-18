@@ -2,13 +2,14 @@ const mongoose = require('mongoose')
 
 const jobschema = new mongoose.Schema({
     user_id: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserProfile'
         // required: true
     },
     job_type: String,
     job_description: String,
     upvote_count: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: String
         // unique: true
     }],
     company_name: String,

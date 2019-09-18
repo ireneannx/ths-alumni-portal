@@ -36,7 +36,8 @@ class AddJob extends Component {
   handleSubmit = async e => {
     //should push using axios.push from here INCLUDING startDate
     e.preventDefault();
-
+    //accessing userID from the redux store props
+    console.log("for author id", this.props)
     await this.props.addJob(this.state, this.props.history)
 
 
@@ -111,9 +112,13 @@ class AddJob extends Component {
     )
   }
 }
-
+const mapStateToProps = state => {
+  return {
+    data: state.Auth.authData //redux store with user_id
+  }
+}
 
 //mapDispatchToProps
 const mapDispatchToProps = dispatch => bindActionCreators({ addJob, getJobs }, dispatch)
 
-export default connect(null, mapDispatchToProps)(AddJob);
+export default connect(mapStateToProps, mapDispatchToProps)(AddJob);
