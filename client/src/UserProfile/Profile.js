@@ -18,18 +18,18 @@ class Profile extends Component {
   render() {
     console.log(this.state.users);
     const data = this.state.users;
-    const user = data.filter(data => data._id == "5d78b5e11dc9696cde9b851d");
+    const user = data.filter(data => data._id === "5d78b5e11dc9696cde9b851d");
     console.log("user", user);
     const display = user[0];
     //display = JSON.parse(display)
-    if (this.state.users.length == 0) {
+    if (this.state.users.length === 0) {
       return null;
     } else {
       console.log("display", display._id);
       return (
         <div>
           <div>
-            <img src={display.avatarURL} style={{ borderRadius: "50%", width: "200px" }}></img>
+            <img src={display.avatarURL} style={{ borderRadius: "50%", width: "200px" }} alt="Avatar"></img>
           </div>
           <div>
             {/* Add pictures */}
@@ -56,7 +56,7 @@ class Profile extends Component {
                   <td>Employment Status</td>
                   <td>:</td>
                   <td>
-                    {display.employment_status == true
+                    {display.employment_status === true
                       ? "Employed"
                       : "Unemployed"}
                   </td>
