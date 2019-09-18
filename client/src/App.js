@@ -22,12 +22,10 @@ function App() {
       <React.Fragment>
 
         <Switch>
+
           <Route exact path="/" component={SignUpForm} />
           <Route path="/loggedIn" exact component={LoggedIn} />
           <Route path="/user" component={UserApp} />
-
-
-
 
         </Switch>
       </React.Fragment>
