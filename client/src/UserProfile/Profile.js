@@ -18,7 +18,7 @@ class Profile extends Component {
   render() {
     console.log(this.state.users);
     const data = this.state.users;
-    const user = data.filter(data => data._id == "5d78b5e11dc9696cde9b851d");
+    const user = data.filter(data => data._id == this.props._id);
     console.log("user", user);
     const display = user[0];
     //display = JSON.parse(display)
