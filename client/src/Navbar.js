@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeAuthValue } from './Login-Signup Frontend/authaction'
@@ -28,7 +28,7 @@ class Navbar extends React.PureComponent {
           className="navbar navbar-expand-lg navbar-light"
           style={{ backgroundColor: "#323754" }}
         >
-          <a className="navbar-brand white" href="#">
+          <a className="navbar-brand white">
             THS Alumni Club
         </a>
           <button
@@ -45,7 +45,7 @@ class Navbar extends React.PureComponent {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto" style={{ float: "right" }}>
-              <li class="nav-item">
+              <li className="nav-item">
                 <NavLink
                   className="nav-link white"
                   exact
@@ -55,7 +55,7 @@ class Navbar extends React.PureComponent {
                   Jobs
                 </NavLink>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <NavLink
                   className="nav-link white"
                   exact
@@ -65,17 +65,7 @@ class Navbar extends React.PureComponent {
                   Posts
                 </NavLink>
               </li>
-              <li class="nav-item">
-                <NavLink
-                  className="nav-link white"
-                  exact
-                  to="/loggedIn"
-                  activeClassName="active"
-                >
-                  User Profile
-                </NavLink>
-              </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <button
                   onClick={(e) => this.onClick(e)}
                   className="btn btn-primary"
