@@ -1,6 +1,6 @@
 const initialState = {
   isLoggedIn: false,
-  authData: {} 
+  authData: {}
 }
 
 
@@ -8,7 +8,7 @@ const Auth = function (state = initialState, action) {
   switch (action.type) {
     case "CHANGE_AUTH":
       return {
-        ...state, authData: action.payload, isLoggedIn: !state.isLoggedIn
+        ...state, authData: action.payload, isLoggedIn: true
       }
     case "CHANGE_AUTH_STATE":
       return {

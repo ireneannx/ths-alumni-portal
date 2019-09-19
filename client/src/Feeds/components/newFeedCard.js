@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { getFeedPosts } from '../action'
 import { isThisQuarter } from 'date-fns';
 import {withRouter} from 'react-router'
+import { format } from 'timeago.js'
 class NewFeedCard extends React.Component {
 
     componentDidMount() {
@@ -12,7 +13,7 @@ class NewFeedCard extends React.Component {
 
     handleClick=(posts)=>{
         // console.log('author is ',this.props)
-        this.props.history.push(`/profiles/${posts.author}`)
+        this.props.history.push(`/profile/${posts.author}`)
     }
 
     render() {
@@ -45,7 +46,7 @@ class NewFeedCard extends React.Component {
                                 </div>
 
                                 <div className="card-body">
-                                    <div className="text-muted h7 mb-2"> <i className="fa fa-clock-o"></i>{Date.now - Date.now(posts.timeStamp)}</div>
+                                    <div className="text-muted h7 mb-2"> <i class="fa fa-clock"><p> </p></i>{format(posts.createdAt)}</div>
 
                                     <div key={posts._id}>
                                         {posts.content}
@@ -53,8 +54,7 @@ class NewFeedCard extends React.Component {
 
                                 </div>
                                 <div className="card-footer">
-                                    <a className="card-link"><i className="fa fa-gittip"></i> Like</a>
-                                <a className="card-link"><i className="fa fa-comment"></i> Comment</a>
+                                    <a className="card-link"><i class="fa fa-thumbs-up"></i> Like</a>
                                 </div>
                             </div>
                         </div>

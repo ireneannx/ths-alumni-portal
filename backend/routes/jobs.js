@@ -7,6 +7,7 @@ const authMidWare = require('../middleware/auth')
 
 //path: /jobs
 router.get('/', authMidWare, function (req, res, next) {
+    console.log("A get request has been made to jobs")
     db.Job.find()
         .then((data) => {
             res.send(data)
@@ -22,7 +23,7 @@ router.post('/', authMidWare, (req, res) => {
 
     db.Job.create(req.body)
         .then((data) => {
-            db.UserProfile.findOneAndUpdate({ _id: data.user_id }, { $push: { jobs: data._id } }).exec() //.exec() stops this from returning a promise and just execute it 
+            db.UserProfile.findOneAndUpdate({ _id: data.user_id }, { $push: { jobs: data } }).exec() //.exec() stops this from returning a promise and just execute it 
             res.json({ Job: "SUCCESSFULLY CREATED" });
         })
         .catch((err) => res.send(err));
@@ -46,16 +47,15 @@ router.put('/:jobid', authMidWare, function (req, res) {
 
 //upvote button
 router.post('/like/:userid/:jobid', authMidWare, async function (req, res, next) {
-    let like = await db.Job.findOneAndUpdate({ _id: req.params.jobid },
-        { $push: { upvote_count: req.params.userid } }
-    )
-        .then((res) => {
-            console.log(res)
-            res.send(res)
-        })
-        .catch((err) => {
-            res.send(err)
-        })
+    try {
+        let like = await db.Job.findOneAndUpdate({ _id: req.params.jobid },
+            { $push: { upvote_count: req.params.userid } }
+        ).then((data)=>console.log("Inside like function",data))
+        res.send(like)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+    
 })
 
 router.delete('/:jobid', authMidWare, function (req, res, next) {

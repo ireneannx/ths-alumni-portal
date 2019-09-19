@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
-export default class CreateUserProfile extends Component {
+export default class UpdateDetails extends Component {
   state = {
     bio: "",
     current_company: "",
@@ -24,12 +24,12 @@ export default class CreateUserProfile extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id) {
-      console.log("line 22", this.props.match.params.id);
-      const url = `/api/users/${this.props.match.params.id}`;
-      console.log("line24", url);
+      // console.log("line 22", this.props.match.params.id);
+      // const url = `/users/${this.props.match.params.id}`;
+      // console.log("line24", url);
      
-      const res = await axios.get(url);
-      this.setState({
+      const res = await axios.get(`/users/${this.props.match.params.id}`);
+      await this.setState({
         editing: true,
         bio: res.data.bio,
         current_company: res.data.current_company,
@@ -57,8 +57,8 @@ export default class CreateUserProfile extends Component {
         linkedIn: this.state.linkedIn,
         date: this.state.date
       };
-      
-      const url = `/api/users/${this.state._id}`;
+      console.log("line 60",updatedUser)
+      const url = `/users/${this.state._id}`;
       await axios.put(url, updatedUser);
     } else {
       const newUser = {
@@ -71,9 +71,9 @@ export default class CreateUserProfile extends Component {
         linkedIn: this.state.linkedIn,
         date: this.state.date
       };
-      axios.post("/api/users", newUser);
+      axios.post("/users", newUser);
     }
-    window.location.href = "/";
+    window.location.href = `/user/profiles/${this.props.match.params.id}`;
   };
   onInputChange = e => {
     this.setState({
@@ -130,6 +130,7 @@ export default class CreateUserProfile extends Component {
                 class="custom-select"
                 id="inputGroupSelect01"
                 name="employment_status"
+                value={this.state.employment_status}
                 onChange={this.onInputChange}
               >
                 <option selected>Choose</option>
