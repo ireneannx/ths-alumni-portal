@@ -6,29 +6,12 @@ import { bindActionCreators } from "redux";
 import { BrowserRouter as Router,NavLink, Route, Switch } from "react-router-dom";
 import Jobs from "../Jobs/Jobs";
 import Posts from "../Feeds/components/feed-area";
+import '../App.css'
 class UserProfile extends React.Component {
-//   state = {
-//     user: []
-//   };
-//   async componentDidMount() {
-//     await this.getUsers();
-//   }
-//   getUsers = async () => {
-//     const res = await axios.get(`/users/${this.props.match.params.id}`);
-//     await this.setState({
-//       user: res.data
-//     });
-
-  
-//   };
   render() {
     console.log("coming from redux store 1", this.props.user);
-    // console.log("user", this.state.user);
     return (
       <div>
-        {/* <h1>LoggedIn</h1> */}
-      
-      
             <div>
               <img
                 src={this.props.user.avatarURL}
@@ -42,10 +25,15 @@ class UserProfile extends React.Component {
                   <tr>
                     <th scope="col">Name</th>
                     <th scope="col">:</th>
-                    <th scope="col"></th>
+                    <th scope="col">{this.props.user1.name}</th>
                   </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td>email</td>
+                    <td>:</td>
+                    <td>{this.props.user1.email}</td>
+                  </tr>
                   <tr>
                     <td>Bio</td>
                     <td>:</td>
@@ -81,22 +69,22 @@ class UserProfile extends React.Component {
               </a>
             </div>
             <br />
-            <Link
-              to={"/edit/" +this.props.user._id}
+            {this.props.authdata.user.id == this.props.user._id ?  <Link
+              to={"/profiles/edit/" +this.props.user._id}
               className="btn btn-secondary"
             >
               Edit Profile
-            </Link>
+            </Link> : null}
+           
           </div>
-        
-      
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    data: state.Feed.feeds
+    data: state.Feed.feeds,
+    authdata: state.Auth. authData
   };
 };
 

@@ -1,36 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { changeAuthValue } from './Login-Signup Frontend/authaction'
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { changeAuthValue } from "./Login-Signup Frontend/authaction";
 
 class Navbar extends React.PureComponent {
-
-  onClick = (e) => {
-    e.preventDefault()
-
+  onClick = e => {
+    e.preventDefault();
     /**
      *! set isAuth field in Redux store to false
      *! clear the thsToken value pair in localStorage
      ** redirect to the Sign in page
      */
-
-     this.props.changeAuthValue()
-     localStorage.removeItem('thsToken')
-
-  }
-
+    this.props.changeAuthValue();
+    localStorage.removeItem("thsToken");
+  };
   render() {
+    console.log("From Navbar",this.props.data.user.id)
     return (
       <div>
         <nav
           className="navbar navbar-expand-lg navbar-light"
           style={{ backgroundColor: "#323754" }}
         >
-          <a className="navbar-brand white">
-            THS Alumni Club
-        </a>
+          <a className="navbar-brand white">THS Alumni Club</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -42,7 +35,6 @@ class Navbar extends React.PureComponent {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto" style={{ float: "right" }}>
               <li className="nav-item">
@@ -66,12 +58,24 @@ class Navbar extends React.PureComponent {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink
+                  className="nav-link white"
+                  exact
+                  to={{pathname:`/profiles/${this.props.data.user.id}`}}
+                  activeClassName="active"
+                >
+                  Profile
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                
                 <button
-                  onClick={(e) => this.onClick(e)}
+                  onClick={e => this.onClick(e)}
                   className="btn btn-primary"
-                  style={{ background: 'transparent' }}>
+                  style={{ background: "transparent" }}
+                >
                   Logout
-              </button>
+                </button>
               </li>
             </ul>
           </div>
@@ -79,10 +83,22 @@ class Navbar extends React.PureComponent {
       </div>
     );
   }
+}
+const mapStateToProps = state => {
+  return {
+    data: state.Auth. authData
+  };
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  changeAuthValue
-}, dispatch)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      changeAuthValue
+    },
+    dispatch
+  );
 
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar);

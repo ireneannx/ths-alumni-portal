@@ -6,7 +6,7 @@ const transporter = require('../middleware/nodemailer');
 const jwt = require('jsonwebtoken');
 const config = require('../config/default');
 const bcrypt = require('bcryptjs');
-
+const authMidWare = require('../middleware/auth')
 const db = require('../models/index');
 
 // @route /user/test
@@ -15,6 +15,19 @@ const db = require('../models/index');
 router.get('/test', (req, res) => {
   res.send('User route working');
 });
+router.get
+
+router.get('/:userid', authMidWare, function (req, res) {
+  db.User.findById(req.params.userid)
+  
+      .then((data) => {
+          console.log("in backend", data)
+          res.send(data)
+      })
+      .catch((err) => {
+          res.send(err)
+      })
+})
 
 // @route /user/register
 // @desc Registering user

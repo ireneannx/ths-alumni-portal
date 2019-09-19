@@ -40,6 +40,12 @@
 .white {
   color: white !important;
 }
+.black{
+  color: black;
+}
+.padding{
+  padding: 10px;
+}
 
 .toolbar-options {
   text-align: center;
