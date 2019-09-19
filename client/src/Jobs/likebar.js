@@ -1,17 +1,23 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux'
-import { getJobs } from './JobAction'
+import { frontendLike } from './JobAction'
 import { bindActionCreators } from 'redux';
 
 
 class LikeBar extends React.PureComponent {
 
-    axiosCall = () => {
+    axiosCall = async () => {
         console.log("Hello inside axiosCall", this.props.upvote_count.upvote_count.length)
         console.log(this.props)
+<<<<<<< HEAD
         axios.post(`http://localhost:7000/jobs/like/${this.props.userData.authData.user.id}/${this.props.upvote_count._id}`)
 
+=======
+        const data = await axios.post(`http://localhost:7000/jobs/like/${this.props.userData.authData.user.id}/${this.props.upvote_count._id}`)
+        console.log("checking for response",data)
+        this.props.frontendLike(this.props.upvote_count._id,this.props.userData.authData.user.id)
+>>>>>>> 9338e75826087ab3e75d336f940b4b78d898fa26
     }
 
     checkForId = () => {
@@ -54,7 +60,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    getJobs
+    frontendLike
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(LikeBar);

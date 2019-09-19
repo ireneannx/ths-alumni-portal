@@ -7,6 +7,7 @@ const authMidWare = require('../middleware/auth')
 
 //path: /jobs
 router.get('/', authMidWare, function (req, res, next) {
+    console.log("A get request has been made to jobs")
     db.Job.find()
         .then((data) => {
             res.send(data)
@@ -46,16 +47,15 @@ router.put('/:jobid', authMidWare, function (req, res) {
 
 //upvote button
 router.post('/like/:userid/:jobid', authMidWare, async function (req, res, next) {
-    let like = await db.Job.findOneAndUpdate({ _id: req.params.jobid },
-        { $push: { upvote_count: req.params.userid } }
-    )
-        .then((res) => {
-            console.log(res)
-            res.send(res)
-        })
-        .catch((err) => {
-            res.send(err)
-        })
+    try {
+        let like = await db.Job.findOneAndUpdate({ _id: req.params.jobid },
+            { $push: { upvote_count: req.params.userid } }
+        ).then((data)=>console.log("Inside like function",data))
+        res.send(like)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+    
 })
 
 router.delete('/:jobid', authMidWare, function (req, res, next) {
