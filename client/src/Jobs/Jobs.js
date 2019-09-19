@@ -9,17 +9,22 @@ import '../App.css'
 
 
 class Jobs extends Component {
-
   componentDidMount() {
     console.log("Inside componentDidMount")
     this.props.getJobs();
   }
-
-
+  //comment
   render() {
     console.log("jobs", this.props)
     let { jobs } = this.props;
-
+    if(jobs[0]._id === undefined){
+      console.log("checking out jobs",jobs[0]._id)
+      return(
+        <div> 
+          <h2>Loading</h2>
+        </div>
+      )
+    }else {
     return (
       <div>
         <div style={{ paddingInlineStart: "15%" }}>
@@ -93,6 +98,7 @@ class Jobs extends Component {
 
 
     );
+  }
   }
 }
 

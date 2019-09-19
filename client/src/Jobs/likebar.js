@@ -7,11 +7,12 @@ import { bindActionCreators } from 'redux';
 
 class LikeBar extends React.PureComponent {
 
-    axiosCall = () => {
+    axiosCall = async () => {
         console.log("Hello inside axiosCall", this.props.upvote_count.upvote_count.length)
         console.log(this.props)
-        axios.post(`http://localhost:7000/jobs/like/${this.props.userData.authData.user.id}/${this.props.upvote_count._id}`)
-        this.props.frontendLike(this.props.userData.authData.user.id,this.props.upvote_count._id)
+        const data = await axios.post(`http://localhost:7000/jobs/like/${this.props.userData.authData.user.id}/${this.props.upvote_count._id}`)
+        console.log("checking for response",data)
+        this.props.frontendLike(this.props.upvote_count._id,this.props.userData.authData.user.id)
     }
 
     checkForId = () => {
