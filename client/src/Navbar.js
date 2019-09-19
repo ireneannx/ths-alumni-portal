@@ -12,9 +12,13 @@ class Navbar extends React.PureComponent {
      *! clear the thsToken value pair in localStorage
      ** redirect to the Sign in page
      */
-    this.props.changeAuthValue();
-    localStorage.removeItem("thsToken");
-  };
+
+    this.props.changeAuthValue()
+    localStorage.removeItem('thsToken');
+    localStorage.removeItem('redux_localstorage_simple');
+
+  }
+
   render() {
     console.log("From Navbar",this.props.data.user.id)
     return (
