@@ -27,7 +27,7 @@ const userProfileSchema = new Schema({
     jobs: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Jobs'
+            ref: 'Job'
         }
     ],
     github: {

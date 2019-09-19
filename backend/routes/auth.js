@@ -65,11 +65,11 @@ router.post(
         }
       };
 
-      const newUser = {
-        _id: user._id,
-        name: user.name,
-        email: user.email
-      }
+      // const newUser = {
+      //   _id: user._id,
+      //   name: user.name,
+      //   email: user.email
+      // }
 
       jwt.sign(
         payload,
@@ -82,7 +82,7 @@ router.post(
             return res.status(200).json({
               success: true,
               token: token,
-              user: newUser
+              user: {}
             });
           }
         }
