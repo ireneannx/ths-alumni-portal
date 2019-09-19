@@ -7,6 +7,7 @@ const authMidWare = require('../middleware/auth')
 
 //path: /jobs
 router.get('/', authMidWare, function (req, res, next) {
+    console.log("A get request has been made to jobs")
     db.Job.find()
         .then((data) => {
             res.send(data)
