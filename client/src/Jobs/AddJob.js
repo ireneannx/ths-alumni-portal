@@ -37,8 +37,13 @@ class AddJob extends Component {
     //should push using axios.push from here INCLUDING startDate
     e.preventDefault();
     //accessing userID from the redux store props
-    const user_id = this.props.data.user._id
+
+    if (this.props.data.user == 1) {
+      var user_id = this.props.data.user._id
+    }
+
     await this.props.addJob(this.state, this.props.history, user_id)
+
 
 
   }
