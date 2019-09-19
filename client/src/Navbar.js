@@ -65,11 +65,7 @@ class Navbar extends React.PureComponent {
                 <NavLink
                   className="nav-link white"
                   exact
-<<<<<<< HEAD
-                  to={{ pathname: `/profiles/${this.props.data.user.id}` }}
-=======
-                  to={{pathname:`/profile/${this.props.data.user.id}`}}
->>>>>>> 9338e75826087ab3e75d336f940b4b78d898fa26
+                  to={{ pathname: `/profile/${this.props.data.user.id}` }}
                   activeClassName="active"
                 >
                   Profile
