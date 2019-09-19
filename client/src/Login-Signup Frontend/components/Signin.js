@@ -24,26 +24,25 @@ class SignInForm extends React.PureComponent {
     e.preventDefault()
 
     let authData = this.state
-    // if (authData.email != '' && authData.password != "") {
-    await axios.post("/auth", authData)
-      .then((res) => {
-        console.log('userData', res.data)
-        const decode = jwt_decode(res.data.token) 
-        localStorage.setItem("thsToken", res.data.token);
-        this.setState({
-          email: '',
-          password: ''
+    if (authData.email != '' && authData.password != "") {
+      await axios.post("/auth", authData)
+        .then((res) => {
+          console.log('userData', res.data)
+          localStorage.setItem("thsToken", res.data.token);
+          this.setState({
+            email: '',
+            password: ''
+          })
+
+          this.props.changeAuth(res.data.user);
         })
+        .catch((err) => console.log(err))
 
-        this.props.changeAuth(decode.user);
-      })
-      .catch((err) => console.log(err.response))
-
-    //this.props.history.push('/user/jobs')
-    //}
-    // else {
-    //   console.log("blah")
-    // }
+      this.props.history.push('/user/posts')
+    }
+    else {
+      console.log("blah")
+    }
   }
 
 

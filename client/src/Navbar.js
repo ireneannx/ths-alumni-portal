@@ -20,7 +20,7 @@ class Navbar extends React.PureComponent {
   }
 
   render() {
-    console.log("From Navbar",this.props.data.user.id)
+    //console.log("From Navbar", this.props.data.user.id)
     return (
       <div>
         <nav
@@ -65,14 +65,14 @@ class Navbar extends React.PureComponent {
                 <NavLink
                   className="nav-link white"
                   exact
-                  to={{pathname:`/profile/${this.props.data.user.id}`}}
+                  to={{ pathname: `/profile/${this.props.data.user.id}` }}
                   activeClassName="active"
                 >
                   Profile
                 </NavLink>
               </li>
               <li className="nav-item">
-                
+                {/* <NavLink to="/"> */}
                 <button
                   onClick={e => this.onClick(e)}
                   className="btn btn-primary"
@@ -80,6 +80,7 @@ class Navbar extends React.PureComponent {
                 >
                   Logout
                 </button>
+                {/* </NavLink> */}
               </li>
             </ul>
           </div>
@@ -90,7 +91,7 @@ class Navbar extends React.PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    data: state.Auth. authData
+    data: state.Auth.authData
   };
 };
 

@@ -9,17 +9,27 @@ import '../App.css'
 
 
 class Jobs extends Component {
-
   componentDidMount() {
+<<<<<<< HEAD
+    console.log("inside cdm");
+
+=======
     console.log("Inside componentDidMount")
+>>>>>>> 9338e75826087ab3e75d336f940b4b78d898fa26
     this.props.getJobs();
   }
-
-
+  //comment
   render() {
-    console.log("jobs", this.props)
+    console.log("jobs INSIDE RENDER", this.props)
     let { jobs } = this.props;
-
+    if(jobs[0]._id === undefined){
+      console.log("checking out jobs",jobs[0]._id)
+      return(
+        <div> 
+          <h2>Loading</h2>
+        </div>
+      )
+    }else {
     return (
       <div>
         <div style={{ paddingInlineStart: "15%" }}>
@@ -93,6 +103,7 @@ class Jobs extends Component {
 
 
     );
+  }
   }
 }
 
