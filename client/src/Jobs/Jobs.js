@@ -4,7 +4,7 @@ import { getJobs } from './JobAction'
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import LikeBar from './likebar';
+//import LikeBar from './likebar';
 import '../App.css'
 
 
@@ -42,7 +42,7 @@ class Jobs extends Component {
 
 
                       {/*IRENE COMMENTED THIS OUT SO I CAN CONTINUE WORKING ON JOBS */}
-                      <LikeBar upvote_count={job} />
+                      {/* <LikeBar upvote_count={job} /> */}
 
 
                       <div className="card-body">
@@ -67,7 +67,7 @@ class Jobs extends Component {
                               </button>
                             </div>
                             <div class="modal-body">
-                              <p>Posted by: (populate and get user avatarUrl+ name OR direct link)</p>
+                              <p>Posted by: <button>click</button></p>
                               <p>{job.job_description}</p>
                             </div>
                             <div class="modal-footer">

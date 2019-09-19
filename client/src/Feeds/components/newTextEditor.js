@@ -31,10 +31,9 @@ class NewTextEditor extends React.Component {
         let text = this.state.editorState.getCurrentContent().getPlainText();
         // console.log('written in editor', text);
 
-        let id = this.props.auth.user._id
-
-        // console.log('for user id', id)
-
+        if (this.props.auth.user == 1) {
+            var id = this.props.auth.user._id
+        }
         await this.props.addFeedPost(text, id);
         await this.props.getFeedPosts();
 

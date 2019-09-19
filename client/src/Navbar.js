@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeAuthValue } from "./Login-Signup Frontend/authaction";
+import { withRouter } from 'react-router'
+import history from './history'
 
 class Navbar extends React.PureComponent {
   onClick = e => {
@@ -12,11 +14,11 @@ class Navbar extends React.PureComponent {
      *! clear the thsToken value pair in localStorage
      ** redirect to the Sign in page
      */
-
+    console.log("while logging out", this.props)
     this.props.changeAuthValue()
     localStorage.removeItem('thsToken');
     localStorage.removeItem('redux_localstorage_simple');
-
+    history.push('/')
   }
 
   render() {
@@ -72,15 +74,15 @@ class Navbar extends React.PureComponent {
                 </NavLink> */}
               </li>
               <li className="nav-item">
-                {/* <NavLink to="/"> */}
-                <button
-                  onClick={e => this.onClick(e)}
-                  className="btn btn-primary"
-                  style={{ background: "transparent" }}
-                >
-                  Logout
+                <NavLink to="/">
+                  <button
+                    onClick={e => this.onClick(e)}
+                    className="btn btn-primary"
+                    style={{ background: "transparent" }}
+                  >
+                    Logout
                 </button>
-                {/* </NavLink> */}
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -103,7 +105,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar);
+)(Navbar));
