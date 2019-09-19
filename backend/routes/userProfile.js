@@ -41,7 +41,7 @@ router.post('/', authMidWare, function (req, res, next) {
         github,
         twitter,
         linkedIn,
-        avatarURL
+        avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
 
     })
         .then(() => {
@@ -56,7 +56,7 @@ router.post('/', authMidWare, function (req, res, next) {
 
 router.put('/:userid', authMidWare, function (req, res) {
     const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
-    db.UserProfile.findOneAndUpdate({ _id: req.params.id }, {
+    db.UserProfile.findOneAndUpdate({ _id: req.params.userid }, {
         bio,
         current_company,
         employment_status,

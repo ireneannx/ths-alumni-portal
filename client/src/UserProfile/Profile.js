@@ -7,37 +7,22 @@ import { BrowserRouter as Router,NavLink, Route, Switch } from "react-router-dom
 import Jobs from "../Jobs/Jobs";
 import Posts from "../Feeds/components/feed-area";
 import UserProfile from "./UserProfile";
+import JobsProfile from "./JobsProfile"
+import PostsProfile from "./PostsProfile"
 class Profile extends React.Component {
-
-  state = {
-    user: []
-  };
-  async componentDidMount() {
-    await this.getUsers();
-  }
-  getUsers = async () => {
-    const res = await axios.get(`/users/${this.props.match.params.id}`);
-    await this.setState({
-      user: res.data
-    });
-
-  
-  };
-
   render() {
     return (
       <div>
-        {/* <h1>LoggedIn</h1> */}
         <div className="row" style={{ marginTop: "10%" }}>
           <div class="col-md-4">
-            <UserProfile user={this.state.user}/>
+            <UserProfile userId={this.props.match.params.id}/>
           </div>
           <div class="col-md-8">
-            {/* <NavLink to="/profile/jobs">Jobs</NavLink> */}
-            {/* <NavLink to="profile/posts">Posts</NavLink> */}
+            <Link to={{pathname:`/profiles/jobs`}}>Jobs</Link>
+            <Link to={{pathname:`/profiles/posts`}} >Posts</Link>
             <Switch>
-              {/* <Route path="/profile/jobs" component={JobsProfile} /> */}
-              {/* <Route path="/profile/posts" component={PostsProfile} /> */}
+              <Route path="/profiles/jobs" component={JobsProfile} />
+              <Route path="/profiles/posts" component={PostsProfile}  />
             </Switch>
           </div>
         </div>
