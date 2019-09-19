@@ -20,11 +20,11 @@ export function getAuthorData(author){
     })
     }
 }
-export function addFeedPost(data) {
+export function addFeedPost(data, id) {
     console.log('recieved by action', data)
-
     let text = {
-        content: data
+        content: data,
+        author: id
     }
 
     return async function (dispatch) {

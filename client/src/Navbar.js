@@ -16,8 +16,9 @@ class Navbar extends React.PureComponent {
      ** redirect to the Sign in page
      */
 
-     this.props.changeAuthValue()
-     localStorage.removeItem('thsToken')
+    this.props.changeAuthValue()
+    localStorage.removeItem('thsToken');
+    localStorage.removeItem('redux_localstorage_simple');
 
   }
 

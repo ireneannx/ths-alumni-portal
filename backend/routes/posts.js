@@ -12,23 +12,16 @@ router.get('/', authMidWare, function (req, res) {
     .catch((err) => res.send(err))
 });
 
-//to be deleted after userschema is enabled
 router.post('/', authMidWare, (req, res) => {
-  console.log('from the back', req.body)
   db.Posts.create(req.body)
-    .then(res.json({ status: 'successfully created post' }))
+    .then((data) => {
+      console.log(data)
+      db.UserProfile.findOneAndUpdate({ _id: data.author }, { $push: { posts: data._id } }).exec()
+      // .then((user)=> console.log(user))
+      res.json({ status: 'successfully created post' })
+    })
+    .catch((err) => res.send(err))
 })
-
-// to be enabled after userschema is enabled
-
-// router.post('/:id', (req, res) => {
-//   db.Posts.create(req.body)
-//   .then((data) => {
-//     db.Posts.findOneAndUpdate({_id: req.params.id},
-//       {$push: {posts: data._id}})
-//       res.json({status: 'successfully created post'})
-//   })
-// })
 
 
 module.exports = router;
