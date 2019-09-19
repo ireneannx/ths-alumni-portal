@@ -21,7 +21,7 @@ const UserApp = () => {
         <Route path="/posts" component={FeedArea} />
 
         <Route exact path="/profiles/edit/:id" component={UpdateDetails} />
-        <Route exact path="/profiles/:id" component={Profile} />
+        <Route exact path="/profile/:id" component={Profile} />
       </Switch>
     </Router>
   );
