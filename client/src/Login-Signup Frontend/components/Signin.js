@@ -28,15 +28,16 @@ class SignInForm extends React.PureComponent {
       await axios.post("/auth", authData)
         .then((res) => {
           console.log('userData', res.data)
+          const decode = jwt_decode(res.data.token)
           localStorage.setItem("thsToken", res.data.token);
           this.setState({
             email: '',
             password: ''
           })
 
-          this.props.changeAuth(res.data.user);
+          this.props.changeAuth(decode.user);
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err.response))
 
       this.props.history.push('/user/posts')
     }

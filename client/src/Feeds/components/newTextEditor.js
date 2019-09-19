@@ -31,7 +31,7 @@ class NewTextEditor extends React.Component {
         let text = this.state.editorState.getCurrentContent().getPlainText();
         // console.log('written in editor', text);
 
-        let id = this.props.auth.user.id
+        let id = this.props.auth.user._id
 
         // console.log('for user id', id)
 
@@ -42,7 +42,7 @@ class NewTextEditor extends React.Component {
     };
 
     render() {
-        
+
         return (
             <div>
                 <form onSubmit={(e) => this.onSubmit(e)}>

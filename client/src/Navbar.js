@@ -62,14 +62,14 @@ class Navbar extends React.PureComponent {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink
+                {/* <NavLink
                   className="nav-link white"
                   exact
-                  to={{ pathname: `/profile/${this.props.data.user.id}` }}
+                  to={{ pathname: `/profile/${this.props.data.user._id}` }}
                   activeClassName="active"
                 >
                   Profile
-                </NavLink>
+                </NavLink> */}
               </li>
               <li className="nav-item">
                 {/* <NavLink to="/"> */}
