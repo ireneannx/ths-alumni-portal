@@ -11,11 +11,13 @@ import '../App.css'
 class Jobs extends Component {
 
   componentDidMount() {
+    console.log("inside cdm");
+
     this.props.getJobs();
   }
 
   render() {
-    console.log("jobs", this.props)
+    console.log("jobs INSIDE RENDER", this.props)
     let { jobs } = this.props;
 
     return (
@@ -36,7 +38,7 @@ class Jobs extends Component {
 
 
                     {/*IRENE COMMENTED THIS OUT SO I CAN CONTINUE WORKING ON JOBS */}
-                    {/* <LikeBar upvote_count={job} /> */}
+                    <LikeBar upvote_count={job} />
 
 
                     <div className="card-body">

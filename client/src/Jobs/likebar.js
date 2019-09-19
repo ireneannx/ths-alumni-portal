@@ -11,7 +11,7 @@ class LikeBar extends React.PureComponent {
         console.log("Hello inside axiosCall", this.props.upvote_count.upvote_count.length)
         console.log(this.props)
         axios.post(`http://localhost:7000/jobs/like/${this.props.userData.authData.user.id}/${this.props.upvote_count._id}`)
-        
+
     }
 
     checkForId = () => {
@@ -39,7 +39,7 @@ class LikeBar extends React.PureComponent {
             return (
                 <div style={{ width: "50px", margin: "0 auto", marginTop: "-26px", display: "flex" }}>
                     <div style={{ color: "white", display: "flex" }}>
-                        <button style={{ background: "none", border: "none", color: "white", outline: "none" }}><p>&#9829;</p></button>
+                        <button style={{ background: "none", border: "none", color: "white", outline: "none" }} onClick={this.axiosCall}><p>&#9829;</p></button>
                         <p style={{ marginLeft: "7px" }}>{this.props.upvote_count.upvote_count.length}</p>
                     </div>
                 </div>
