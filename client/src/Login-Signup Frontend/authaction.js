@@ -1,4 +1,4 @@
-export function changeAuth(data, history) {
+export function changeAuth(data) {
 
     return {
         type: 'CHANGE_AUTH',
