@@ -7,6 +7,7 @@ const authMidWare = require('../middleware/auth')
 
 //path: /jobs
 router.get('/', authMidWare, function (req, res, next) {
+    // console.log("**********************************")
     db.Job.find()
         .then((data) => {
             res.send(data)
@@ -76,6 +77,7 @@ router.put('/:jobid', authMidWare, function (req, res) {
 
 //upvote button
 router.post('/like/:userid/:jobid', authMidWare, async function (req, res, next) {
+    console.log("**********************************")
     let like = await db.Job.findOneAndUpdate({ _id: req.params.jobid },
         { $push: { upvote_count: req.params.userid } }
     )
