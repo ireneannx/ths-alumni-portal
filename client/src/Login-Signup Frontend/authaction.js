@@ -1,8 +1,10 @@
-export function changeAuth(data) {
+export function changeAuth(data, history) {
+
     return {
         type: 'CHANGE_AUTH',
         payload: data
     }
+
 }
 
 export function changeAuthValue() {
