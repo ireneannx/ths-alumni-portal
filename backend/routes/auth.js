@@ -14,7 +14,7 @@ const db = require('../models/index');
 
 router.get('/', auth, async (req, res) => {
   try {
-    const user = await db.User.findById(req.user.id).select('-password');
+    const user = await db.User.findById(req.user._id).select('-password');
     res.json(user);
   } catch (err) {
     console.error(err.message);
@@ -59,7 +59,7 @@ router.post(
 
       const payload = {
         user: {
-          id: user._id,
+          _id: user._id,
           name: user.name,
           email: user.email
         }
