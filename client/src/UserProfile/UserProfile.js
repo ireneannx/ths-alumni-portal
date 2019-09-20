@@ -3,7 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Route,
+  Switch
+} from "react-router-dom";
 import Jobs from "../Jobs/Jobs";
 import Posts from "../Feeds/components/feed-area";
 import "../App.css";
@@ -20,99 +25,86 @@ class UserProfile extends React.Component {
     this.setState({
       user: [],
       user1: []
-    })
-    axios.get(`/users/${this.props.userId}`)
-      .then(res => {
-        axios.get(`/user/${this.props.userId}`)
-          .then(res1 => {
-            console.log('for userProfile', res.data)
-            console.log('for userProfile', res1.data)
-            this.setState({
-              user: res.data,
-              user1: res1.data
-            });
-          })
-      })
+    });
+    axios.get(`/users/${this.props.userId}`).then(res => {
+      axios.get(`/user/${this.props.userId}`).then(res1 => {
+        console.log("for userProfile", res.data);
+        console.log("for userProfile", res1.data);
+        this.setState({
+          user: res.data,
+          user1: res1.data
+        });
+      });
+    });
   }
   async componentWillReceiveProps(nextProps) {
     const res = await axios.get(`/users/${nextProps.userId}`);
-    const res1 = await axios.get(`/user/${nextProps.userId}`)
+    const res1 = await axios.get(`/user/${nextProps.userId}`);
     await this.setState({
       user: res.data,
       user1: res1.data
     });
-    console.log(res.data)
-    console.log(res1.data)
+    console.log(res.data);
+    console.log(res1.data);
   }
   render() {
     const { user, user1 } = this.state;
     return (
-      <div>
-         <div>
+      <div style={{ marginTop: "20%" }}>
+        {/* CARD */}
+        <div class="card center" style={{ width: "100%" }}>
+          <br />
           <img
             src={this.state.user.avatarURL}
-            style={{ borderRadius: "50%", width: "200px" }}
-          ></img>
-        </div>
-        <div>
-          
-          <table class="table table-borderless">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">:</th>
-                <th scope="col">{user1.name}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>email</td>
-                <td>:</td>
-                <td>{user1.email}</td>
-              </tr>
-              <tr>
-                <td>Bio</td>
-                <td>:</td>
-                <td>{user.bio}</td>
-              </tr>
-              <tr>
-                <td>Company</td>
-                <td>:</td>
-                <td>{user.current_company}</td>
-              </tr>
-              <tr>
-                <td>Employment Status</td>
-                <td>:</td>
-                <td>
-                  {user.employment_status == true
-                    ? "Employed"
-                    : "Unemployed"}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-       
-        <div>
-          <a href={user.twitter} className="black padding">
-            <i class="fab fa-twitter fa-2x"></i>
-          </a>
-          <a href={user.github} className="black padding">
-            <i class="fab fa-github fa-2x"></i>
-          </a>
-          <a href={user.linkedIn} className="black padding">
-            <i class="fab fa-linkedin fa-2x "></i>
-          </a>
+            height="220px"
+            style={{ width: "220px" }}
+            class="card-img-top center"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title center">{user1.name}</h5>
+            <br />
+            <p class="card-text center">{user.bio}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item center">{user1.email}</li>
+            <li class="list-group-item center">
+              {user.employment_status == true ? "Employed" : "Unemployed"}
+            </li>
+            {user.employment_status == true ? (
+              <li class="list-group-item center">{user.current_company}</li>
+            ) : null}
+          </ul>
+
+          <div class="card-body center">
+            {user.twitter ? (
+              <a href={user.twitter} class="card-link black">
+                <i class="fab fa-twitter fa-2x"></i>
+              </a>
+            ) : null}
+            {user.github ? (
+              <a href={user.github} class="card-link black">
+                <i class="fab fa-github fa-2x"></i>
+              </a>
+            ) : null}
+            {user.linkedIn ? (
+              <a href={user.linkedIn} class="card-link black">
+                <i class="fab fa-linkedin fa-2x "></i>
+              </a>
+            ) : null}
+          </div>
         </div>
         <br />
-        {this.props.authdata.user._id == this.props.userId ? (
-          <Link
-            to={"/profile/edit/" + user._id}
-            className="btn btn-secondary"
-          >
-            Edit Profile
-          </Link>
-        ) : null} 
+        <div className="center">
+          {this.props.authdata.user._id == this.props.userId ? (
+            <Link
+              to={"/profile/edit/" + user._id}
+              className="btn btn-secondary"
+            >
+              Edit Profile
+            </Link>
+          ) : null}
+        </div>
       </div>
     );
   }

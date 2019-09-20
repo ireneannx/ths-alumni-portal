@@ -3,42 +3,72 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { BrowserRouter as Router,NavLink, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Route,
+  Switch
+} from "react-router-dom";
 import Jobs from "../Jobs/Jobs";
 import Posts from "../Feeds/components/feed-area";
 import UserProfile from "./UserProfile";
-import JobsProfile from "./JobsProfile"
-import PostsProfile from "./PostsProfile"
+import JobsProfile from "./JobsProfile";
+import PostsProfile from "./PostsProfile";
+import '../App.css'
 class Profile extends React.Component {
-  state={
-    jobs:true
-  }
-  onHandleJobs=()=>{
+  state = {
+    jobs: true
+  };
+  onHandleJobs = () => {
     this.setState({
-      jobs:true
-    })
-  }
-  onHandlePosts=()=>{
+      jobs: true
+    });
+  };
+  onHandlePosts = () => {
     this.setState({
-      jobs:false
-    })
-  }
+      jobs: false
+    });
+  };
   render() {
     return (
       <div>
-        
-        <div className="row" style={{ marginTop: "10%" }}>
-          <div class="col-md-4">
-            <UserProfile userId={this.props.match.params.id}/>
-          </div>
-          <div class="col-md-8">
-            <Link onClick={this.onHandleJobs}>Jobs</Link>
-            <Link onClick={this.onHandlePosts}>Posts</Link>
-            
-          {this.state.jobs == true ? <JobsProfile userId={this.props.match.params.id}/> : <PostsProfile userId={this.props.match.params.id}/>}
+        <div className="container">
+          <div className="box">
+            <div className="row">
+              <div class="col-md-4">
+                <div className="container">
+                  <div className="box">
+                    <UserProfile userId={this.props.match.params.id}/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 ">
+                <div class="btn-group right" role="group" aria-label="Basic example">
+                  <button type="button" class="btn">
+                  <Link onClick={this.onHandleJobs}>Jobs</Link>
+                  </button>
+                  <button type="button" class="btn ">
+                  <Link onClick={this.onHandlePosts}>Posts</Link>
+                  </button>
+                 
+                </div>
+                <br/>
+                <br/>
+               
+               
+                <div className="conatiner">
+                  <div className="box">
+                    {this.state.jobs == true ? (
+                      <JobsProfile userId={this.props.match.params.id} />
+                    ) : (
+                      <PostsProfile userId={this.props.match.params.id} />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        
       </div>
     );
   }
