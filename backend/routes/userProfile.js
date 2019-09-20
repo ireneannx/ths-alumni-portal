@@ -17,7 +17,7 @@ router.get('/', authMidWare, function (req, res) {
 })
 //get a particular user
 router.get('/:userid', authMidWare, function (req, res) {
-    db.UserProfile.findById(req.params.userid)
+    db.UserProfile.findOne({ _id: req.params.userid })
         .populate('posts')
         .populate('jobs')
         .then((data) => {
@@ -40,7 +40,7 @@ router.post('/', authMidWare, function (req, res, next) {
         github,
         twitter,
         linkedIn,
-        avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
+        avatarURL: "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
 
     })
         .then(() => {

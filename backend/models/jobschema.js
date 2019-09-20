@@ -12,10 +12,16 @@ const jobschema = new mongoose.Schema({
         type: String,
         unique: true
     }],
+    name: {
+        type: String
+    },
     company_name: String,
     url: String,
-    deadline: Date
-})
+    deadline: Date,
+
+}, {
+        timestamps: true
+    })
 
 const Job = new mongoose.model("Job", jobschema)
 

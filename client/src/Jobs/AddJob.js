@@ -17,7 +17,9 @@ class AddJob extends Component {
     company_name: "",
     job_type: "",
     job_description: "",
-    url: ""
+    url: "",
+    user_id: this.props.data.user._id,
+    name: this.props.data.user.name
   };
 
   handleChange = e => {
@@ -38,11 +40,7 @@ class AddJob extends Component {
     e.preventDefault();
     //accessing userID from the redux store props
 
-    if (this.props.data.user == 1) {
-      var user_id = this.props.data.user._id
-    }
-
-    await this.props.addJob(this.state, this.props.history, user_id)
+    await this.props.addJob(this.state, this.props.history)
 
 
 

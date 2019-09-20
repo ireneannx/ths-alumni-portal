@@ -24,8 +24,8 @@
     "nodemailer": "^6.3.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.2",
     "clean-css": ">=4.1.11",
+    "concurrently": "^4.1.2",
     "constantinople": ">=3.1.1"
   }
 }
