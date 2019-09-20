@@ -12,6 +12,9 @@ const jobschema = new mongoose.Schema({
         type: String,
         unique: true
     }],
+    name: {
+        type: String
+    },
     company_name: String,
     url: String,
     deadline: Date
