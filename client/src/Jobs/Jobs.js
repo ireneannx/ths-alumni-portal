@@ -7,13 +7,24 @@ import { Link } from 'react-router-dom';
 import LikeBar from './likebar';
 import '../App.css'
 class Jobs extends Component {
+  state = {
+    currentJob: ""
+  }
   componentDidMount() {
     console.log("Inside componentDidMount")
     this.props.getJobs();
   }
+
+  handleModal = (job) => {
+    console.log("previous state:", this.state.currentJob)
+    this.setState({
+      currentJob: job
+    })
+    console.log("current state", this.props.currentJob)
+  }
   //comment
   render() {
-    console.log("jobs INSIDE RENDER", this.props)
+
     let { jobs } = this.props;
     if (jobs[0] === null) {
       return (
@@ -29,7 +40,7 @@ class Jobs extends Component {
           <div className="container text-center" style={{ margin: "0 auto" }}>
             <div>
               {
-                jobs.map((job) => {
+                jobs.reverse().map((job) => {
                   return (
                     <JobCard className="card" style={{ "width": "18rem", overflow: "hidden", margin: "15px" }}>
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
@@ -40,37 +51,19 @@ class Jobs extends Component {
                         <p className="card-text">{job.job_type}.</p>
                         <AlignCenter>
                           <a href={job.url} target="blank" className="btn" style={{ "background": "#99CC00", "color": "#FFFFFF", marginBottom: "10px" }}>Apply Now</a>
-                          <span><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+                          <span><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" onClick={() => this.handleModal(job)} data-target="#exampleModalLong">
                             View Job Description
                   </button></span>
                         </AlignCenter>
-                      </div>
-                      {/* this is the modal part*/}
-                      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Posted by: {job.name}</p>
-                              <p>{job.job_description}</p>
-                            </div>
-                            <div class="modal-footer">
-                              <p>Deadline: </p>
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-                        </div>
+
                       </div>
                     </JobCard>
                   )
                 })
               }
             </div>
+            <Modal job={this.state.currentJob} />
+
           </div>
         </div>
       );
@@ -111,3 +104,30 @@ display: inline-block;
 export const AlignCenter = styled.div`
 text-align: center`
 export default connect(mapStateToProps, mapDispatchToProps)(Jobs);
+
+
+const Modal = (props) => {
+  console.log("props recieved by modal", props.job)
+  return (<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Posted by: {props.job.name}</p>
+          <hr></hr>
+          <p>{props.job.job_description}</p>
+        </div>
+        <div class="modal-footer">
+          <p>Deadline: </p>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>);
+}
+
