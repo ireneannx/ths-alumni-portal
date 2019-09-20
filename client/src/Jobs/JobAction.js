@@ -29,3 +29,14 @@ export const addJob = (job, history, user_id) => {
     })
   }
 }
+
+export const frontendLike = (JobId, UserId) => {
+  console.log("inside frontendlike", JobId, UserId)
+  return function (dispatch) {
+    return dispatch({
+      type: "ADD_ID_TO_JOB",
+      JobId : JobId,
+      UserId : UserId
+    })
+  }
+}

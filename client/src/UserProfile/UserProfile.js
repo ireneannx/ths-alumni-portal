@@ -3,34 +3,35 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Route,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
 import Jobs from "../Jobs/Jobs";
 import Posts from "../Feeds/components/feed-area";
 import "../App.css";
 class UserProfile extends React.Component {
   state = {
     user: [],
-    user1:[]
+    user1: []
   };
+  /**
+   * user has all jobs and feeds data (linked to userProfile Schema)
+   * and user1 has data regarding name, email and (linked to user Schema)
+   */
   componentDidMount() {
     this.setState({
       user: [],
-      user1:[]
+      user1: []
     })
     axios.get(`/users/${this.props.userId}`)
-      .then(res =>{
+      .then(res => {
         axios.get(`/user/${this.props.userId}`)
-        .then(res1 =>{
-          this.setState({
-            user: res.data,
-            user1: res1.data
-          });
-        })
+          .then(res1 => {
+            console.log('for userProfile', res.data)
+            console.log('for userProfile', res1.data)
+            this.setState({
+              user: res.data,
+              user1: res1.data
+            });
+          })
       })
 
     }
@@ -45,17 +46,17 @@ class UserProfile extends React.Component {
     console.log(res1.data)
   }
   render() {
-    const {user, user1} = this.state; 
+    const { user, user1 } = this.state;
     return (
       <div>
-        <div>
+         <div>
           <img
             src={this.state.user.avatarURL}
             style={{ borderRadius: "50%", width: "200px" }}
           ></img>
         </div>
         <div>
-          {/* Add pictures */}
+          Add pictures
           <table class="table table-borderless">
             <thead>
               <tr>
@@ -92,7 +93,7 @@ class UserProfile extends React.Component {
             </tbody>
           </table>
         </div>
-        {/* Add Social Media */}
+         Add Social Media
         <div>
           <a href={user.twitter} className="black padding">
             <i class="fab fa-twitter fa-2x"></i>
@@ -105,14 +106,14 @@ class UserProfile extends React.Component {
           </a>
         </div>
         <br />
-        {this.props.authdata.user.id == this.props.userId ? (
+        {this.props.authdata.user._id == this.props.userId ? (
           <Link
             to={"/profiles/edit/" + user._id}
             className="btn btn-secondary"
           >
             Edit Profile
           </Link>
-        ) : null}
+        ) : null} 
       </div>
     );
   }
@@ -129,3 +130,6 @@ export default connect(
   mapStateToProps,
   null
 )(UserProfile);
+
+
+

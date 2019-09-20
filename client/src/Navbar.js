@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeAuthValue } from "./Login-Signup Frontend/authaction";
+import { withRouter } from 'react-router'
+import history from './history'
 
 class Navbar extends React.PureComponent {
   onClick = e => {
@@ -12,15 +14,19 @@ class Navbar extends React.PureComponent {
      *! clear the thsToken value pair in localStorage
      ** redirect to the Sign in page
      */
-
+    console.log("while logging out", this.props)
     this.props.changeAuthValue()
     localStorage.removeItem('thsToken');
     localStorage.removeItem('redux_localstorage_simple');
-
+    history.push('/')
   }
 
   render() {
+<<<<<<< HEAD
     // console.log("From Navbar",this.props.data.user.id)
+=======
+    //console.log("From Navbar", this.props.data.user.id)
+>>>>>>> 40748b7ef6017a7a126c99872039938791333ed9
     return (
       <div>
         <nav
@@ -62,24 +68,25 @@ class Navbar extends React.PureComponent {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink
+                {/* <NavLink
                   className="nav-link white"
                   exact
-                  to={{pathname:`/profile/${this.props.data.user.id}`}}
+                  to={{ pathname: `/profile/${this.props.data.user._id}` }}
                   activeClassName="active"
                 >
                   Profile
-                </NavLink>
+                </NavLink> */}
               </li>
               <li className="nav-item">
-                
-                <button
-                  onClick={e => this.onClick(e)}
-                  className="btn btn-primary"
-                  style={{ background: "transparent" }}
-                >
-                  Logout
+                <NavLink to="/">
+                  <button
+                    onClick={e => this.onClick(e)}
+                    className="btn btn-primary"
+                    style={{ background: "transparent" }}
+                  >
+                    Logout
                 </button>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -90,7 +97,7 @@ class Navbar extends React.PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    data: state.Auth. authData
+    data: state.Auth.authData
   };
 };
 
@@ -102,7 +109,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar);
+)(Navbar));

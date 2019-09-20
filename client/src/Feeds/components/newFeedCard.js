@@ -31,6 +31,7 @@ class NewFeedCard extends React.PureComponent {
         // console.log('from show card', this.state.users)
         
         if (this.props.data) {
+            // console.log('for name of author',this.props.data)
             return (
                 <div>
                     {this.props.data.reverse().map((posts) => 
@@ -54,7 +55,7 @@ class NewFeedCard extends React.PureComponent {
                                 </div>
 
                                 <div className="card-body">
-                                    <div className="text-muted h7 mb-2"> <i class="fa fa-clock"><p> </p></i>{format(posts.createdAt)}</div>
+                                    <div className="text-muted h7 mb-2"> <i class="fa fa-clock" style={{marginRight:'10px'}}></i>{format(posts.createdAt)}</div>
 
                                     <div key={posts._id}>
                                         {posts.content}

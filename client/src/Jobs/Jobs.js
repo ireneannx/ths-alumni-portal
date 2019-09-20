@@ -6,11 +6,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import LikeBar from './likebar';
 import '../App.css'
-
-
 class Jobs extends Component {
-
   componentDidMount() {
+    console.log("Inside componentDidMount")
     this.props.getJobs();
   }
   handleClick=(jobs)=>{
@@ -19,37 +17,35 @@ class Jobs extends Component {
 }
 
   render() {
-    console.log("jobs", this.props)
+    console.log("jobs INSIDE RENDER", this.props)
     let { jobs } = this.props;
-
-    return (
-      <div>
-        <div style={{ paddingInlineStart: "15%" }}>
-          <Link to={`${this.props.match.url}/new`}><img src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/document_add.png" height="40rem"></img></Link></div>
-        <div className="container text-center" style={{ margin: "0 auto" }}>
-
-
-
-
-          <div>
-            {
-              jobs.map((job) => {
-                return (
-                  <JobCard className="card" style={{ "width": "18rem", overflow: "hidden", margin: "15px" }}>
-                    <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
-
-
-                    {/*IRENE COMMENTED THIS OUT SO I CAN CONTINUE WORKING ON JOBS */}
-                    {/* <LikeBar upvote_count={job} /> */}
-
-
-                    <div className="card-body">
-                      <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
-                      <p className="card-text">{job.job_type}.</p>
-                      <AlignCenter>
-                        <a href={job.url} target="blank" className="btn" style={{ "background": "#99CC00", "color": "#FFFFFF", marginBottom: "10px" }}>Apply Now</a>
-                        <span><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
-                          View Job Description
+    if (jobs[0] === null) {
+      return (
+        <div>
+          <h2>Loading</h2>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <div style={{ paddingInlineStart: "15%" }}>
+            <Link to={`${this.props.match.url}/new`}><img src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/document_add.png" height="40rem"></img></Link></div>
+          <div className="container text-center" style={{ margin: "0 auto" }}>
+            <div>
+              {
+                jobs.map((job) => {
+                  return (
+                    <JobCard className="card" style={{ "width": "18rem", overflow: "hidden", margin: "15px" }}>
+                      <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
+                      {/*IRENE COMMENTED THIS OUT SO I CAN CONTINUE WORKING ON JOBS */}
+                      <LikeBar upvote_count={job} />
+                      <div className="card-body">
+                        <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
+                        <p className="card-text">{job.job_type}.</p>
+                        <AlignCenter>
+                          <a href={job.url} target="blank" className="btn" style={{ "background": "#99CC00", "color": "#FFFFFF", marginBottom: "10px" }}>Apply Now</a>
+                          <span><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+                            View Job Description
                   </button></span>
                       </AlignCenter>
                     </div>
@@ -84,20 +80,17 @@ class Jobs extends Component {
       </div>
     );
   }
-}
+}}
 //mapStateToProps
 const mapStateToProps = state => ({
   jobs: state.jobreducer.jobs,
   isLoaded: state.jobreducer.isLoaded,
   authData: state.Auth.authData
 })
-
 //mapDispatchToProps
 const mapDispatchToProps = dispatch => bindActionCreators({ getJobs }, dispatch)
-
 export const JobCard = styled.div`
 display: inline-block;
-
   vertical-align: top;
   &::after{
     content:"";
@@ -121,5 +114,4 @@ display: inline-block;
 `
 export const AlignCenter = styled.div`
 text-align: center`
-
 export default connect(mapStateToProps, mapDispatchToProps)(Jobs);

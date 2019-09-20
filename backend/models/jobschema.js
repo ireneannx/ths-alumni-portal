@@ -9,8 +9,8 @@ const jobschema = new mongoose.Schema({
     job_type: String,
     job_description: String,
     upvote_count: [{
-        type: String
-        // unique: true
+        type: String,
+        unique: true
     }],
     company_name: String,
     url: String,

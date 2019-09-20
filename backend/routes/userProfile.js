@@ -8,8 +8,6 @@ const authMidWare = require('../middleware/auth')
 //path: /users
 router.get('/', authMidWare, function (req, res) {
     db.UserProfile.find()
-        .populate('posts')
-        .populate('jobs') //this allows all the job details to be accessed in userProfile rather than just the job_id posts that the particular user created
         .then((data) => {
             res.send(data)
         })
@@ -19,8 +17,9 @@ router.get('/', authMidWare, function (req, res) {
 })
 //get a particular user
 router.get('/:userid', authMidWare, function (req, res) {
-    db.UserProfile.findById(req.params.userid)
+    db.UserProfile.findOne({ _id: req.params.userid })
         .populate('posts')
+        .populate('jobs')
         .then((data) => {
             console.log("in backend", data)
             res.send(data)

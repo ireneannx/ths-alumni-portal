@@ -14,7 +14,7 @@ const db = require('../models/index');
 
 router.get('/', auth, async (req, res) => {
   try {
-    const user = await db.User.findById(req.user.id).select('-password');
+    const user = await db.User.findById(req.user._id).select('-password');
     res.json(user);
   } catch (err) {
     console.error(err.message);
@@ -59,17 +59,17 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id,
+          _id: user._id,
           name: user.name,
           email: user.email
         }
       };
 
-      const newUser = {
-        _id: user._id,
-        name: user.name,
-        email: user.email
-      }
+      // const newUser = {
+      //   _id: user._id,
+      //   name: user.name,
+      //   email: user.email
+      // }
 
       jwt.sign(
         payload,
@@ -82,7 +82,7 @@ router.post(
             return res.status(200).json({
               success: true,
               token: token,
-              user: newUser
+              user: {}
             });
           }
         }

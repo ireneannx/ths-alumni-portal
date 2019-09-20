@@ -1,11 +1,11 @@
 import React from 'react'
-import { EditorState } from 'draft-js';
+import { EditorState, ContentState } from 'draft-js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFeedPost, getFeedPosts } from '../action'
 // import draftToHtml from "draftjs-to-html";
 import '../../App.css'
-import { withRouter } from 'react-router'
+// import { withRouter } from 'react-router'
 
 import Editor from 'draft-js-plugins-editor';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
@@ -18,7 +18,16 @@ const { EmojiSelect } = emojiPlugin;
 class NewTextEditor extends React.Component {
     state = {
         editorState: EditorState.createEmpty(),
-        contentState: ""
+        userId: "",
+        userName: ""
+    }
+
+   async  componentWillMount() {
+      await  this.props.getFeedPosts();
+       await  this.setState({
+            userId: this.props.auth.user._id,
+            userName: this.props.auth.user.name
+        })
     }
 
     onChange = (editorState) => this.setState({ editorState })
@@ -29,25 +38,34 @@ class NewTextEditor extends React.Component {
 
         // let text = draftToHtml(this.state.editorState.getCurrentContent().getPlainText());
         let text = this.state.editorState.getCurrentContent().getPlainText();
-        // console.log('written in editor', text);
 
-        let id = this.props.auth.user.id
+        // console.log('authdata', this.props.auth.user._id);
 
-        // console.log('for user id', id)
+        /**
+         ** In the fist load, even though the auth data has loaded in the redux store
+         ** it is not available in this component
+         ** However, after one hard refresh, the data is available and everything works fine.
+         */
+        // if (this.props.auth.user) {
+            var id = await this.state.userId
+            var name = await this.state.userName
 
-        await this.props.addFeedPost(text, id);
-        await this.props.getFeedPosts();
+            await this.props.addFeedPost(text, id, name);
+            await this.props.getFeedPosts();
 
-        console.log("form submitted");
+            const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+            this.setState({ editorState });
+        
+
+
     };
 
     render() {
-        
+
         return (
             <div>
                 <form onSubmit={(e) => this.onSubmit(e)}>
                     <div className="card" style={{ marginTop: '10px', marginBottom: '10px' }}>
-                        {/* <h5 className="card-header">What's Happening</h5> */}
                         <div className="card-body">
                             <div >
                                 <Editor
