@@ -117,7 +117,6 @@ class UserProfile extends React.Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
     data: state.Feed.feeds,
