@@ -11,8 +11,7 @@ import '../App.css'
 class PostsProfile extends React.PureComponent{
     render(){
         console.log("posts profile",this.props)
-        // const posts = this.props.data.filter(data => data._id == this.props.user1._id);
-    // console.log("posts from user", posts);
+        console.log(this.props.userId)
         return(
             <div>
                 <h1>Posts Coming Up Soon</h1>

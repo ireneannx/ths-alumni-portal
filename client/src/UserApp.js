@@ -21,10 +21,8 @@ const UserApp = () => {
         <Route path="/loggedIn" exact component={LoggedIn} />
         <Route exact path="/jobs" component={Jobs} />
         <Route path="/jobs/new" component={AddJob} />
-
         <Route path="/posts" component={FeedArea} />
-
-        <Route exact path="/profiles/edit/:id" component={UpdateDetails} />
+        <Route exact path="/profile/edit/:id" component={UpdateDetails} />
         <Route exact path="/profile/:id" component={Profile} />
       </Switch>
     </Router>

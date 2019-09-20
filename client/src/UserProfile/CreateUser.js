@@ -73,7 +73,7 @@ export default class UpdateDetails extends Component {
       };
       axios.post("/users", newUser);
     }
-    window.location.href = `/user/profiles/${this.props.match.params.id}`;
+    window.location.href = `/user/profile/${this.props.match.params.id}`;
   };
   onInputChange = e => {
     this.setState({

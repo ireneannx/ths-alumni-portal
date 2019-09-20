@@ -48,27 +48,7 @@ class UserProfile extends React.Component {
     const { user, user1 } = this.state;
     return (
       <div>
-        
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    data: state.Feed.feeds,
-    authdata: state.Auth.authData
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  null
-)(UserProfile);
-
-
-
-{/* <div>
+         <div>
           <img
             src={this.state.user.avatarURL}
             style={{ borderRadius: "50%", width: "200px" }}
@@ -127,9 +107,25 @@ export default connect(
         <br />
         {this.props.authdata.user._id == this.props.userId ? (
           <Link
-            to={"/profiles/edit/" + user._id}
+            to={"/profile/edit/" + user._id}
             className="btn btn-secondary"
           >
             Edit Profile
           </Link>
-        ) : null} */}
+        ) : null} 
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    data: state.Feed.feeds,
+    authdata: state.Auth.authData
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(UserProfile);
