@@ -33,8 +33,7 @@ class UserProfile extends React.Component {
             });
           })
       })
-
-    }
+  }
   async componentWillReceiveProps(nextProps){
     const res = await axios.get(`/users/${nextProps.userId}`);
     const res1 = await axios.get(`/user/${nextProps.userId}`)

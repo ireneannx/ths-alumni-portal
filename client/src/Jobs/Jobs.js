@@ -11,10 +11,6 @@ class Jobs extends Component {
     console.log("Inside componentDidMount")
     this.props.getJobs();
   }
-  handleClick=(jobs)=>{
-    // console.log('author is ',this.props)
-    this.props.history.push(`/profile/${jobs.user_id}`)
-}
 
   render() {
     console.log("jobs INSIDE RENDER", this.props)
@@ -61,7 +57,7 @@ class Jobs extends Component {
                             </button>
                           </div>
                           <div class="modal-body">
-                            <p onClick={()=>this.handleClick(jobs)}>Posted by: {job.user_id}</p>
+                            <p>Posted by: (populate and get user avatarUrl+ name OR direct link)</p>
                             <p>{job.job_description}</p>
                           </div>
                           <div class="modal-footer">
@@ -71,22 +67,35 @@ class Jobs extends Component {
                         </div>
                       </div>
                     </div>
+
                   </JobCard>
+
+
+
+
                 )
               })
             }
           </div>
+
+
+
+
         </div>
+
       </div>
+
+
     );
   }
-}}
+  }}
 //mapStateToProps
 const mapStateToProps = state => ({
   jobs: state.jobreducer.jobs,
   isLoaded: state.jobreducer.isLoaded,
   authData: state.Auth.authData
 })
+
 //mapDispatchToProps
 const mapDispatchToProps = dispatch => bindActionCreators({ getJobs }, dispatch)
 export const JobCard = styled.div`
