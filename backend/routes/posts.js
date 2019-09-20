@@ -7,7 +7,7 @@ const authMidWare = require('../middleware/auth')
 //path: /posts 
 /* GET users listing. */
 router.get('/', authMidWare, function (req, res) {
-  db.Posts.find()
+  db.Posts.find().sort({ createdAt: -1 })
     .then((data) => res.send(data))
     .catch((err) => res.send(err))
 });
@@ -17,7 +17,7 @@ router.post('/', authMidWare, (req, res) => {
     .then((data) => {
       console.log(data)
       db.UserProfile.findOneAndUpdate({ _id: data.author }, { $push: { posts: data } }).exec()
-        // .then((user) => console.log(user))
+      // .then((user) => console.log(user))
       res.json({ status: 'successfully created post' })
     })
     .catch((err) => res.send(err))

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getFeedPosts } from '../action'
 import { isThisQuarter } from 'date-fns';
-import {withRouter} from 'react-router'
+import { withRouter } from 'react-router'
 import { format } from 'timeago.js'
 class NewFeedCard extends React.Component {
 
@@ -11,7 +11,7 @@ class NewFeedCard extends React.Component {
         this.props.getFeedPosts()
     }
 
-    handleClick=(posts)=>{
+    handleClick = (posts) => {
         // console.log('author is ',this.props)
         this.props.history.push(`/profile/${posts.author}`)
     }
@@ -24,7 +24,7 @@ class NewFeedCard extends React.Component {
             // console.log('for name of author',this.props.data)
             return (
                 <div>
-                    {this.props.data.reverse().map((posts) => (
+                    {this.props.data.map((posts) => (
 
                         <div style={{ margin: '10px -15px 10px -15px' }}>
                             {/* CARD */}
@@ -39,14 +39,14 @@ class NewFeedCard extends React.Component {
                                                 <img className="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="" />
                                             </div>
                                             <div className="ml-2">
-                                                <div className="h5 m-0" onClick={()=>this.handleClick(posts)}>{posts.name}</div>
+                                                <div className="h5 m-0" onClick={() => this.handleClick(posts)}>{posts.name}</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="card-body">
-                                    <div className="text-muted h7 mb-2"> <i class="fa fa-clock" style={{marginRight:'10px'}}></i>{format(posts.createdAt)}</div>
+                                    <div className="text-muted h7 mb-2"> <i class="fa fa-clock" style={{ marginRight: '10px' }}></i>{format(posts.createdAt)}</div>
 
                                     <div key={posts._id}>
                                         {posts.content}

@@ -17,8 +17,11 @@ const jobschema = new mongoose.Schema({
     },
     company_name: String,
     url: String,
-    deadline: Date
-})
+    deadline: Date,
+
+}, {
+        timestamps: true
+    })
 
 const Job = new mongoose.model("Job", jobschema)
 

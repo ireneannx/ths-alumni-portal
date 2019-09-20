@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import LikeBar from './likebar';
+import { format } from 'timeago.js'
 import '../App.css'
 class Jobs extends Component {
   state = {
@@ -40,7 +41,7 @@ class Jobs extends Component {
           <div className="container text-center" style={{ margin: "0 auto" }}>
             <div>
               {
-                jobs.reverse().map((job) => {
+                jobs.map((job) => {
                   return (
                     <JobCard className="card" style={{ "width": "18rem", overflow: "hidden", margin: "15px" }}>
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
@@ -49,6 +50,7 @@ class Jobs extends Component {
                       <div className="card-body">
                         <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
                         <p className="card-text">{job.job_type}.</p>
+                        <p>Created at: {format(job.createdAt)}</p>
                         <AlignCenter>
                           <a href={job.url} target="blank" className="btn" style={{ "background": "#99CC00", "color": "#FFFFFF", marginBottom: "10px" }}>Apply Now</a>
                           <span><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" onClick={() => this.handleModal(job)} data-target="#exampleModalLong">
