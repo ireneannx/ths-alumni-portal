@@ -18,6 +18,16 @@ const { EmojiSelect } = emojiPlugin;
 class NewTextEditor extends React.Component {
     state = {
         editorState: EditorState.createEmpty(),
+        userId: "",
+        userName: ""
+    }
+
+   async  componentWillMount() {
+      await  this.props.getFeedPosts();
+       await  this.setState({
+            userId: this.props.auth.user._id,
+            userName: this.props.auth.user.name
+        })
     }
 
     onChange = (editorState) => this.setState({ editorState })
@@ -36,16 +46,16 @@ class NewTextEditor extends React.Component {
          ** it is not available in this component
          ** However, after one hard refresh, the data is available and everything works fine.
          */
-        if (this.props.auth.user) {
-            var id = this.props.auth.user._id
-            var name = this.props.auth.user.name
+        // if (this.props.auth.user) {
+            var id = await this.state.userId
+            var name = await this.state.userName
 
             await this.props.addFeedPost(text, id, name);
             await this.props.getFeedPosts();
 
             const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
             this.setState({ editorState });
-        }
+        
 
 
     };
