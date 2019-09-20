@@ -40,7 +40,7 @@ router.post('/', authMidWare, function (req, res, next) {
         github,
         twitter,
         linkedIn,
-        avatarURL: req.body.avatarURL || "http://svgur.com/i/65U.svg",
+        avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
 
     })
         .then(() => {
@@ -59,7 +59,7 @@ router.put('/:userid', authMidWare, function (req, res) {
         bio,
         current_company,
         employment_status,
-        avatarURL: req.body.avatarURL || "http://svgur.com/i/65U.svg",
+        avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
         github,
         twitter,
         linkedIn

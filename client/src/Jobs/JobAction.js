@@ -3,7 +3,7 @@ import axios from 'axios'
 export const getJobs = () => {
   return async function (dispatch) {
 
-    const res = await axios.get("http://localhost:7000/jobs");
+    const res = await axios.get("/jobs");
     // console.log("here is the res for jobs", res)
 
     return dispatch({
@@ -18,7 +18,7 @@ export const addJob = (job, history) => {
   return async function (dispatch) {
     //this object includes user_id(who made the post) as well as all the job data contained in job. Will be accessible in the backend in req.body
 
-    console.log('checking author id in frontend',job)
+    console.log('checking author id in frontend', job)
 
     const res = await axios.post("/jobs", job);
 
@@ -35,8 +35,8 @@ export const frontendLike = (JobId, UserId) => {
   return function (dispatch) {
     return dispatch({
       type: "ADD_ID_TO_JOB",
-      JobId : JobId,
-      UserId : UserId
+      JobId: JobId,
+      UserId: UserId
     })
   }
 }

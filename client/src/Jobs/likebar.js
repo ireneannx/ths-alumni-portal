@@ -10,7 +10,7 @@ class LikeBar extends React.PureComponent {
     axiosCall = async () => {
         console.log("Hello inside axiosCall", this.props.upvote_count.upvote_count.length)
         console.log(this.props)
-        const data = await axios.post(`http://localhost:7000/jobs/like/${this.props.userData.authData._id || this.props.userData.authData.user._id}/${this.props.upvote_count._id}`)
+        const data = await axios.post(`/jobs/like/${this.props.userData.authData._id || this.props.userData.authData.user._id}/${this.props.upvote_count._id}`)
         console.log("checking for response", data)
         this.props.frontendLike(this.props.upvote_count._id, this.props.userData.authData._id || this.props.userData.authData.user._id)
     }

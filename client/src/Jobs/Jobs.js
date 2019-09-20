@@ -50,7 +50,7 @@ class Jobs extends Component {
                       <div className="card-body">
                         <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
                         <p className="card-text">{job.job_type}.</p>
-                        <p>Created at: {format(job.createdAt)}</p>
+                        <p className="text-muted"><i class="fa fa-clock" style={{ marginRight: "10px" }}></i>{format(job.createdAt)}</p>
                         <AlignCenter>
                           <a href={job.url} target="blank" className="btn" style={{ "background": "#99CC00", "color": "#FFFFFF", marginBottom: "10px" }}>Apply Now</a>
                           <span><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" onClick={() => this.handleModal(job)} data-target="#exampleModalLong">
