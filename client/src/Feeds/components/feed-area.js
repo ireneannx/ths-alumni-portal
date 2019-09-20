@@ -1,7 +1,6 @@
 import React from 'react';
 import NewTextEditor from './newTextEditor';
 import NewFeedCard from './newFeedCard';
-import GithubCalender from '../../github-calender/calender'
 
 class FeedArea extends React.Component {
     render() {
@@ -12,7 +11,6 @@ class FeedArea extends React.Component {
                     </div>
 
                     <div className="col-5">
-                        <GithubCalender/>
                         <NewTextEditor />
                         <NewFeedCard />
                     </div>

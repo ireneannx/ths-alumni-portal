@@ -28,7 +28,7 @@ const store = createStore(
 if (localStorage.thsToken) {
   setAuthToken(localStorage.thsToken)
   const decode = jwt_decode(localStorage.thsToken)
-  console.log(decode)
+  // console.log(decode)
   store.dispatch(changeAuth(decode));
 }
 

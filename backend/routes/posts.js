@@ -16,8 +16,8 @@ router.post('/', authMidWare, (req, res) => {
   db.Posts.create(req.body)
     .then((data) => {
       console.log(data)
-      db.UserProfile.findOneAndUpdate({ _id: data.author }, { $push: { posts: data_id } }).exec()
-      // .then((user)=> console.log(user))
+      db.UserProfile.findOneAndUpdate({ _id: data.author }, { $push: { posts: data } }).exec()
+        // .then((user) => console.log(user))
       res.json({ status: 'successfully created post' })
     })
     .catch((err) => res.send(err))
