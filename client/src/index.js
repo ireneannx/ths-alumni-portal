@@ -1,4 +1,5 @@
 import React from 'react';
+import history from './history'
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -12,11 +13,12 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './rootReducer'
-import { BrowserRouter as Router } from 'react-router-dom' //for routing
+import { Router } from 'react-router-dom' //for routing
 import logger from 'redux-logger';
 import ReduxThunk from 'redux-thunk';
 import jwt_decode from 'jwt-decode'
-const middleware = [logger, ReduxThunk,save()];
+const middleware = [logger, ReduxThunk, save()];
+
 //store part
 
 const store = createStore(
@@ -32,7 +34,7 @@ if (localStorage.thsToken) {
   store.dispatch(changeAuth(decode));
 }
 
-ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><Router history={history}><App /></Router></Provider>, document.getElementById('root'));
 
 
 serviceWorker.unregister();
