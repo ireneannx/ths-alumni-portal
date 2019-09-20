@@ -41,11 +41,6 @@ class NewTextEditor extends React.Component {
 
         // console.log('authdata', this.props.auth.user._id);
 
-        /**
-         ** In the fist load, even though the auth data has loaded in the redux store
-         ** it is not available in this component
-         ** However, after one hard refresh, the data is available and everything works fine.
-         */
         // if (this.props.auth.user) {
             var id = await this.state.userId
             var name = await this.state.userName
