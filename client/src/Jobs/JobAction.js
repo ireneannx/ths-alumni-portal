@@ -4,7 +4,7 @@ export const getJobs = () => {
   return async function (dispatch) {
 
     const res = await axios.get("http://localhost:7000/jobs");
-    console.log("here is the res for jobs", res)
+    // console.log("here is the res for jobs", res)
 
     return dispatch({
       type: "GET_JOBS",
@@ -14,11 +14,11 @@ export const getJobs = () => {
 }
 
 
-export const addJob = (job, history, user_id) => {
+export const addJob = (job, history) => {
   return async function (dispatch) {
     //this object includes user_id(who made the post) as well as all the job data contained in job. Will be accessible in the backend in req.body
 
-    job.user_id = user_id // adding user_id key value pair to job
+    console.log('checking author id in frontend',job)
 
     const res = await axios.post("/jobs", job);
 

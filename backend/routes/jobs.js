@@ -19,11 +19,12 @@ router.get('/', authMidWare, function (req, res, next) {
 
 //changing above code
 router.post('/', authMidWare, (req, res) => {
-    console.log("***********", req.body)
+    // console.log("***********", req.body)
 
     db.Job.create(req.body)
         .then((data) => {
-            db.UserProfile.findOneAndUpdate({ _id: data.user_id }, { $push: { jobs: data_id } }).exec() //.exec() stops this from returning a promise and just execute it 
+            console.log(data)
+            db.UserProfile.findOneAndUpdate({ _id: data.user_id }, { $push: { jobs: data } }).exec() //.exec() stops this from returning a promise and just execute it 
             res.json({ Job: "SUCCESSFULLY CREATED" });
         })
         .catch((err) => res.send(err));
