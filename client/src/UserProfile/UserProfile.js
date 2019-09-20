@@ -55,7 +55,7 @@ class UserProfile extends React.Component {
           ></img>
         </div>
         <div>
-          Add pictures
+          
           <table class="table table-borderless">
             <thead>
               <tr>
@@ -92,7 +92,7 @@ class UserProfile extends React.Component {
             </tbody>
           </table>
         </div>
-         Add Social Media
+       
         <div>
           <a href={user.twitter} className="black padding">
             <i class="fab fa-twitter fa-2x"></i>
