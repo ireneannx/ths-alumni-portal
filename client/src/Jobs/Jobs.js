@@ -56,7 +56,7 @@ class Jobs extends Component {
                               </button>
                             </div>
                             <div class="modal-body">
-                              <p>Posted by: <button>click</button></p>
+                              <p>Posted by: {job.name}</p>
                               <p>{job.job_description}</p>
                             </div>
                             <div class="modal-footer">
