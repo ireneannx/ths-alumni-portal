@@ -40,7 +40,7 @@ router.post('/', authMidWare, function (req, res, next) {
         github,
         twitter,
         linkedIn,
-        avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
+        avatarURL: "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
 
     })
         .then(() => {
