@@ -6,6 +6,10 @@ const userProfileSchema = new Schema({
         required: true,
         // ref: 'User'
     },
+    name:{
+        type: String,
+        required: true,
+    },
     bio: {
         type: String
     },

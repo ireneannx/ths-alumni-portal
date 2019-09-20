@@ -12,10 +12,15 @@ const db = require('../models/index');
 // @route /user/test
 // @desc Testing route
 
-router.get('/test', (req, res) => {
-  res.send('User route working');
-});
-router.get
+router.get('/', authMidWare, function (req, res) {
+  db.User.find()
+      .then((data) => {
+          res.send(data)
+      })
+      .catch((err) => {
+          res.send(err)
+      })
+})
 
 router.get('/:userid', authMidWare, function (req, res) {
   db.User.findById(req.params.userid)
@@ -76,7 +81,11 @@ router.post(
 
       await user.save(function (err, data) {
         if (!err) {
-          db.UserProfile.create({ _id: data._id })
+          const {_id,name} = data
+          db.UserProfile.create({ 
+            _id,
+            name
+          })
         }
       })
 

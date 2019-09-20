@@ -20,7 +20,7 @@ class Navbar extends React.PureComponent {
   }
 
   render() {
-    console.log("From Navbar",this.props.data.user.id)
+    // console.log("From Navbar",this.props.data.user.id)
     return (
       <div>
         <nav

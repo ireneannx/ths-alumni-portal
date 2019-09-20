@@ -32,25 +32,25 @@ router.get('/:userid', authMidWare, function (req, res) {
 
 
 //add userprofile
-router.post('/', authMidWare, function (req, res, next) {
-    const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
-    db.UserProfile.create({
-        bio,
-        current_company,
-        employment_status,
-        github,
-        twitter,
-        linkedIn,
-        avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
+// router.post('/', authMidWare, function (req, res, next) {
+//     const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
+//     db.UserProfile.create({
+//         bio,
+//         current_company,
+//         employment_status,
+//         github,
+//         twitter,
+//         linkedIn,
+//         avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
 
-    })
-        .then(() => {
-            res.send(req.body)
-        })
-        .catch((err) => {
-            res.send(err)
-        })
-})
+//     })
+//         .then(() => {
+//             res.send(req.body)
+//         })
+//         .catch((err) => {
+//             res.send(err)
+//         })
+// })
 
 // update 
 
