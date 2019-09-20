@@ -17,7 +17,7 @@ router.get('/', authMidWare, function (req, res) {
 })
 //get a particular user
 router.get('/:userid', authMidWare, function (req, res) {
-    db.UserProfile.findById(req.params.userid)
+    db.UserProfile.findOne({ _id: req.params.userid })
         .populate('posts')
         .populate('jobs')
         .then((data) => {

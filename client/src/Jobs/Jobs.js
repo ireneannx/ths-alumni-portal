@@ -6,8 +6,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 //import LikeBar from './likebar';
 import '../App.css'
-
-
 class Jobs extends Component {
   componentDidMount() {
     console.log("Inside componentDidMount")
@@ -29,22 +27,14 @@ class Jobs extends Component {
           <div style={{ paddingInlineStart: "15%" }}>
             <Link to={`${this.props.match.url}/new`}><img src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/document_add.png" height="40rem"></img></Link></div>
           <div className="container text-center" style={{ margin: "0 auto" }}>
-
-
-
-
             <div>
               {
                 jobs.map((job) => {
                   return (
                     <JobCard className="card" style={{ "width": "18rem", overflow: "hidden", margin: "15px" }}>
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />
-
-
                       {/*IRENE COMMENTED THIS OUT SO I CAN CONTINUE WORKING ON JOBS */}
                       {/* <LikeBar upvote_count={job} /> */}
-
-
                       <div className="card-body">
                         <h5 className="card-title" style={{ "text-align": "center" }} >{job.company_name}</h5>
                         <p className="card-text">{job.job_type}.</p>
@@ -55,7 +45,6 @@ class Jobs extends Component {
                   </button></span>
                         </AlignCenter>
                       </div>
-
                       {/* this is the modal part*/}
                       <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -77,43 +66,27 @@ class Jobs extends Component {
                           </div>
                         </div>
                       </div>
-
                     </JobCard>
-
-
-
-
                   )
                 })
               }
             </div>
-
-
-
-
           </div>
-
         </div>
-
-
       );
     }
   }
 }
-
 //mapStateToProps
 const mapStateToProps = state => ({
   jobs: state.jobreducer.jobs,
   isLoaded: state.jobreducer.isLoaded,
   authData: state.Auth.authData
 })
-
 //mapDispatchToProps
 const mapDispatchToProps = dispatch => bindActionCreators({ getJobs }, dispatch)
-
 export const JobCard = styled.div`
 display: inline-block;
-
   vertical-align: top;
   &::after{
     content:"";
@@ -137,5 +110,4 @@ display: inline-block;
 `
 export const AlignCenter = styled.div`
 text-align: center`
-
 export default connect(mapStateToProps, mapDispatchToProps)(Jobs);

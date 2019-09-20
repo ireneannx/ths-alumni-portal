@@ -2,7 +2,7 @@ const initialState = {
     feeds: [],
 }
 
-console.log('from feedReducer', initialState)
+// console.log('from feedReducer', initialState)
 
 const Feed = (state = initialState, action) => {
     switch (action.type) {
