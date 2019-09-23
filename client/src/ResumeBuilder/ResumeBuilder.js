@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PersonalDetails from "./PersonalDetails";
-// import P2 from "./P2";
+import Employment from "./Employment";
 // import P3 from "./P3";
 // import P4 from "./P4";
 
@@ -33,7 +33,8 @@ export class ResumeBuilder extends Component {
       jobtitle: '',
       company_name: '',
       startdate: '',
-      enddate: ''
+      enddate: '',
+      description: ''
     },
 
     references: {
@@ -76,8 +77,8 @@ export class ResumeBuilder extends Component {
     switch (this.state.page) {
       case 1:
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
-      // case 2:
-      //   return (<P2 subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />);
+      case 2:
+        return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />);
       // case 3:
       //   return (<P3 subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       // case 4:
