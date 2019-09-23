@@ -9,8 +9,8 @@ import jwt_decode from 'jwt-decode'
 
 class SignInForm extends React.PureComponent {
   state = {
-    email: 'motu@email.com',
-    password: '1234567890'
+    email: '',
+    password: ''
   }
 
   handleChange = (e) => {
