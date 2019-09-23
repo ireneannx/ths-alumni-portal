@@ -7,6 +7,7 @@ import LoggedIn from './Pages/LoggedIn'
 import Profile from './UserProfile/Profile'
 import UpdateDetails from './UserProfile/CreateUser';
 import AddJob from './Jobs/AddJob';
+import Page from './ResumeBuilder/ResumeBuilder'
 // // history.js
 // import history from "./history";
 
@@ -24,6 +25,8 @@ const UserApp = () => {
         <Route path="/posts" component={FeedArea} />
         <Route exact path="/profile/edit/:id" component={UpdateDetails} />
         <Route exact path="/profile/:id" component={Profile} />
+
+        <Route path="/resumebuilder" component={Page} />
       </Switch>
     </Router>
   );
