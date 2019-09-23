@@ -52,3 +52,14 @@
   display: flex;
   margin-top: 20px;
 }
+.center{
+  text-align: center !important;
+  margin: 0 auto
+}
+.right{
+  float: right;
+}
+.left{
+  float: left;
+}
+
