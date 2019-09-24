@@ -3,7 +3,9 @@ import PersonalDetails from "./PersonalDetails";
 import Employment from "./Employment";
 import Education from "./Education";
 import References from './References';
-import Skill from './Skill'
+import Skill from './Skill';
+import Summary from './Summary'
+
 export class ResumeBuilder extends Component {
   state = {
     page: 1
@@ -51,8 +53,10 @@ export class ResumeBuilder extends Component {
       case 3:
         return (<Education subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />);
       case 4:
-        return (<References subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
+        return (<Summary subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       case 5:
+        return (<References subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
+      case 6:
         return (<Skill subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       default:
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)

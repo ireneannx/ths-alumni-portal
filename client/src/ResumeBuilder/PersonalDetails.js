@@ -39,7 +39,7 @@ const PersonalDetails = (props) => {
 
 
 
-        <button type="submit" class="btn btn-primary" onClick={props.addPage}>Continue -> </button>
+        <button type="submit" class="btn btn-primary" onClick={props.addPage}>Continue </button>
       </form>
 
 

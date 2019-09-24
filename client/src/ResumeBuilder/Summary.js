@@ -7,7 +7,7 @@ class Summary extends React.PureComponent {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        
+
 
     }
     handleChange = (e) => {
@@ -23,38 +23,21 @@ class Summary extends React.PureComponent {
             <div style={{ padding: '5%' }}>
 
                 <h2><b>Summary</b></h2>
-                <h6>Your summary should showcase the highlights of your<br /> work experience, skills, and your best achievements. </h6>
+                <h6>Your summary should showcase the highlights of your work experience, skills, and your best achievements. </h6><br /><br />
 
                 <form onSubmit={(e) => this.handleSubmit(e)}>
-                    <div class="form-row" >
 
-                        <div className="row" style={{ marginTop: '20px', marginBottom: '10px' }}>
-                            <div className="col">
-                                <div class="card">
-                                    <div className="card-body" style={{ width: '400px', minHeight: '150px', padding: '-3px' }}>
-                                        <p style={{ height: '15px' }}>Write your summary here</p> <hr />
+                    <div class="form-group">
 
-                                        <div class="form-group">
-                                            <textarea class="form-control" onChange={(e)=>this.handleChange(e)} rows="6" name="summary" value={this.state.summary} style={{border: 'none'}}></textarea>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="summary" onChange={this.handleChange} placeholder="Write your summary here ..."></textarea>
                     </div>
-
 
                     <button type="submit" class="btn btn-primary" onClick={subtractPage} style={{ margin: "10px" }}> Back </button>
                     <button type="submit" class="btn btn-primary" onClick={addPage}>Continue </button>
                 </form>
 
 
-            </div>)
+            </div >)
     }
 }
 
