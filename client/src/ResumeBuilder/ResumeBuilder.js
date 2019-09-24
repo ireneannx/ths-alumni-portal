@@ -57,13 +57,15 @@ export class ResumeBuilder extends Component {
     })
   }
 
-  // addToArray = async (data) => {
-  //   this.setState({
-  //     employment: [...this.state.employment, data]
-  //   })
-  //   console.log(this.state);
+  addToArray = (data) => {
 
-  // }
+    this.setState({
+      employment: [data],
+      page: this.state.page + 1
+    })
+    console.log(this.state);
+  }
+
 
 
   subtractPage = (e) => {
@@ -75,16 +77,13 @@ export class ResumeBuilder extends Component {
 
 
   render() {
-
+    console.log("RESUME BUILDER****", this.state)
     switch (this.state.page) {
       case 1:
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
       case 2:
-        return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} addToArray={this.addToArray} handleChange={this.handleChange}  {...this.state} />);
-      // case 3:
-      //   return (<P3 subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
-      // case 4:
-      //   return (<P4 />)
+        return (<Employment subtractPage={this.subtractPage} addToArray={this.addToArray} handleChange={this.handleChange}  {...this.state} />);
+
       default:
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
     }
