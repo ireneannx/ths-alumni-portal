@@ -7,14 +7,15 @@ import Employment from "./Employment";
 export class ResumeBuilder extends Component {
   state = {
     page: 1,
-    personal_details: {
-      name: '',
-      profession: '',
-      address: '',
-      phone: '',
-      email: '',
-      website: ''
-    },
+
+    //personal details
+    pdname: '',
+    pdprofession: '',
+    pdaddress: '',
+    pdphone: '',
+    pdemail: '',
+    pdwebsite: '',
+
 
     summary: '',
 
@@ -29,13 +30,7 @@ export class ResumeBuilder extends Component {
       skillnames: ''
     },
 
-    employment: {
-      jobtitle: '',
-      company_name: '',
-      startdate: '',
-      enddate: '',
-      description: ''
-    },
+    employment: [],
 
     references: {
       name: '',
@@ -62,6 +57,13 @@ export class ResumeBuilder extends Component {
     })
   }
 
+  // addToArray = async (data) => {
+  //   this.setState({
+  //     employment: [...this.state.employment, data]
+  //   })
+  //   console.log(this.state);
+
+  // }
 
 
   subtractPage = (e) => {
@@ -78,7 +80,7 @@ export class ResumeBuilder extends Component {
       case 1:
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
       case 2:
-        return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />);
+        return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} addToArray={this.addToArray} handleChange={this.handleChange}  {...this.state} />);
       // case 3:
       //   return (<P3 subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       // case 4:
@@ -99,14 +101,9 @@ class Page extends Component {
     return (
       <>
         <div className="container">
-          <div className="row">
-            <div className="col">
-              <ResumeBuilder />
-            </div>
-            <div className="col">
-              RITURAJ WILL RENDER HIS PART HEREEEE.
-          </div>
-          </div>
+
+          <ResumeBuilder />
+
         </div>
       </>
     );
