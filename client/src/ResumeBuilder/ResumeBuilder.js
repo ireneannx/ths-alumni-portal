@@ -6,47 +6,7 @@ import Summary from './Summary';
 
 export class ResumeBuilder extends Component {
   state = {
-    page: 1,
-    personal_details: {
-      name: '',
-      profession: '',
-      address: '',
-      phone: '',
-      email: '',
-      website: ''
-    },
-
-    summary: '',
-
-    education: {
-      degree: '',
-      schoolname: '',
-      description: ''
-    },
-
-    skills: {
-      skilllevel: '',
-      skillnames: ''
-    },
-
-    employment: {
-      jobtitle: '',
-      company_name: '',
-      startdate: '',
-      enddate: '',
-      description: ''
-    },
-
-    references: {
-      name: '',
-      title: '',
-      company: '',
-      email: '',
-      location: '',
-      phone: '',
-      address: ''
-    }
-
+    page: 1
   }
 
   handleChange = (e) => {
@@ -62,6 +22,13 @@ export class ResumeBuilder extends Component {
     })
   }
 
+  // addToArray = async (data) => {
+  //   this.setState({
+  //     employment: [...this.state.employment, data]
+  //   })
+  //   console.log(this.state);
+
+  // }
 
 
   subtractPage = (e) => {
@@ -99,14 +66,9 @@ class Page extends Component {
     return (
       <>
         <div className="container">
-          <div className="row">
-            <div className="col-5">
-              <ResumeBuilder />
-            </div>
-            <div className="col-7">
-              RITURAJ WILL RENDER HIS PART HEREEEE.
-          </div>
-          </div>
+
+          <ResumeBuilder />
+
         </div>
       </>
     );

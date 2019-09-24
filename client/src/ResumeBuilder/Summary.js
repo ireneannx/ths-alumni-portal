@@ -1,32 +1,20 @@
 import React from 'react';
-import { EditorState } from 'draft-js';
-import Editor from 'draft-js-plugins-editor';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import createEmojiPlugin from 'draft-js-emoji-plugin';
-const inlineToolbarPlugin = createInlineToolbarPlugin();
-const { InlineToolbar } = inlineToolbarPlugin;
-const emojiPlugin = createEmojiPlugin();
-const { EmojiSelect } = emojiPlugin;
-
 
 class Summary extends React.PureComponent {
     state = {
-        editorState: EditorState.createEmpty(),
-    };
-
-    onChange = async (editorState) => {
-        let text = this.state.editorState.getCurrentContent().getPlainText();
-        await this.setState({
-            editorState,
-        });
-        console.log(text)
-    };
+        summary: ''
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
+        
 
-        let text = this.state.editorState.getCurrentContent().getPlainText();
-        console.log(text);
+    }
+    handleChange = (e) => {
+        e.preventDefault()
+        this.setState({
+            summary: e.target.value
+        })
     }
 
     render({ addPage, subtractPage } = this.props) {
@@ -45,11 +33,11 @@ class Summary extends React.PureComponent {
                                 <div class="card">
                                     <div className="card-body" style={{ width: '400px', minHeight: '150px', padding: '-3px' }}>
                                         <p style={{ height: '15px' }}>Write your summary here</p> <hr />
-                                        <Editor
-                                            plugins={[emojiPlugin, inlineToolbarPlugin]}
-                                            editorState={this.state.editorState}
-                                            onChange={this.onChange}
-                                        />
+
+                                        <div class="form-group">
+                                            <textarea class="form-control" onChange={(e)=>this.handleChange(e)} rows="6" name="summary" value={this.state.summary} style={{border: 'none'}}></textarea>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
