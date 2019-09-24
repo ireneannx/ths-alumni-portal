@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PersonalDetails from "./PersonalDetails";
 import Employment from "./Employment";
-import Summary from './Summary';
-// import P4 from "./P4";
-
+import Education from "./Education";
+import References from './References';
+import Skill from './Skill'
 export class ResumeBuilder extends Component {
   state = {
     page: 1
@@ -22,13 +22,15 @@ export class ResumeBuilder extends Component {
     })
   }
 
-  // addToArray = async (data) => {
-  //   this.setState({
-  //     employment: [...this.state.employment, data]
-  //   })
-  //   console.log(this.state);
+  addToArray = (data) => {
 
-  // }
+    this.setState({
+      employment: [data],
+      page: this.state.page + 1
+    })
+    console.log(this.state);
+  }
+
 
 
   subtractPage = (e) => {
@@ -40,16 +42,18 @@ export class ResumeBuilder extends Component {
 
 
   render() {
-
+    console.log("RESUME BUILDER****", this.state)
     switch (this.state.page) {
       case 1:
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
       case 2:
         return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />);
       case 3:
-        return (<Summary subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
-      // case 4:
-      //   return (<P4 />)
+        return (<Education subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />);
+      case 4:
+        return (<References subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
+      case 5:
+        return (<Skill subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       default:
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
     }
