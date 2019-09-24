@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PersonalDetails from "./PersonalDetails";
 import Employment from "./Employment";
-// import P3 from "./P3";
+import Summary from './Summary';
 // import P4 from "./P4";
 
 export class ResumeBuilder extends Component {
@@ -79,8 +79,8 @@ export class ResumeBuilder extends Component {
         return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
       case 2:
         return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />);
-      // case 3:
-      //   return (<P3 subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
+      case 3:
+        return (<Summary subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       // case 4:
       //   return (<P4 />)
       default:
@@ -100,10 +100,10 @@ class Page extends Component {
       <>
         <div className="container">
           <div className="row">
-            <div className="col">
+            <div className="col-5">
               <ResumeBuilder />
             </div>
-            <div className="col">
+            <div className="col-7">
               RITURAJ WILL RENDER HIS PART HEREEEE.
           </div>
           </div>
