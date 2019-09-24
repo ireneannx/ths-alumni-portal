@@ -1,48 +1,46 @@
 import React, { Component } from 'react';
 
 
-class Employment extends Component {
+class Education extends Component {
   state = {
-    startdate: '',
-    enddate: '',
-    jobtitle: '',
-    company_name: '',
-    startdate: '',
-    enddate: '',
+    degree: '',
+    schoolname: '',
     description: '',
-    number: '1'
+    startdate: '',
+    enddate: ''
   }
 
   handleChange = (e) => {
-    console.log(e.target.name)
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+
 
   render() {
     const props = this.props
     return (
 
       <div style={{ padding: '5%' }}>
-        <h2><b>Employment </b></h2>
-        <h6>The contents of your employment section will largely depend on where you are in life. <br /> If you don't have much work experience, try to put more focus on your skills section. </h6><br />
+        <h2><b>Education </b></h2>
+        <h6>Your education section will help give interviewers a good look at your background. <br /> </h6><br />
 
         <form>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Job Title</label>
-              <input type="text" class="form-control" name="jobtitle" onChange={this.handleChange} />
+              <label for="inputEmail4">Degree</label>
+              <input type="text" class="form-control" name="degree" onChange={this.handleChange} />
             </div>
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Company Name</label>
-              <input type="text" class="form-control" name="company_name" onChange={this.handleChange} />
+              <label for="inputPassword4">School Name</label>
+              <input type="text" class="form-control" name="schoolname" onChange={this.handleChange} />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Start Date: </label>
               <input type="text" class="form-control" name="startdate" onChange={this.handleChange} />
+
 
 
             </div>
@@ -54,7 +52,7 @@ class Employment extends Component {
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Description </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="description" onChange={this.handleChange}></textarea>
           </div>
 
 
@@ -70,4 +68,4 @@ class Employment extends Component {
   }
 }
 
-export default Employment;
+export default Education;
