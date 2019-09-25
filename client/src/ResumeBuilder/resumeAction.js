@@ -38,6 +38,14 @@ export const addEducation = (data, addPage) => async dispatch => {
     addPage()
 }
 
+export const addEducationExtra = (data, next) => async dispatch => {
+    dispatch({
+        type: "ADD_EDUCATION_FIELD",
+        payload: data
+    })
+    next()
+}
+
 export const addSummary = (data, addPage) => async dispatch => {
     dispatch({
         type: "ADD_SUMMARY_FIELD",
