@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PersonalDetails from "./PersonalDetails";
 import Employment from "./Employment";
+import DownloadResume from './DownloadResume'
 // import P3 from "./P3";
 // import P4 from "./P4";
 
@@ -78,7 +79,7 @@ export class ResumeBuilder extends Component {
 
     switch (this.state.page) {
       case 1:
-        return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
+        return (<DownloadResume addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
       case 2:
         return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} addToArray={this.addToArray} handleChange={this.handleChange}  {...this.state} />);
       // case 3:
