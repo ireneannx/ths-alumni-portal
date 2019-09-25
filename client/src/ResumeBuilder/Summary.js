@@ -1,14 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addSummary } from './resumeAction';
 
 class Summary extends React.PureComponent {
     state = {
         summary: ''
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
+        let data = this.state
+        // console.log('for resume', data)
 
-
+        await this.props.addSummary(data, this.props.addPage)
     }
     handleChange = (e) => {
         e.preventDefault()
@@ -33,7 +38,7 @@ class Summary extends React.PureComponent {
                     </div>
 
                     <button type="submit" class="btn btn-primary" onClick={subtractPage} style={{ margin: "10px" }}> Back </button>
-                    <button type="submit" class="btn btn-primary" onClick={addPage}>Continue </button>
+                    <button type="submit" class="btn btn-primary" >Continue </button>
                 </form>
 
 
@@ -41,4 +46,14 @@ class Summary extends React.PureComponent {
     }
 }
 
-export default Summary;
+const mapStateToProps = (state) => {
+    return {
+        summary: state.Resume.summary
+    }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    addSummary
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Summary);
