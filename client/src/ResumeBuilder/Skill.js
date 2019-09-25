@@ -14,7 +14,7 @@ class Skills extends Component {
     const props = this.props
     return (<>
       <div style={{ padding: '5%' }}>
-        <h2><b>Skills </b></h2>
+        {/* <h2><b>Skills </b></h2> */}
         <h6>Your skills section should showcase a variety of things you've learned from training, practice, or experience. <br />Such as public speaking, photoshop, HTML, etc<br /> </h6><br />
         <form>
           <input class="form-control" type="text" placeholder="Enter Skill" name="skill" onChange={this.handleChange} />
@@ -30,10 +30,34 @@ class Skills extends Component {
         </form>
         <button type="submit" class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
         <button type="submit" class="btn btn-primary" style={{ margin: "10px" }}> Finish </button>
+        <button type="submit" onClick={props.increaseSkill}>Add</button>
 
       </div>
     </>);
   }
 }
 
-export default Skills;
+
+
+class SkillSection extends Component {
+  state = {
+    number: 1
+  }
+
+  increaseSkill = () => {
+    this.setState({
+      number: this.state.number + 1
+    })
+  }
+  render() {
+
+    for (let i = 0; i < this.state.number; i++) {
+      return (<>
+        <h2><b>{`Skill ${this.state.number}`} </b></h2>
+        <Skills increaseSkill={this.increaseSkill} /></>);
+    }
+
+  }
+}
+
+export default SkillSection;
