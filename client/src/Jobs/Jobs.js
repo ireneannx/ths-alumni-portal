@@ -35,12 +35,12 @@ class Jobs extends Component {
     } else {
       return (
         <div style={{ width: "80%", margin: "0 auto" }}>
-          <br/>
-          <div style={{ textAlign: "center", margin: "auto", padding:"10px" }}>
-            <button className="btn btn-secondary" style={{width:"200px"}}>
-            <i className="fa fa-plus" aria-hidden="true"></i>
+          <br />
+          <div style={{ textAlign: "center", margin: "auto", padding: "10px" }}>
+            <button className="btn btn-secondary" style={{ width: "200px" }}>
+              <i className="fa fa-plus" aria-hidden="true"></i>
               <Link to={`${this.props.match.url}/new`} className="white padding">
-               Add Job
+                Add Job
               </Link>
             </button>
           </div>
@@ -156,7 +156,7 @@ export default connect(
 )(Jobs);
 
 const Modal = props => {
-  // console.log("props recieved by modal", props.job)
+  console.log("props recieved by modal", props.job)
   return (
     <div
       className="modal fade"
@@ -183,11 +183,12 @@ const Modal = props => {
           </div>
           <div className="modal-body">
             <p>Posted by: {props.job.name}</p>
-            <hr></hr>
+            <p>Deadline: {props.job.deadline}</p>
+
             <p>{props.job.job_description}</p>
           </div>
           <div className="modal-footer">
-            <p>Deadline: </p>
+
             <button
               type="button"
               className="btn btn-secondary"

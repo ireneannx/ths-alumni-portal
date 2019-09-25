@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from "react-datepicker";
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addJob, getJobs } from './JobAction';
 import { bindActionCreators } from 'redux';
@@ -89,8 +89,10 @@ class AddJob extends Component {
                     <label className="control-label col-sm-3" >Deadline</label>
                     <div className="col-sm-10">
                       <DatePicker className="col-sm-2 form-group"
+
                         selected={this.state.deadline}
                         onChange={this.handleChange2}
+
 
                         minDate={new Date()}
                       />
