@@ -7,8 +7,6 @@ class Employment extends Component {
     enddate: '',
     jobtitle: '',
     company_name: '',
-    startdate: '',
-    enddate: '',
     description: '',
     toggle: 0,
 
@@ -16,16 +14,12 @@ class Employment extends Component {
     enddate2: '',
     jobtitle2: '',
     company_name2: '',
-    startdate2: '',
-    enddate2: '',
     description2: '',
 
     startdate3: '',
     enddate3: '',
     jobtitle3: '',
     company_name3: '',
-    startdate3: '',
-    enddate3: '',
     description3: ''
   }
 
@@ -75,7 +69,7 @@ class Employment extends Component {
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Description </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="description1" rows="6"></textarea>
           </div>
 
         </form>
@@ -97,29 +91,29 @@ class Employment extends Component {
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Job Title</label>
-              <input type="text" class="form-control" name="jobtitle" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="jobtitle2" onChange={this.handleChange} />
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Company Name</label>
-              <input type="text" class="form-control" name="company_name" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="company_name2" onChange={this.handleChange} />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Start Date: </label>
-              <input type="text" class="form-control" name="startdate" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="startdate2" onChange={this.handleChange} />
 
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">End Date: </label>
-              <input type="text" class="form-control" name="enddate" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="enddate2" onChange={this.handleChange} />
 
             </div>
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Description </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="description2" rows="6"></textarea>
           </div>
 
         </form>

@@ -29,8 +29,8 @@ class Skills extends Component {
           </div>
         </form>
         <button type="submit" class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
-        <button type="submit" class="btn btn-primary" style={{ margin: "10px" }}> Finish </button>
-        <button type="submit" onClick={props.increaseSkill}>Add</button>
+        <button type="submit" class="btn btn-primary"> Finish </button>
+        <button type="submit" class="btn btn-success" style={{ margin: "10px" }} onClick={props.increaseSkill}>Add</button>
 
       </div>
     </>);
