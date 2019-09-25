@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addSkills } from './resumeAction';
+import { addSkills, addSkillsExtra } from './resumeAction';
+import SkillForm from './SkillForm';
 
 class Skills extends Component {
   state = {
     skill: '',
-    proficiency: ''
+    proficiency: '',
+    toggle: 0,
+
+    skill2: '',
+    proficiency2: '',
+
+    skill3: '',
+    proficiency3: ''
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+
+  next = () => {
+    this.setState({
+      toggle: this.state.toggle + 1
+    })
+  }
+
+  changeToggle = async (e) => {
+    let data = this.state
+    await this.props.addSkillsExtra(data, this.next)
+  }
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,56 +42,82 @@ class Skills extends Component {
     await this.props.addSkills(data, this.props.addPage)
   }
 
-  render({ subtractPage } = this.props) {
-    const props = this.props
-    return (<>
-      <div style={{ padding: '5%' }}>
-        {/* <h2><b>Skills </b></h2> */}
-        <h6>Your skills section should showcase a variety of things you've learned from training, practice, or experience. <br />Such as public speaking, photoshop, HTML, etc<br /> </h6><br />
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <input class="form-control" type="text" placeholder="Enter Skill" name="skill" onChange={this.handleChange} />
-          <br />
-          <div class="form-group" onChange={this.handleChange}>
-            <label for="exampleFormControlSelect1">Select skill proficiency</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="proficiency" >
-              <option value="Beginner" >Beginner</option>
-              <option value="Intermediate" onChange={this.handleChange}>Intermediate</option>
-              <option value="Expert" onChange={this.handleChange}>Expert</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary" onClick={subtractPage} style={{ margin: "10px" }}> Back </button>
-          <button type="submit" class="btn btn-primary" style={{ margin: "10px" }}> Finish </button>
-        </form>
-
-        <button type="submit" class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
-        <button type="submit" class="btn btn-primary"> Finish </button>
-        <button type="submit" class="btn btn-success" style={{ margin: "10px" }} onClick={props.increaseSkill}>Add</button>
-
-
-      </div>
-    </>
-    );
-  }
-}
-
-class SkillSection extends Component {
-  state = {
-    number: 1
-  }
-
-  increaseSkill = () => {
-    this.setState({
-      number: this.state.number + 1
-    })
-  }
   render() {
 
-    for (let i = 0; i < this.state.number; i++) {
-      return (<>
-        <h2><b>{`Skill ${this.state.number}`} </b></h2>
-        <Skills increaseSkill={this.increaseSkill} /></>);
-    }
+    const props = this.props
 
+    if (this.state.toggle == 0) {
+      return (<>
+        <div style={{ padding: '5%' }}>
+          <h2><b>Skills </b></h2>
+          <h6>Your skills section should showcase a variety of things you've learned from training, practice, or experience. <br />Such as public speaking, photoshop, HTML, etc<br /> </h6><br />
+
+
+          <form onSubmit={(e) => this.handleSubmit(e)}>
+            <input class="form-control" type="text" placeholder="Enter Skills" name="skill" onChange={this.handleChange} />
+            <br />
+            <div class="form-group" onChange={this.handleChange}>
+              <label for="exampleFormControlSelect1">Select skill proficiency</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="proficiency" >
+                <option>Select</option>
+                <option value="Beginner" >Beginner</option>
+                <option value="Intermediate" onChange={this.handleChange}>Intermediate</option>
+                <option value="Expert" onChange={this.handleChange}>Expert</option>
+              </select>
+            </div>
+
+
+            <button class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
+            <button class="btn btn-primary" type="submit"> Continue </button>
+          </form>
+
+          <button class="btn btn-success" onClick={this.changeToggle} style={{ margin: "10px" }}> Add another Skill </button>
+        </div>
+      </>
+      );
+    } else if (this.state.toggle == 1) {
+      return (
+        <>
+          <div style={{ padding: '5%' }}>
+
+            <SkillForm changeToggle={this.changeToggle} handleChange={this.handleChange} {...this.state} />
+
+            <button class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
+
+            <button class="btn btn-primary" onClick={(e) => this.handleSubmit(e)} type="submit"> Continue </button>
+
+            <button class="btn btn-success" onClick={this.changeToggle} style={{ margin: "10px" }}> Add another Skill </button>
+          </div>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <div style={{ padding: '5%' }}>
+            <h2><b>Skill 3 </b></h2>
+            <h6>Your skills section should showcase a variety of things you've learned from training, practice, or experience. <br />Such as public speaking, photoshop, HTML, etc<br /> </h6><br />
+
+
+            <form onSubmit={(e) => this.handleSubmit(e)}>
+              <input class="form-control" type="text" placeholder="Enter Skill" name="skill3" onChange={this.handleChange} />
+              <br />
+              <div class="form-group" onChange={this.handleChange}>
+                <label for="exampleFormControlSelect1">Select skill proficiency</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="proficiency3" >
+                  <option value="Beginner" >Beginner</option>
+                  <option value="Intermediate" onChange={this.handleChange}>Intermediate</option>
+                  <option value="Expert" onChange={this.handleChange}>Expert</option>
+                </select>
+              </div>
+
+
+              <button class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
+              <button class="btn btn-primary" type="submit"> Continue </button>
+            </form>
+          </div>
+        </>
+      )
+    }
   }
 }
 
@@ -82,7 +128,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  addSkills
+  addSkills,
+  addSkillsExtra
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Skills);
