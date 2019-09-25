@@ -2,69 +2,25 @@ import React, { Component } from "react";
 import PersonalDetails from "./PersonalDetails";
 import Employment from "./Employment";
 import DownloadResume from './DownloadResume'
-// import P3 from "./P3";
-// import P4 from "./P4";
+import Education from "./Education";
+import References from './References';
+import SkillSection from './Skill';
+import Summary from './Summary';
+
+
 
 export class ResumeBuilder extends Component {
   state = {
-    page: 1,
-
-    //personal details
-    pdname: '',
-    pdprofession: '',
-    pdaddress: '',
-    pdphone: '',
-    pdemail: '',
-    pdwebsite: '',
-
-
-    summary: '',
-
-    education: {
-      degree: '',
-      schoolname: '',
-      description: ''
-    },
-
-    skills: {
-      skilllevel: '',
-      skillnames: ''
-    },
-
-    employment: [],
-
-    references: {
-      name: '',
-      title: '',
-      company: '',
-      email: '',
-      location: '',
-      phone: '',
-      address: ''
-    }
-
+    page: 1
   }
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  addPage = () => {
+    // e.preventDefault()
 
-  addPage = (e) => {
-    e.preventDefault()
     this.setState({
       page: this.state.page + 1
     })
   }
-
-  // addToArray = async (data) => {
-  //   this.setState({
-  //     employment: [...this.state.employment, data]
-  //   })
-  //   console.log(this.state);
-
-  // }
 
 
   subtractPage = (e) => {
@@ -76,18 +32,24 @@ export class ResumeBuilder extends Component {
 
 
   render() {
-
+    console.log("RESUME BUILDER****", this.state)
     switch (this.state.page) {
       case 1:
-        return (<DownloadResume addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
+        return (<PersonalDetails addPage={this.addPage} {...this.state} />)
       case 2:
-        return (<Employment subtractPage={this.subtractPage} addPage={this.addPage} addToArray={this.addToArray} handleChange={this.handleChange}  {...this.state} />);
-      // case 3:
-      //   return (<P3 subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
-      // case 4:
-      //   return (<P4 />)
-      default:
-        return (<PersonalDetails addPage={this.addPage} handleChange={this.handleChange} {...this.state} />)
+        return (<Employment subtractPage={this.subtractPage} addPage={this.addPage}  {...this.state} />);
+      case 3:
+        return (<Education subtractPage={this.subtractPage} addPage={this.addPage}  {...this.state} />);
+      case 4:
+        return (<References subtractPage={this.subtractPage} addPage={this.addPage}  {...this.state} />);
+      case 5:
+        return (<Summary subtractPage={this.subtractPage} addPage={this.addPage}  {...this.state} />);
+      case 6:
+        return (<SkillSection subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
+      case 7:
+        return(<DownloadResume />)
+        default:
+        return (<> FORM COMPLETE </>)
     }
   }
 }

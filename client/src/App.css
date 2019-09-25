@@ -54,12 +54,66 @@
 }
 .center{
   text-align: center !important;
-  margin: 0 auto
+  margin: 0 auto 
 }
 .right{
   float: right;
 }
 .left{
   float: left;
+}
+.margin{
+  margin: 30% auto auto auto !important;
+}
+.mobile{
+  display: none
+}
+.parallax { 
+  /* The image used */
+  /* background-image: url("logo192.png"); */
+
+  /* Set a specific height */
+  /* height: 500px;  */
+
+  /* Create the parallax scrolling effect */
+  /* background-attachment: fixed; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+
+}
+.jobpostbtn{
+  padding: 20px 0 7px 0;
+  justify-content: center !important
+}
+.react-datepicker__input-container{
+  width:300%  !important
+}
+.posts{
+  width:"53%"; margin: "0 auto"
+}
+@media only screen and (max-width:479px) {
+  .desktop{
+    display: none;
+  }
+  .mobile{
+    display: inline !important;
+    
+  }
+  .margin{
+    margin: 10% auto auto auto !important
+  }
+  .login{
+    border-radius: 10px;
+  }
+  .font{
+    font-size: 25px;
+  }
+  .bottom{
+    margin-bottom: 10px
+  }
+  .posts{
+    width:"100%"
+  }
 }
 

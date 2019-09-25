@@ -50,17 +50,14 @@ class NewTextEditor extends React.Component {
 
             const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
             this.setState({ editorState });
-        
-
-
     };
 
     render() {
 
         return (
-            <div>
+            <div style={{margin:"0 auto"}}>
                 <form onSubmit={(e) => this.onSubmit(e)}>
-                    <div className="card" style={{ marginTop: '10px', marginBottom: '10px' }}>
+                    <div className="card posts" style={{ margin:"20px auto"}}>
                         <div className="card-body">
                             <div >
                                 <Editor

@@ -1,88 +1,176 @@
 import React, { Component } from 'react';
-import DatePicker from "react-datepicker";
-
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addEmployment, addEmploymentExtra } from './resumeAction';
+import FormEmployment from './FormEmployment'
 class Employment extends Component {
   state = {
-    startdate: new Date(),
-    enddate: new Date(),
+    startdate: '',
     jobtitle: '',
     company_name: '',
-    startdate: '',
     enddate: '',
-    description: ''
-  }
+    description: '',
+    toggle: 0,
 
+    startdate2: '',
+    enddate2: '',
+    jobtitle2: '',
+    company_name2: '',
+    description2: '',
+
+    startdate3: '',
+    enddate3: '',
+    jobtitle3: '',
+    company_name3: '',
+    description3: ''
+  }
   handleChange = (e) => {
-    console.log(e.target.name)
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  handleChange1 = date => {
+  next = () => {
     this.setState({
-      startdate: date
-    });
-  };
+      toggle: this.state.toggle + 1
+    })
+  }
 
-  handleChange2 = date => {
-    this.setState({
-      enddate: date
-    });
-  };
+  changeToggle = async (e) => {
+    let data = this.state
+    await this.props.addEmploymentExtra(data, this.next)
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    let data = this.state
+    // console.log('for resume', data)
+
+    await this.props.addEmployment(data, this.props.addPage)
+  }
 
   render() {
     const props = this.props
-    return (
 
-      <div style={{ padding: '5%' }}>
+    if (this.state.toggle === 0) {
+      return (<div style={{ padding: '5%' }}>
         <h2><b>Employment </b></h2>
-        <h6>The contents of your employment section will largely depend on where you are in life. <br /> If you don't have much work experience, try to put more focus on your skills section. </h6>
+        <h6>The contents of your employment section will largely depend on where you are in life. <br /> If you don't have much work experience, try to put more focus on your skills section. </h6><br />
 
-        <form>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Job Title</label>
-              <input type="text" class="form-control" name="jobtitle" value={props.jobtitle} onChange={props.handleChange} />
+              <input type="text" class="form-control" name="jobtitle" onChange={this.handleChange} />
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Company Name</label>
-              <input type="text" class="form-control" name="company_name" value={props.company_name} onChange={props.handleChange} />
+              <input type="text" class="form-control" name="company_name" onChange={this.handleChange} />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Start Date: </label>
-              {/* <input type="text" class="form-control" name="startdate" value={props.startdate} onChange={props.handleChange}/> */}
-              <DatePicker class="form-control"
-                selected={this.state.startdate}
-                onChange={this.handleChange1}
-              />
+              <input type="text" class="form-control" name="startdate" onChange={this.handleChange} />
 
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">End Date: </label>
-              {/* <input type="text" class="form-control" name="enddate" value={props.enddate} onChange={props.handleChange} /> */}
-              <DatePicker class="form-control"
-                selected={this.state.enddate}
-                onChange={this.handleChange2}
-              />
+              <input type="text" class="form-control" name="enddate" onChange={this.handleChange} />
+
             </div>
           </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description </label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="description" onChange={this.handleChange} rows="6"></textarea>
+          </div>
 
-
-
-          <button type="submit" class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
-          <button type="submit" class="btn btn-primary" onClick={props.addPage}>Continue </button>
+          <button class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
+          <button class="btn btn-primary" type="submit"> Continue </button>
 
         </form>
+        <button class="btn btn-success" onClick={this.changeToggle} style={{ margin: "10px" }}> Add another Job </button>
+
 
 
       </div>
-    );
+      )
+    } else if (this.state.toggle == 1) {
+      return (
+        <div style={{ padding: '5%' }}>
+          <h2><b>Employment 2 </b></h2>
+          <h6>The contents of your employment section will largely depend on where you are in life. <br /> If you don't have much work experience, try to put more focus on your skills section. </h6><br />
+          <FormEmployment changeToggle={this.changeToggle} handleChange={this.handleChange} {...this.state} />
+
+          <button class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
+          <button class="btn btn-primary" onClick={(e) => this.handleSubmit(e)}> Continue </button>
+          <button class="btn btn-success" onClick={this.changeToggle} style={{ margin: "10px" }}> Add another Job </button>
+
+
+
+        </div>
+
+      )
+    } else {
+      return (
+        <div style={{ padding: '5%' }}>
+          <h2><b>Employment 3</b></h2>
+          <h6>The contents of your employment section will largely depend on where you are in life. <br /> If you don't have much work experience, try to put more focus on your skills section. </h6><br />
+
+          <form onSubmit={(e) => this.handleSubmit(e)}>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Job Title</label>
+                <input type="text" class="form-control" name="jobtitle3" onChange={this.handleChange} />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Company Name</label>
+                <input type="text" class="form-control" name="company_name3" onChange={this.handleChange} />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Start Date: </label>
+                <input type="text" class="form-control" name="startdate3" onChange={this.handleChange} />
+
+
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">End Date: </label>
+                <input type="text" class="form-control" name="enddate3" onChange={this.handleChange} />
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" onChange={this.handleChange} name="description3" rows="6"></textarea>
+            </div>
+
+            <button class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
+            <button class="btn btn-primary" > Continue </button>
+
+          </form>
+        </div>
+
+
+      )
+    }
+
+
+
   }
 }
 
-export default Employment;
+const mapStateToProps = (state) => {
+  return {
+    employment: state.Resume.employment
+  }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  addEmployment,
+  addEmploymentExtra
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Employment);

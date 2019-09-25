@@ -8,7 +8,7 @@ import Profile from './UserProfile/Profile'
 import UpdateDetails from './UserProfile/CreateUser';
 import AddJob from './Jobs/AddJob';
 import Page from './ResumeBuilder/ResumeBuilder'
-// // history.js
+
 // import history from "./history";
 
 
@@ -16,7 +16,6 @@ const UserApp = () => {
   return (
     <Router basename='/user'>
       <Navbar />
-      <br />
 
       <Switch>
         <Route path="/loggedIn" exact component={LoggedIn} />
