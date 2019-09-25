@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import UserApp from './UserApp'
-import LoggedIn from './Pages/LoggedIn';
 import { Route, Switch } from 'react-router-dom';
 import SignUpForm from './Login-Signup Frontend/components/StartPage'
 import { changeAuth } from './Login-Signup Frontend/authaction'

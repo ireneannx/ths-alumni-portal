@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as 
   Route,
   Switch,
 } from "react-router-dom";
@@ -8,7 +8,6 @@ import AddJob from '../Jobs/AddJob'
 
 import Profile from "../UserProfile/Profile";
 import Jobs from "../Jobs/Jobs";
-import Posts from "../Feeds/components/feed-area";
 class LoggedIn extends Component {
   render() {
     console.log("LoggedIn", this.props.posts);

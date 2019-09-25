@@ -54,12 +54,39 @@
 }
 .center{
   text-align: center !important;
-  margin: 0 auto
+  margin: 0 auto 
 }
 .right{
   float: right;
 }
 .left{
   float: left;
+}
+.margin{
+  margin: 30% auto auto auto !important;
+}
+.mobile{
+  display: none
+}
+@media only screen and (max-width:479px) {
+  .desktop{
+    display: none;
+  }
+  .mobile{
+    display: inline !important;
+    
+  }
+  .margin{
+    margin: 10% auto auto auto !important
+  }
+  .login{
+    border-radius: 10px;
+  }
+  .font{
+    font-size: 25px;
+  }
+  .bottom{
+    margin-bottom: 10px
+  }
 }
 
