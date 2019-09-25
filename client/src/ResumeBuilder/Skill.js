@@ -112,7 +112,7 @@ class Skills extends Component {
 
 
               <button class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
-              <button class="btn btn-primary" type="submit"> Continue </button>
+              <button class="btn btn-primary" type="FOR RITURAJ"> Finish </button>
             </form>
           </div>
         </>

@@ -4,7 +4,9 @@ import Employment from "./Employment";
 import Education from "./Education";
 import References from './References';
 import SkillSection from './Skill';
-import Summary from './Summary'
+import Summary from './Summary';
+
+
 
 export class ResumeBuilder extends Component {
   state = {
@@ -44,7 +46,7 @@ export class ResumeBuilder extends Component {
       case 6:
         return (<SkillSection subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       default:
-        return (<PersonalDetails addPage={this.addPage} {...this.state} />)
+        return (<> FORM COMPLETE </>)
     }
   }
 }
