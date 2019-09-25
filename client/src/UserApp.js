@@ -15,7 +15,6 @@ const UserApp = () => {
   return (
     <Router basename='/user'>
       <Navbar />
-      <br />
 
       <Switch>
         <Route path="/loggedIn" exact component={LoggedIn} />

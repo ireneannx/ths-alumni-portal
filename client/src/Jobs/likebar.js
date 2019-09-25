@@ -16,9 +16,9 @@ class LikeBar extends React.PureComponent {
     }
 
     checkForId = () => {
-        console.log("inside check func")
+        // console.log("inside check func")
         for (let i = 0; i < this.props.upvote_count.upvote_count.length; i++) {
-            if (this.props.upvote_count.upvote_count[i] == this.props.userData.authData._id || this.props.userData.authData.user._id) {
+            if (this.props.upvote_count.upvote_count[i] === this.props.userData.authData._id || this.props.userData.authData.user._id) {
                 return true
             }
         }

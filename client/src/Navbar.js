@@ -29,7 +29,7 @@ class Navbar extends React.PureComponent {
           className="navbar navbar-expand-lg navbar-light"
           style={{ backgroundColor: "#323754" }}
         >
-          <a className="navbar-brand white">THS Alumni Club</a>
+          <a href="/user/posts" className="navbar-brand white">THS Alumni Club</a>
           <button
             className="navbar-toggler"
             type="button"

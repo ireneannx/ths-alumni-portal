@@ -14,20 +14,9 @@ export default class UpdateDetails extends Component {
     editing: false,
     _id: ""
   };
-  componentWillMount() {
-    if (this.props.match.params.id) {
-      this.setState({
-        editing: true
-      });
-    }
-  }
-
+  
   async componentDidMount() {
     if (this.props.match.params.id) {
-      // console.log("line 22", this.props.match.params.id);
-      // const url = `/users/${this.props.match.params.id}`;
-      // console.log("line24", url);
-     
       const res = await axios.get(`/users/${this.props.match.params.id}`);
       await this.setState({
         editing: true,
