@@ -30,6 +30,14 @@ export const addSkills = (data, addPage) => async dispatch => {
     addPage()
 }
 
+export const addSkillsExtra = (data, next) => async dispatch => {
+    dispatch({
+        type: "ADD_SKILLS_FIELD",
+        payload: data
+    })
+    next()
+}
+
 export const addEducation = (data, addPage) => async dispatch => {
     dispatch({
         type: "ADD_EDUCATION_FIELD",
