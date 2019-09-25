@@ -57,7 +57,7 @@ class NewTextEditor extends React.Component {
         return (
             <div style={{margin:"0 auto"}}>
                 <form onSubmit={(e) => this.onSubmit(e)}>
-                    <div className="card" style={{ margin:"20px auto", width:"80%" }}>
+                    <div className="card posts" style={{ margin:"20px auto"}}>
                         <div className="card-body">
                             <div >
                                 <Editor

@@ -76,7 +76,7 @@ export default class UpdateDetails extends Component {
   render() {
     console.log("editing", this.state.editing);
     return (
-      <div className="col-md-6 offset-md-3">
+      <div className="col-md-6 offset-md-3" style={{marginTop:"20vh"}}>
         <div className="card card-body">
           <h4>Edit User Details</h4>
           <form onSubmit={this.onSubmit}>
@@ -114,9 +114,9 @@ export default class UpdateDetails extends Component {
               />
             </div>
             {/* employment_status */}
-            <div class="input-group mb-3">
+            <div className="input-group mb-3">
               <select
-                class="custom-select"
+                className="custom-select"
                 id="inputGroupSelect01"
                 name="employment_status"
                 value={this.state.employment_status}

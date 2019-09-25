@@ -93,6 +93,7 @@ class StartPage extends PureComponent {
                 </span>
               </h1>
             </div>
+            {/* <div class="parallax"></div> */}
 
             <div className="App login" style={{ backgroundColor: "white" }}>
               {this.state.isClicked ? (

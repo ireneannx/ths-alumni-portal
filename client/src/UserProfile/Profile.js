@@ -32,9 +32,9 @@ class Profile extends React.Component {
                 </div>
               </div>
 
-              <div className="col-md-8 ">
+              <div className="col-md-8">
                 {/* <br/> */}
-                <div className="btn-group center" role="group" aria-label="Basic example">
+                <div className="btn-group center jobpostbtn" role="group" aria-label="Basic example" style={{width:"100%", margin:"0 auto"}}>
                   <button type="button" className="btn btn-secondary"onClick={this.onHandleJobs}>Jobs
                   </button>
                   <button type="button" className="btn btn-secondary" onClick={this.onHandlePosts}>
@@ -42,19 +42,17 @@ class Profile extends React.Component {
                   </button>
                  
                 </div>
-                <br/>
-                <br/>
-                <br/>
+  
                
                
                 <div className="conatiner">
-                  <div className="box">
+                  
                     {this.state.jobs === true ? (
                       <JobsProfile userId={this.props.match.params.id} />
                     ) : (
                       <PostsProfile userId={this.props.match.params.id} />
                     )}
-                  </div>
+                
                 </div>
               </div>
             </div>
