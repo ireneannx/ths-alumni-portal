@@ -1,36 +1,55 @@
-export function addPersonalDetails(data) {
-    return dispatch({
+export const addPersonalDetails = (data, addPage) => async dispatch => {
+    dispatch({
         type: "ADD_PERSONAL_FIELD",
         payload: data
     })
+    addPage()
 }
-export function addEmployment(data) {
-    return dispatch({
+
+export const addEmployment = (data, addPage) => async dispatch => {
+    dispatch({
         type: "ADD_EMPLOYMENT_FIELD",
         payload: data
     })
+    addPage()
 }
-export function addSkills(data) {
-    return dispatch({
+
+export const addEmploymentExtra = (data, next) => async dispatch => {
+    dispatch({
+        type: "ADD_EMPLOYMENT_FIELD",
+        payload: data
+    })
+    next()
+}
+
+export const addSkills = (data, addPage) => async dispatch => {
+    dispatch({
         type: "ADD_SKILLS_FIELD",
         payload: data
     })
+    addPage()
 }
-export function addEducation(data) {
-    return dispatch({
+
+export const addEducation = (data, addPage) => async dispatch => {
+    dispatch({
         type: "ADD_EDUCATION_FIELD",
         payload: data
     })
+    addPage()
 }
-export function addSummary(data) {
-    return dispatch({
+
+export const addSummary = (data, addPage) => async dispatch => {
+    dispatch({
         type: "ADD_SUMMARY_FIELD",
         payload: data
     })
+    addPage()
 }
-export function addReferences(data) {
-    return dispatch({
+
+export const addReferences = (data, addPage) => async dispatch => {
+    dispatch({
         type: "ADD_REFERENCES_FIELD",
         payload: data
     })
+    addPage()
 }

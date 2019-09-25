@@ -3,28 +3,6 @@ import axios from 'axios';
 
 export const CHANGE_AUTH = 'CHANGE_AUTH'
 
-// export function changeAuth(data) {
-
-//     return {
-//         type: 'CHANGE_AUTH',
-//         payload: data
-//     }
-//     // history.push('/user/posts')
-
-// }
-
-// export function changeAuth(data) {
-
-//     return async function (dispatch) {
-//         return dispatch({
-//             type: "CHANGE_AUTH",
-//             payload: data
-//         })
-
-//     }
-
-// }
-
 export const changeAuth = (authData, history) => async dispatch => {
     // console.log('authaction', history)
     if (authData.email !== '' && authData.password !== "") {
