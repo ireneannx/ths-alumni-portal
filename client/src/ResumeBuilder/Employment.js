@@ -4,10 +4,8 @@ import React, { Component } from 'react';
 class Employment extends Component {
   state = {
     startdate: '',
-    enddate: '',
     jobtitle: '',
     company_name: '',
-    startdate: '',
     enddate: '',
     description: '',
     toggle: 0,
@@ -16,16 +14,12 @@ class Employment extends Component {
     enddate2: '',
     jobtitle2: '',
     company_name2: '',
-    startdate2: '',
-    enddate2: '',
     description2: '',
 
     startdate3: '',
     enddate3: '',
     jobtitle3: '',
     company_name3: '',
-    startdate3: '',
-    enddate3: '',
     description3: ''
   }
 
@@ -44,7 +38,7 @@ class Employment extends Component {
   render() {
     const props = this.props
 
-    if (this.state.toggle == 0) {
+    if (this.state.toggle === 0) {
       return (<div style={{ padding: '5%' }}>
         <h2><b>Employment </b></h2>
         <h6>The contents of your employment section will largely depend on where you are in life. <br /> If you don't have much work experience, try to put more focus on your skills section. </h6><br />
@@ -88,7 +82,7 @@ class Employment extends Component {
 
       </div>
       )
-    } else if (this.state.toggle == 1) {
+    } else if (this.state.toggle === 1) {
       return (<div style={{ padding: '5%' }}>
         <h2><b>Employment 2 </b></h2>
         <h6>The contents of your employment section will largely depend on where you are in life. <br /> If you don't have much work experience, try to put more focus on your skills section. </h6><br />

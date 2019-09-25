@@ -32,7 +32,7 @@ class JobsProfile extends React.PureComponent {
     // console.log("posts profile 1", this.state.user.jobs);
     if (this.state.user.jobs) {
     return (
-      <div>
+      <div style={{textAlign:"center"}}>
         {this.state.user.jobs.reverse().map((job,index) => (
            <JobCard key={index} className="card" style={{ "width": "18rem", overflow: "hidden", margin: "15px" }}>
            <img className="card-img-top" src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card cap" />

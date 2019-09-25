@@ -28,7 +28,7 @@ class NewFeedCard extends React.Component {
               {/* <li>
                                 {posts.content}
                             </li> */}
-              <div className="card gedf-card" style={{width:"80%", margin: "0 auto"}}> 
+              <div className="card gedf-card posts" > 
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex justify-content-between align-items-center">
@@ -56,9 +56,9 @@ class NewFeedCard extends React.Component {
 
                   <div key={posts._id}>{posts.content}</div>
                 </div>
-                <div className="card-footer">
+                <div className="card-footer" style={{height:"50px"}}>
                   <div className="left">
-                    <p className="card-link">
+                    <p className="card-link" style={{fontSize:"20px"}}>
                       <i className="fa fa-thumbs-up"></i> Like
                     </p>
                   </div>
