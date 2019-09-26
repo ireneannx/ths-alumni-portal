@@ -17,7 +17,14 @@ class References extends Component {
     email2: '',
     location2: '',
     phone2: '',
+   
   }
+
+  // componentDidMount() {
+  //   this.setState({
+  //    []
+  //   })
+  // }
 
   handleChange = (e) => {
     console.log(e.target.name)
