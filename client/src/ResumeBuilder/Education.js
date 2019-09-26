@@ -44,7 +44,9 @@ class Education extends Component {
   }
 
   render() {
+    const { education } = this.props
     const props = this.props
+    console.log(education)
 
     return !this.state.toggle ? (
 
@@ -81,7 +83,7 @@ class Education extends Component {
           </div>
 
           <button type="submit" class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
-          <button type="submit" class="btn btn-primary" >Continue </button>
+          <button type="submit" class="btn btn-primary" > Continue </button>
 
           <button type="success" class="btn btn-success" onClick={this.changeToggle} style={{ margin: "10px" }}> Add another Education </button>
 
@@ -94,7 +96,7 @@ class Education extends Component {
           <h2><b>Education 2 </b></h2>
           <h6>Your education section will help give interviewers a good look at your background. <br /> </h6><br />
 
-          <FormEducation changeToggle={this.changeToggle} handleChange={this.handleChange} {...this.state} />
+          <FormEducation changeToggle={this.changeToggle} handleChange={this.handleChange} {...this.state} education={education} />
 
           <button type="submit" class="btn btn-primary" onClick={props.subtractPage} style={{ margin: "10px" }}> Back </button>
           <button type="submit" class="btn btn-primary" onClick={(e) => this.handleSubmit(e)} >Continue </button>
@@ -106,7 +108,7 @@ class Education extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    education: state.Resume.Education
+    education: state.Resume.education
   }
 }
 
