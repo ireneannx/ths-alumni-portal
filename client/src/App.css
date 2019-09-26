@@ -68,7 +68,8 @@
 .mobile{
   display: none
 }
-.parallax { 
+
+/* .parallax {  */
   /* The image used */
   /* background-image: url("logo192.png"); */
 
@@ -81,11 +82,16 @@
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
 
-}
+/* } */
+
 .jobpostbtn{
   padding: 20px 0 7px 0;
   justify-content: center !important
 }
+.myform {
+  width: 75%;
+}
+
 .react-datepicker__input-container{
   width:300%  !important
 }

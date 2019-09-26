@@ -24,8 +24,8 @@ const UserApp = () => {
         <Route path="/posts" component={FeedArea} />
         <Route exact path="/profile/edit/:id" component={UpdateDetails} />
         <Route exact path="/profile/:id" component={Profile} />
-
         <Route path="/resumebuilder" component={Page} />
+        <Route component={<h1>sorry nothing here</h1>} />
       </Switch>
     </Router>
   );
