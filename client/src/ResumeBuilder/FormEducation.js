@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FormEducation = (props) => (
-    <form>
+  <form>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Degree</label>
@@ -30,7 +30,7 @@ const FormEducation = (props) => (
       <label for="exampleFormControlTextarea1">Description </label>
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="description2" value={props.description2} onChange={props.handleChange}></textarea>
     </div>
-    </form>
+  </form>
 )
 
 export default FormEducation

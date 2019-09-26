@@ -11,6 +11,7 @@ import Loading from './loading';
 
 const SignUpForm = lazy(() => import('./Login-Signup Frontend/components/StartPage'));
 const UserApp = lazy(() => import('./UserApp'));
+const NotFound = lazy(() => import('./NotFound'));
 
 
 //auth components
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/" component={SignUpForm} />
 
             <Route path="/user" component={UserApp} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </Suspense>
 
