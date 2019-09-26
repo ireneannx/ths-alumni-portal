@@ -32,7 +32,7 @@ export class ResumeBuilder extends Component {
 
 
   render() {
-    console.log("RESUME BUILDER****", this.state)
+    //console.log("RESUME BUILDER****", this.state)
     switch (this.state.page) {
       case 1:
         return (<PersonalDetails addPage={this.addPage} {...this.state} />)

@@ -88,12 +88,10 @@ class AddJob extends Component {
                   <div className="form-group">
                     <label className="control-label col-sm-3" >Deadline</label>
                     <div className="col-sm-10">
-                      <DatePicker className="col-sm-2 form-group"
-
+                      <DatePicker className="col-sm-3 form-group"
+                        dateFormat="MMMM d, yyyy"
                         selected={this.state.deadline}
                         onChange={this.handleChange2}
-
-
                         minDate={new Date()}
                       />
                     </div>
