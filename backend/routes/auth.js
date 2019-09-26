@@ -17,7 +17,7 @@ router.get('/', auth, async (req, res) => {
     const user = await db.User.findById(req.user._id).select('-password');
     res.json(user);
   } catch (err) {
-    console.error(err.message);
+    // console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
@@ -39,7 +39,7 @@ router.post(
     }
 
     const { email, password } = req.body;
-    console.log('line 42 backend', req.body)
+
     try {
       let user = await db.User.findOne({ email });
 
@@ -88,7 +88,7 @@ router.post(
         }
       );
     } catch (err) {
-      console.error(err.message);
+      // console.error(err.message);
       res.status(500).send('Server error');
     }
   }

@@ -15,16 +15,14 @@ class Jobs extends Component {
     this.props.getJobs();
   }
   handleClick = job => {
-    // console.log('author is ',this.props)
     this.props.history.push(`/profile/${job.user_id}`);
   };
 
   handleModal = job => {
-    console.log("previous state:", this.state.currentJob);
+
     this.setState({
       currentJob: job
     });
-    console.log("current state", this.props.currentJob);
   };
   //comment
   render() {
@@ -112,7 +110,7 @@ class Jobs extends Component {
                 );
               })}
             </div>
-            <Modal job={this.state.currentJob} handleClick={this.handleClick}/>
+            <Modal job={this.state.currentJob} handleClick={this.handleClick} />
           </div>
         </div>
       );

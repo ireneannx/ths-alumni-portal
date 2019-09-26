@@ -4,11 +4,11 @@ import axios from 'axios';
 export const CHANGE_AUTH = 'CHANGE_AUTH'
 
 export const changeAuth = (authData, history) => async dispatch => {
-    // console.log('authaction', history)
+
     if (authData.email !== '' && authData.password !== "") {
         await axios.post("/auth", authData)
             .then((res) => {
-                console.log('userData', res.data)
+
                 const decode = jwt_decode(res.data.token)
                 localStorage.setItem("thsToken", res.data.token);
                 dispatch({
