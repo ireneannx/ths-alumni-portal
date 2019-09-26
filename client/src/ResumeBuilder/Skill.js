@@ -46,7 +46,7 @@ class Skills extends Component {
 
     const props = this.props
 
-    if (this.state.toggle == 0) {
+    if (this.state.toggle === 0) {
       return (<>
         <div style={{ padding: '5%' }}>
           <h2><b>Skills </b></h2>
@@ -75,7 +75,7 @@ class Skills extends Component {
         </div>
       </>
       );
-    } else if (this.state.toggle == 1) {
+    } else if (this.state.toggle === 1) {
       return (
         <>
           <div style={{ padding: '5%' }}>

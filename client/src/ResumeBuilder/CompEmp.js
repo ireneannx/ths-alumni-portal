@@ -1,18 +1,54 @@
 import React from 'react';
 
-const CompEmp = () => {
-    return ( 
-        <div style={{marginTop : "43px"}}>
+const CompEmp = (props) => {
+    const { emp } = props
+
+    if (emp.jobtitle === "")
+        return (
+            null
+        )
+    else if (emp.jobtitle2 === "")
+        return (
+            <div style={{ marginTop: "43px" }}>
+                <h5>EMPLOYMENT</h5>
+                <p style={{ marginBottom: "5px" }}><i>{emp.company_name}</i></p>
+                <p style={{ marginTop: "-7px" }}><strong>{emp.jobtitle}</strong>/{emp.startdate} -- {emp.enddate}</p>
+                <p>{emp.description}</p>
+
+            </div>
+        )
+    else if (emp.jobtitle3 === "")
+        return (
+            <div style={{ marginTop: "43px" }}>
             <h5>EMPLOYMENT</h5>
-            <p style={{marginBottom : "5px"}}><i>Bugs INC, Hyderabad</i></p>
-            <p style={{marginTop : "-7px"}}><strong>Junior bug writer</strong>/Mar 2018 -- Aug 2018</p>
-            <ul>
-                <li>Wrote a beautiful bug that crashed the entire system every 10 minutes. It was such an leaning experience. It changed me as a person and I got inspired to write even more dangerous code.</li>
-                <li>Deleted the entire git production branch. I was kicked by all the other developers but it was a life-turner for me personally. I have significantly reduced reducing deleting important git branches and pushing buggy code. </li>
-            </ul>
+            <p style={{ marginBottom: "5px" }}><i>{emp.company_name}</i></p>
+            <p style={{ marginTop: "-7px" }}><strong>{emp.jobtitle}</strong>/{emp.startdate} -- {emp.enddate}</p>
+            <p>{emp.description2}</p>
+            <p style={{ marginBottom: "5px" }}><i>{emp.company_name2}</i></p>
+            <p style={{ marginTop: "-7px" }}><strong>{emp.jobtitle2}</strong>/{emp.startdate2} -- {emp.enddate2}</p>
+            <p>{emp.description2}</p>
 
         </div>
-     );
+
+    )
+    else
+        return (
+        
+            <div style={{ marginTop: "43px" }}>
+            <h5>EMPLOYMENT</h5>
+            <p style={{ marginBottom: "5px" }}><i>{emp.company_name}</i></p>
+            <p style={{ marginTop: "-7px" }}><strong>{emp.jobtitle}</strong>/{emp.startdate} -- {emp.enddate}</p>
+            <p>{emp.description2}</p>
+            <p style={{ marginBottom: "5px" }}><i>{emp.company_name2}</i></p>
+            <p style={{ marginTop: "-7px" }}><strong>{emp.jobtitle2}</strong>/{emp.startdate2} -- {emp.enddate2}</p>
+            <p>{emp.description2}</p>
+            <p>{emp.description3}</p>
+            <p style={{ marginBottom: "5px" }}><i>{emp.company_name3}</i></p>
+            <p style={{ marginTop: "-7px" }}><strong>{emp.jobtitle3}</strong>/{emp.startdate3} -- {emp.enddate3}</p>
+            <p>{emp.description3}</p>
+        </div>
+
+    )
 }
- 
+
 export default CompEmp;
