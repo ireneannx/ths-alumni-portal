@@ -2,11 +2,11 @@ import React from 'react';
 
 const CompEdu = (props) => {
     const {edu} =   props
-    if(edu.schoolname == "")
+    if(edu.schoolname === undefined)
     return (
         null
     )
-    else if (edu.schoolname2 == "")
+    else if (edu.schoolname2 === undefined)
     return ( 
         <div>
             <h5>EDUCATION</h5>

@@ -2,11 +2,12 @@ import React from 'react';
 
 const ComRef = (props) => {
     const {references} = props
-    if(references.name === "")
+    console.log("what I am looking for", references.name, references.name2)
+    if(references.name === undefined)
     return (
         null
     )
-    else if (references.name2 === "")
+    else if (references.name2 === undefined)
     return ( 
         <div style={{marginTop : "43px"}}>
             <h5>REFERENCES</h5>

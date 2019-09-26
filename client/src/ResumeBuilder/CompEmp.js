@@ -3,11 +3,11 @@ import React from 'react';
 const CompEmp = (props) => {
     const { emp } = props
 
-    if (emp.jobtitle == "")
+    if (emp.jobtitle === undefined)
         return (
             null
         )
-    else if (emp.jobtitle2 == "")
+    else if (emp.jobtitle2 === undefined)
         return (
             <div style={{ marginTop: "43px" }}>
                 <h5>EMPLOYMENT</h5>
@@ -17,7 +17,7 @@ const CompEmp = (props) => {
 
             </div>
         )
-    else if (emp.jobtitle3 == "")
+    else if (emp.jobtitle3 === undefined)
         return (
             <div style={{ marginTop: "43px" }}>
             <h5>EMPLOYMENT</h5>
