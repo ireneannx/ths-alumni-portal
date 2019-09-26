@@ -68,12 +68,12 @@ class Education extends Component {
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Start Date: </label>
-              <input type="text" class="form-control" name="startdate" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="startdate" onChange={this.handleChange} placeholder="dd/mm/yyyy"/>
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">End Date: </label>
-              <input type="text" class="form-control" name="enddate" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="enddate" onChange={this.handleChange} placeholder="dd/mm/yyyy" />
 
             </div>
           </div>

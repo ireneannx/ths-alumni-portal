@@ -71,13 +71,13 @@ class Employment extends Component {
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Start Date: </label>
-              <input type="text" class="form-control" name="startdate" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="startdate"  placeholder="dd/mm/yyyy" onChange={this.handleChange} />
 
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">End Date: </label>
-              <input type="text" class="form-control" name="enddate" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="enddate"  placeholder="dd/mm/yyyy" onChange={this.handleChange} />
 
             </div>
           </div>
@@ -132,13 +132,14 @@ class Employment extends Component {
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">Start Date: </label>
-                <input type="text" class="form-control" name="startdate3" onChange={this.handleChange} />
+                <input type="text" class="form-control" name="startdate3"  placeholder="dd/mm/yyyy"
+                onChange={this.handleChange} />
 
 
               </div>
               <div class="form-group col-md-6">
                 <label for="inputPassword4">End Date: </label>
-                <input type="text" class="form-control" name="enddate3" onChange={this.handleChange} />
+                <input type="text" class="form-control" name="enddate3"  placeholder="dd/mm/yyyy" onChange={this.handleChange} />
 
               </div>
             </div>

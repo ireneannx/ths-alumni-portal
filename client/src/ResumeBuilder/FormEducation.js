@@ -16,14 +16,14 @@ const FormEducation = (props) => (
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Start Date: </label>
-        <input type="text" class="form-control" name="startdate2" value={props.education.startdate2} onChange={props.handleChange} />
+        <input type="text" class="form-control" name="startdate2" placeholder="dd/mm/yyyy" onChange={props.handleChange} />
 
 
 
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">End Date: </label>
-        <input type="text" class="form-control" name="enddate2" value={props.education.enddate2} onChange={props.handleChange} />
+        <input type="text" class="form-control" name="enddate2" placeholder="dd/mm/yyyy" onChange={props.handleChange} />
 
       </div>
     </div>
