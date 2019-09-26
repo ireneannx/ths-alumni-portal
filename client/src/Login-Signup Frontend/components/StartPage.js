@@ -1,18 +1,9 @@
 import React, { PureComponent } from "react";
-import SignUpForm from "./Signup";
 import SignInForm from "./Signin";
 import { withRouter } from "react-router";
 
 class StartPage extends PureComponent {
-  state = {
-    isClicked: false
-  };
 
-  clickButton = e => {
-    this.setState({
-      isClicked: !this.state.isClicked
-    });
-  };
   render() {
     return (
       <div>
@@ -45,12 +36,10 @@ class StartPage extends PureComponent {
                 </h1>
               </div>
 
-              <div className="col-6 App" style={{}}>
-                {this.state.isClicked ? (
-                  <SignUpForm clickButton={this.clickButton} />
-                ) : (
-                  <SignInForm clickButton={this.clickButton} />
-                )}
+              <div className="col-6 App" >
+
+                <SignInForm  />
+
               </div>
             </div>
           </div>
@@ -96,11 +85,9 @@ class StartPage extends PureComponent {
             {/* <div class="parallax"></div> */}
 
             <div className="App login" style={{ backgroundColor: "white" }}>
-              {this.state.isClicked ? (
-                <SignUpForm clickButton={this.clickButton} />
-              ) : (
-                <SignInForm clickButton={this.clickButton} />
-              )}
+
+              <SignInForm />
+
             </div>
             <br />
           </div>

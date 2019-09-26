@@ -18,34 +18,14 @@ class SignInForm extends React.PureComponent {
       [e.target.name]: e.target.value
     })
   }
+
   handleSubmit = async (e) => {
     e.preventDefault()
 
     let authData = this.state
-    console.log('from handle submit',this.props)
+    // console.log('from handle submit', this.props)
     await this.props.changeAuth(authData, this.props.history)
 
-
-    // if (authData.email != '' && authData.password != "") {
-    //   await axios.post("/auth", authData)
-    //     .then((res) => {
-    //       console.log('userData', res.data)
-    //       const decode = jwt_decode(res.data.token)
-    //       localStorage.setItem("thsToken", res.data.token);
-    //       this.setState({
-    //         email: '',
-    //         password: ''
-    //       })
-
-    //       this.props.changeAuth(decode.user, this.props.history);
-    //     })
-    //     .catch((err) => console.log(err.response))
-
-      // this.props.history.push('/user/posts')
-    // }
-    // else {
-    //   console.log("blah")
-    // }
   }
 
   componentWillUnmount() {
@@ -59,15 +39,15 @@ class SignInForm extends React.PureComponent {
   render() {
     return (
       <div className="container center">
-       
+
         <div className="row center margin">
-          <div  className="center">
-            <h1 style={{ marginBottom: '50px', marginTop:"5%" }} className="center font">Login to your<br /> account</h1>
+          <div className="center">
+
+            <h1 style={{ marginBottom: '50px', marginTop: "5%" }} className="center font">Login to your<br /> account</h1>
             <div className="col-md-8 mx-auto" >
 
               <div className="myform form center" >
-
-                <form action="" method="post" name="login"  onSubmit={(e) => this.handleSubmit(e)}>
+                <form action="" method="post" name="login" onSubmit={(e) => this.handleSubmit(e)}>
                   <div className="form-group">
                     <input type="email" name="email" className="form-control my-input" id="email" placeholder="Email" onChange={(e) => this.handleChange(e)} />
                   </div>
@@ -84,13 +64,13 @@ class SignInForm extends React.PureComponent {
                   </div>
                   <p className="small mt-3">By signing up, you are indicating that you have read and agree to the <a href="https://www.website.com/terms-and-conditions/" className="ps-hero__content__link">Terms of Use</a> and <a href="https://policies.google.com/">Privacy Policy</a>.
                               </p>
-                  <p> Dont have an account? <br /> <button className="btn btn-primary btn-sm" onClick={this.props.clickButton}>Register</button></p>
                 </form>
               </div>
             </div>
           </div>
         </div>
-      </div>)
+      </div>
+    )
   }
 
 }
