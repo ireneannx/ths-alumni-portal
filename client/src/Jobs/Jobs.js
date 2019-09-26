@@ -182,7 +182,7 @@ const Modal = props => {
           </div>
           <div className="modal-body">
             <p>Posted by: {props.job.name}</p>
-            <p>Deadline: {props.job.deadline ? `${new Date(props.job.deadline).getDate()}-${new Date(props.job.deadline).getMonth() + 1}-${new Date(props.job.deadline).getFullYear()}` : null}</p>
+            <p>Deadline: {props.job.deadline ? `${new Date(props.job.deadline).getDate()}-${new Date(props.job.deadline).getMonth() + 1}-${new Date(props.job.deadline).getFullYear()}` : "Not specified by author"}</p>
 
             <p>{props.job.job_description}</p>
           </div>

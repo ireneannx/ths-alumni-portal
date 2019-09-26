@@ -58,7 +58,7 @@ class Education extends Component {
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Degree</label>
-              <input type="text" class="form-control" name="degree" onChange={(e) => this.handleChange} />
+              <input type="text" class="form-control" name="degree" onChange={this.handleChange} />
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">School Name</label>
@@ -68,7 +68,7 @@ class Education extends Component {
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Start Date: </label>
-              <input type="text" class="form-control" name="startdate" onChange={this.handleChange} placeholder="dd/mm/yyyy"/>
+              <input type="text" class="form-control" name="startdate" onChange={this.handleChange} placeholder="dd/mm/yyyy" />
 
             </div>
             <div class="form-group col-md-6">
