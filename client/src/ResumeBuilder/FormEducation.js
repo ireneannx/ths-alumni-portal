@@ -15,7 +15,7 @@ const FormEducation = (props) => (
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Start Date: </label>
-        <input type="text" class="form-control" name="startdate2" value={props.degree} placeholder="dd/mm/yyyy" onChange={props.handleChange} />
+        <input type="text" class="form-control" name="startdate2" value={props.startdate2} placeholder="dd/mm/yyyy" onChange={props.handleChange} />
 
 
 

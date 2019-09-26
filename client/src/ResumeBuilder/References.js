@@ -16,15 +16,25 @@ class References extends Component {
     company2: '',
     email2: '',
     location2: '',
-    phone2: '',
-   
+    phone2: ''
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //    []
-  //   })
-  // }
+  componentDidMount() {
+    this.setState({
+      name: this.props.references.name,
+      title: this.props.references.title,
+      company: this.props.references.company,
+      email: this.props.references.email,
+      location: this.props.references.location,
+      phone: this.props.references.phone,
+      name2: this.props.references.name2,
+      title2: this.props.references.title2,
+      company2: this.props.references.company2,
+      email2: this.props.references.email2,
+      location2: this.props.references.location2,
+      phone2: this.props.references.phone2
+    })
+  }
 
   handleChange = (e) => {
     console.log(e.target.name)
@@ -54,36 +64,36 @@ class References extends Component {
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Name</label>
-              <input type="text" class="form-control" name="name" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="name" value={this.state.name} onChange={this.handleChange} />
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Title</label>
-              <input type="text" class="form-control" name="title" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.handleChange} />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Company </label>
-              <input type="text" class="form-control" name="company" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="company" value={this.state.company} onChange={this.handleChange} />
 
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Email </label>
-              <input type="text" class="form-control" name="email" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="email" value={this.state.email} onChange={this.handleChange} />
 
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Location </label>
-              <input type="text" class="form-control" name="location" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="location" value={this.state.location} onChange={this.handleChange} />
 
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Phone: </label>
-              <input type="text" class="form-control" name="phone" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="phone" value={this.state.phone} onChange={this.handleChange} />
 
             </div>
           </div>
@@ -93,36 +103,36 @@ class References extends Component {
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Name</label>
-              <input type="text" class="form-control" name="name" onChange={props.handleChange} />
+              <input type="text" class="form-control" name="name2" value={this.state.name2} onChange={this.handleChange} />
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Title</label>
-              <input type="text" class="form-control" name="title" onChange={props.handleChange} />
+              <input type="text" class="form-control" name="title2" value={this.state.title2} onChange={this.handleChange} />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Company </label>
-              <input type="text" class="form-control" name="company" onChange={props.handleChange} />
+              <input type="text" class="form-control" name="company2" value={this.state.company2} onChange={this.handleChange} />
 
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Email </label>
-              <input type="text" class="form-control" name="email" onChange={props.handleChange} />
+              <input type="text" class="form-control" name="email2" value={this.state.email2} onChange={this.handleChange} />
 
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Location </label>
-              <input type="text" class="form-control" name="location" onChange={props.handleChange} />
+              <input type="text" class="form-control" name="location2" value={this.state.location2} onChange={this.handleChange} />
 
 
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Phone: </label>
-              <input type="text" class="form-control" name="phone" onChange={props.handleChange} />
+              <input type="text" class="form-control" name="phone2" value={this.state.phone2} onChange={this.handleChange} />
 
             </div>
           </div>

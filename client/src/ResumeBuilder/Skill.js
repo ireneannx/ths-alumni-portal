@@ -17,6 +17,20 @@ class Skills extends Component {
     proficiency3: ''
   }
 
+  componentDidMount() {
+    this.setState({
+      skill: this.props.skills.skill,
+      proficiency: this.props.skills.proficiency,
+      toggle: 0,
+
+      skill2: this.props.skills.skill2,
+      proficiency2: this.props.skills.proficiency2,
+
+      skill3: this.props.skills.skill3,
+      proficiency3: this.props.skills.proficiency3
+    })
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -54,13 +68,13 @@ class Skills extends Component {
 
 
           <form onSubmit={(e) => this.handleSubmit(e)}>
-            <input class="form-control" type="text" placeholder="Enter Skills" name="skill" onChange={this.handleChange} />
+            <input class="form-control" type="text" placeholder="Enter Skills" name="skill" value={this.state.skill} onChange={this.handleChange} />
             <br />
             <div class="form-group" onChange={this.handleChange}>
               <label for="exampleFormControlSelect1">Select skill proficiency</label>
-              <select class="form-control" id="exampleFormControlSelect1" name="proficiency" >
+              <select class="form-control" id="exampleFormControlSelect1" name="proficiency"  >
                 <option>Select</option>
-                <option value="Beginner" >Beginner</option>
+                <option value="Beginner" onChange={this.handleChange}>Beginner</option>
                 <option value="Intermediate" onChange={this.handleChange}>Intermediate</option>
                 <option value="Expert" onChange={this.handleChange}>Expert</option>
               </select>
@@ -99,12 +113,12 @@ class Skills extends Component {
 
 
             <form onSubmit={(e) => this.handleSubmit(e)}>
-              <input class="form-control" type="text" placeholder="Enter Skill" name="skill3" onChange={this.handleChange} />
+              <input class="form-control" type="text" placeholder="Enter Skill" name="skill3" value={this.state.skill3} onChange={this.handleChange} />
               <br />
               <div class="form-group" onChange={this.handleChange}>
                 <label for="exampleFormControlSelect1">Select skill proficiency</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="proficiency3" >
-                  <option value="Beginner" >Beginner</option>
+                  <option value="Beginner" onChange={this.handleChange} >Beginner</option>
                   <option value="Intermediate" onChange={this.handleChange}>Intermediate</option>
                   <option value="Expert" onChange={this.handleChange}>Expert</option>
                 </select>

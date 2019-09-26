@@ -7,6 +7,11 @@ class Summary extends React.PureComponent {
     state = {
         summary: ''
     }
+    componentDidMount() {
+        this.setState({
+            summary: this.props.summary.summary
+        })
+    }
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +39,7 @@ class Summary extends React.PureComponent {
 
                     <div class="form-group">
 
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="summary" onChange={this.handleChange} placeholder="Write your summary here ..."></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="summary" value={this.state.summary} onChange={this.handleChange} placeholder="Write your summary here ..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary" onClick={subtractPage} style={{ margin: "10px" }}> Back </button>
