@@ -5,7 +5,7 @@ import NewFeedCard from './newFeedCard';
 class FeedArea extends React.Component {
     render() {
         return (
-            <div style={{ backgroundColor: '#F7F9F9' }}>
+            <div>
                 <div className="container">
                    
 

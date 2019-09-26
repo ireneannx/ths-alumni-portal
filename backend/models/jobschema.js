@@ -4,7 +4,7 @@ const jobschema = new mongoose.Schema({
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'UserProfile'
-        // required: true
+       
     },
     job_type: String,
     job_description: String,
@@ -15,6 +15,7 @@ const jobschema = new mongoose.Schema({
     name: {
         type: String
     },
+
     company_name: String,
     url: String,
     deadline: Date,

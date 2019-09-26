@@ -95,12 +95,25 @@
 .react-datepicker__input-container {
   width: 300% !important;
 }
-.posts {
-  width: 53%;
-  margin: 0 auto;
+.posts{
+  width:75% !important;
+  margin: 0 auto
 }
-@media only screen and (max-width: 479px) {
-  .desktop {
+/* .user{
+
+} */
+.user:hover{
+  color: blue;
+  text-decoration: underline;
+}
+@media only screen and (max-width:1200px) {
+  .posts{
+    width:100% !important
+  }
+}
+
+@media only screen and (max-width:479px) {
+  .desktop{
     display: none;
   }
   .mobile {
@@ -118,8 +131,11 @@
   .bottom {
     margin-bottom: 10px;
   }
-  .posts {
-    width: 100%;
+  .posts{
+    width:100% !important
+  }
+  .react-datepicker__input-container{
+    width:50%  !important
   }
 }
 

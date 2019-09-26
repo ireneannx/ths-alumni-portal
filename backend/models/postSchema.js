@@ -11,7 +11,10 @@ const postSchema = new mongoose.Schema({
   },
   name: {
     type: String
-  }
+  },
+  avatarURL: {
+    type: String
+  }  
 },{
   timestamps:true
 });

@@ -43,7 +43,7 @@ class PostsProfile extends React.PureComponent {
                         <img
                           className="rounded-circle"
                           width="45"
-                          src="https://picsum.photos/50/50"
+                          src={posts.avatarURL}
                           alt=""
                         />
                       </div>

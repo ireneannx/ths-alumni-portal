@@ -12,12 +12,13 @@ export function getFeedPosts() {
     }
 }
 
-export function addFeedPost(data, id, name) {
+export function addFeedPost(data, id, name, avatarURL) {
     console.log('recieved by action', data)
     let text = {
         content: data,
         author: id,
-        name: name
+        name: name,
+        avatarURL: avatarURL
     }
 
     return async function (dispatch) {
