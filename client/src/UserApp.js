@@ -29,7 +29,7 @@ const UserApp = () => {
 
       <Suspense fallback={<Loading />} />
       <Switch>
-        <Route exact path="/loggedIn" exact component={LoggedIn} />
+        <Route exact path="/loggedIn" component={LoggedIn} />
         <Route exact path="/jobs" component={Jobs} />
         <Route exact path="/jobs/new" component={AddJob} />
         <Route exact path="/posts" component={FeedArea} />

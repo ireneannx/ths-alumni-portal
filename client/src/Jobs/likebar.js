@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { connect } from 'react-redux'
 import { frontendLike } from './JobAction'
 import { bindActionCreators } from 'redux';
@@ -9,7 +9,7 @@ class LikeBar extends React.PureComponent {
 
     axiosCall = async () => {
 
-        const data = await axios.post(`/jobs/like/${this.props.userData.authData._id || this.props.userData.authData.user._id}/${this.props.upvote_count._id}`)
+        // const data = await axios.post(`/jobs/like/${this.props.userData.authData._id || this.props.userData.authData.user._id}/${this.props.upvote_count._id}`)
 
         this.props.frontendLike(this.props.upvote_count._id, this.props.userData.authData._id || this.props.userData.authData.user._id)
     }
