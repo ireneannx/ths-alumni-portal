@@ -120,7 +120,7 @@ class Employment extends Component {
 
       </div>
       )
-    } else if (this.state.toggle == 1) {
+    } else if (this.state.toggle === 1) {
       return (
         <div style={{ padding: '5%' }}>
           <h2><b>Employment 2 </b></h2>

@@ -1,24 +1,26 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import CompEdu from './CompEdu'
 import ComEmp from './CompEmp'
 import ComSkills from './ComSkills'
 import ComRef from './ComRef'
 import ReactToPrint from 'react-to-print'
+import { connect } from 'react-redux'
 
 class DownloadResume extends React.Component {
     render() {
+        const { resume } = this.props
         return (
             <div className="col-sm-11" style={{ margin: "0 auto", marginTop: "20px" }}>
                 <div className="row">
                     <div className="col-sm-3">
-                        <h4 style={{ fontWeight: "35" }}><strong>PAMPA MANDAL</strong></h4>
-                        <p><i>Fullstack Developer</i></p><br />
+                        <h4 style={{ fontWeight: "35" }}><strong>{resume.personalDetails.name}</strong></h4>
+                        <p><i>{resume.personalDetails.profession}</i></p><br />
 
-                        <p style={{ marginTop: "-6px" }}>pampamandal.com</p>
-                        <p style={{ marginTop: "-20px" }}>pampamandal@gmail.com</p>
-                        <p style={{ marginTop: "-20px" }}>9474634599</p><br />
+                        <p style={{ marginTop: "-6px" }}>{resume.personalDetails.website}</p>
+                        <p style={{ marginTop: "-20px" }}>{resume.personalDetails.email}</p>
+                        <p style={{ marginTop: "-20px" }}>{resume.personalDetails.phone}</p><br />
 
-                        <p style={{ marginTop: "-15px" }}>Majhigram, Panrui, West Bengal</p>
+                        <p style={{ marginTop: "-15px" }}>{resume.personalDetails.address}</p>
                     </div>
                     <div className="col-sm-1">
 
@@ -27,13 +29,13 @@ class DownloadResume extends React.Component {
                     <div className="col-sm-7">
                         <div>
                             <h5>SUMMARY</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum metus id nibh iaculis, sed vehicula tellus lobortis. Nunc eget laoreet enim. Nullam pulvinar tortor ut massa vulputate dapibus. Donec eros nisi, blandit id ante et, ullamcorper egestas ligula. Praesent iaculis blandit cursus. Praesent condimentum fermentum blandit. Curabitur lobortis tempor viverra. Curabitur iaculis orci urna, ac luctus purus sollicitudin ac. Curabitur in erat in leo malesuada porta. Sed commodo eros pulvinar semper eleifend. Mauris pellentesque libero vel porttitor ullamcorper.</p>
+                            <p>{resume.summary.summary}</p>
                         </div>
                         <div style={{ marginTop: "45px" }}>
-                            <CompEdu />
-                            <ComEmp />
-                            <ComSkills />
-                            <ComRef />
+                            <CompEdu edu={resume.education}/>
+                            <ComEmp emp={resume.employment} />
+                            <ComSkills skills={resume.skills} />
+                            <ComRef references={resume.references}/>
                         </div>
                     </div>
                 </div>
@@ -43,17 +45,26 @@ class DownloadResume extends React.Component {
 }
 
 
+
 class Print extends React.Component {
+
     render() {
+        console.log("****&^%^$%^&*$%%^&")
         return (
             <div className="d-print-none">
                 <ReactToPrint
-                    trigger={() => <button className="btn btn-info" style={{marginLeft : "6%"}} href="#">Print your resume</button>}
+                    trigger={() => <button className="btn btn-info" style={{ marginLeft: "6%" }} href="#">Print your resume</button>}
                     content={() => this.componentRef}
                 />
-                <DownloadResume ref={el => (this.componentRef = el)} />
+                <DownloadResume resume={this.props.resume} ref={el => (this.componentRef = el)} />
             </div>
         )
     }
 }
-export default Print;
+
+const mapStateToProps = state => {
+    return {
+        resume: state.Resume
+    }
+}
+export default connect(mapStateToProps)(Print);
