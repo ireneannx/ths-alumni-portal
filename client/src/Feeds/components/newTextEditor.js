@@ -3,6 +3,7 @@ import { EditorState, ContentState } from 'draft-js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFeedPost, getFeedPosts } from '../action'
+import axios from 'axios'
 // import draftToHtml from "draftjs-to-html";
 import '../../App.css'
 // import { withRouter } from 'react-router'
@@ -10,6 +11,7 @@ import '../../App.css'
 import Editor from 'draft-js-plugins-editor';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
+import Axios from 'axios';
 const inlineToolbarPlugin = createInlineToolbarPlugin();
 const { InlineToolbar } = inlineToolbarPlugin;
 const emojiPlugin = createEmojiPlugin();
@@ -19,14 +21,17 @@ class NewTextEditor extends React.Component {
     state = {
         editorState: EditorState.createEmpty(),
         userId: "",
-        userName: ""
+        userName: "",
+        avatarURL: ""
     }
 
    async  componentWillMount() {
       await  this.props.getFeedPosts();
+      const res = await axios.get(`/users/img/${this.props.auth.user._id}`)
        await  this.setState({
             userId: this.props.auth.user._id,
-            userName: this.props.auth.user.name
+            userName: this.props.auth.user.name,
+            avatarURL: res.data
         })
     }
 
@@ -44,23 +49,21 @@ class NewTextEditor extends React.Component {
         // if (this.props.auth.user) {
             var id = await this.state.userId
             var name = await this.state.userName
+            var avatarURL = await this.state.avatarURL
 
-            await this.props.addFeedPost(text, id, name);
+            await this.props.addFeedPost(text, id, name, avatarURL);
             await this.props.getFeedPosts();
 
             const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
             this.setState({ editorState });
-        
-
-
     };
 
     render() {
 
         return (
-            <div>
+            <div style={{margin:"0 auto"}}>
                 <form onSubmit={(e) => this.onSubmit(e)}>
-                    <div className="card" style={{ marginTop: '10px', marginBottom: '10px' }}>
+                    <div className="card posts" style={{ margin:"20px auto"}}>
                         <div className="card-body">
                             <div >
                                 <Editor

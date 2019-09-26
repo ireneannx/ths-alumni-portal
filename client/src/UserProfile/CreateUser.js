@@ -14,20 +14,9 @@ export default class UpdateDetails extends Component {
     editing: false,
     _id: ""
   };
-  componentWillMount() {
-    if (this.props.match.params.id) {
-      this.setState({
-        editing: true
-      });
-    }
-  }
 
   async componentDidMount() {
     if (this.props.match.params.id) {
-      // console.log("line 22", this.props.match.params.id);
-      // const url = `/users/${this.props.match.params.id}`;
-      // console.log("line24", url);
-     
       const res = await axios.get(`/users/${this.props.match.params.id}`);
       await this.setState({
         editing: true,
@@ -41,7 +30,7 @@ export default class UpdateDetails extends Component {
         linkedIn: res.data.linkedIn,
         _id: res.data._id
       });
-      console.log("rizwan",this.state)
+
     }
   }
   onSubmit = async e => {
@@ -57,7 +46,7 @@ export default class UpdateDetails extends Component {
         linkedIn: this.state.linkedIn,
         date: this.state.date
       };
-      console.log("line 60",updatedUser)
+
       const url = `/users/${this.state._id}`;
       await axios.put(url, updatedUser);
     } else {
@@ -85,9 +74,9 @@ export default class UpdateDetails extends Component {
     this.setState({ date });
   };
   render() {
-    console.log("editing", this.state.editing);
+
     return (
-      <div className="col-md-6 offset-md-3">
+      <div className="col-md-6 offset-md-3" style={{ marginTop: "20vh" }}>
         <div className="card card-body">
           <h4>Edit User Details</h4>
           <form onSubmit={this.onSubmit}>
@@ -125,9 +114,9 @@ export default class UpdateDetails extends Component {
               />
             </div>
             {/* employment_status */}
-            <div class="input-group mb-3">
+            <div className="input-group mb-3">
               <select
-                class="custom-select"
+                className="custom-select"
                 id="inputGroupSelect01"
                 name="employment_status"
                 value={this.state.employment_status}
