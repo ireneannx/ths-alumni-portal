@@ -19,6 +19,7 @@ const Profile = lazy(() => import('./UserProfile/Profile'));
 const UpdateDetails = lazy(() => import('./UserProfile/CreateUser'));
 const AddJob = lazy(() => import('./Jobs/AddJob'));
 const Page = lazy(() => import('./ResumeBuilder/ResumeBuilder'));
+const NotFound = lazy(() => import('./NotFound'));
 
 
 const UserApp = () => {
@@ -28,14 +29,15 @@ const UserApp = () => {
 
       <Suspense fallback={<Loading />} />
       <Switch>
-        <Route path="/loggedIn" exact component={LoggedIn} />
+        <Route exact path="/loggedIn" exact component={LoggedIn} />
         <Route exact path="/jobs" component={Jobs} />
-        <Route path="/jobs/new" component={AddJob} />
-        <Route path="/posts" component={FeedArea} />
+        <Route exact path="/jobs/new" component={AddJob} />
+        <Route exact path="/posts" component={FeedArea} />
         <Route exact path="/profile/edit/:id" component={UpdateDetails} />
         <Route exact path="/profile/:id" component={Profile} />
-        <Route path="/resumebuilder" component={Page} />
-        <Route component={<h1>sorry nothing here</h1>} />
+        <Route exact path="/resumebuilder" component={Page} />
+
+        <Route path="*" component={NotFound} />
       </Switch>
       <Suspense />
     </Router>

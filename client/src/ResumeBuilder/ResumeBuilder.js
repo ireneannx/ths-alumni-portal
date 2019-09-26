@@ -5,6 +5,7 @@ import Education from "./Education";
 import References from './References';
 import SkillSection from './Skill';
 import Summary from './Summary';
+import NotFound from '../NotFound.js'
 
 
 
@@ -46,7 +47,7 @@ export class ResumeBuilder extends Component {
       case 6:
         return (<SkillSection subtractPage={this.subtractPage} addPage={this.addPage} handleChange={this.handleChange}  {...this.state} />)
       default:
-        return (<> FORM COMPLETE </>)
+        return (<NotFound />)
     }
   }
 }
