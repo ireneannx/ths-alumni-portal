@@ -8,7 +8,7 @@ const NotFound = () => {
 
 
   return (<div style={{ textAlign: "center", marginTop: "8%" }}>
-    <img src={Four04} />
+    <img src={Four04} alt="404 Not Found" />
     <p style={{ textAlign: "center" }}>
 
       <button class="btn btn-link" onClick={(e) => onClick(e)}>Find your way back home</button>

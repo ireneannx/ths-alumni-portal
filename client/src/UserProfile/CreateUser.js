@@ -122,7 +122,7 @@ export default class UpdateDetails extends Component {
                 value={this.state.employment_status}
                 onChange={this.onInputChange}
               >
-                <option selected>Choose</option>
+                <option >Choose</option>
                 <option value="true">Employed</option>
                 <option value="false">Unemployed</option>
               </select>

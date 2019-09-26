@@ -30,9 +30,9 @@ class PostsProfile extends React.PureComponent {
     if (this.state.user.posts) {
       return (
         <div>
-          {this.state.user.posts.reverse().map(posts => (
+          {this.state.user.posts.reverse().map((posts, index) => (
             <div>
-              <div style={{ width: "90%" }} className="center">
+              <div key={index} style={{ width: "90%" }} className="center">
                 <div className="card gedf-card center">
                   <div className="card-body">
                     <div className="d-flex justify-content-between align-items-center">
@@ -40,7 +40,7 @@ class PostsProfile extends React.PureComponent {
                         <div className="mr-2">
                           <img
                             className="rounded-circle"
-                            width="45"
+                            width="45" height="45"
                             src={posts.avatarURL}
                             alt=""
                           />

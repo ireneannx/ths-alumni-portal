@@ -11,7 +11,7 @@ import '../../App.css'
 import Editor from 'draft-js-plugins-editor';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
-import Axios from 'axios';
+
 const inlineToolbarPlugin = createInlineToolbarPlugin();
 const { InlineToolbar } = inlineToolbarPlugin;
 const emojiPlugin = createEmojiPlugin();
