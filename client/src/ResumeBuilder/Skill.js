@@ -104,6 +104,7 @@ class Skills extends Component {
               <div class="form-group" onChange={this.handleChange}>
                 <label for="exampleFormControlSelect1">Select skill proficiency</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="proficiency3" >
+                  <option>Select</option>
                   <option value="Beginner" >Beginner</option>
                   <option value="Intermediate" onChange={this.handleChange}>Intermediate</option>
                   <option value="Expert" onChange={this.handleChange}>Expert</option>
