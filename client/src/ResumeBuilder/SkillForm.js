@@ -7,15 +7,15 @@ const SkillForm = (props) => {
 
 
     <form onSubmit={(e) => props.handleSubmit(e)}>
-      <input class="form-control" type="text" placeholder="Enter Skill" name="skill2" onChange={props.handleChange} />
+      <input class="form-control" type="text" placeholder="Enter Skill" name="skill2" value={props.skill2} onChange={props.handleChange} />
       <br />
       <div class="form-group" onChange={props.handleChange}>
         <label for="exampleFormControlSelect1">Select skill proficiency</label>
         <select class="form-control" id="exampleFormControlSelect1" name="proficiency2" >
           <option> Select </option>
-          <option value="Beginner" >Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Expert">Expert</option>
+          <option onChange={props.handleChange} value="Beginner" >Beginner</option>
+          <option onChange={props.handleChange} value="Intermediate">Intermediate</option>
+          <option onChange={props.handleChange} value="Expert">Expert</option>
         </select>
       </div>
     </form>

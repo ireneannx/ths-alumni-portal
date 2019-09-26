@@ -33,6 +33,16 @@ const Resume = function (state = initialState, action) {
             return {
                 ...state, references: action.payload
             }
+        case "RESET_RESUME":
+            return {
+                ...state,
+                personalDetails: [],
+                employment: [],
+                skills: [],
+                education: [],
+                summary: [],
+                references: []
+            }
         default:
             return { ...state }
     }
