@@ -12,7 +12,6 @@ class Jobs extends Component {
     currentJob: ""
   };
   componentDidMount() {
-    // console.log("Inside componentDidMount")
     this.props.getJobs();
   }
   handleClick = job => {
@@ -160,7 +159,7 @@ export default connect(
 )(Jobs);
 
 const Modal = props => {
-  console.log("props recieved by modal", props.job)
+
   return (
     <div
       className="modal fade"
@@ -186,8 +185,8 @@ const Modal = props => {
             </button>
           </div>
           <div className="modal-body">
-            <p  >Posted by: <span onClick={() => props.handleClick(props.job)} data-dismiss="modal" className="user">{props.job.name}</span></p>
-            <p>Deadline: {props.job.deadline}</p>
+            <p>Posted by: <span onClick={() => props.handleClick(props.job)} data-dismiss="modal" className="user">{props.job.name}</span></p>
+            <p>Deadline: {props.job.deadline ? `${new Date(props.job.deadline).getDate()}-${new Date(props.job.deadline).getMonth() + 1}-${new Date(props.job.deadline).getFullYear()}` : "Not specified by author"}</p>
 
             <p>{props.job.job_description}</p>
           </div>

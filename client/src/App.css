@@ -40,10 +40,10 @@
 .white {
   color: white !important;
 }
-.black{
+.black {
   color: black;
 }
-.padding{
+.padding {
   padding: 10px;
 }
 
@@ -52,48 +52,48 @@
   display: flex;
   margin-top: 20px;
 }
-.center{
+.center {
   text-align: center !important;
-  margin: 0 auto 
+  margin: 0 auto;
 }
-.right{
+.right {
   float: right;
 }
-.left{
+.left {
   float: left;
 }
-.margin{
+.margin {
   margin: 30% auto auto auto !important;
 }
-.mobile{
-  display: none
+.mobile {
+  display: none;
 }
 
 /* .parallax {  */
-  /* The image used */
-  /* background-image: url("logo192.png"); */
+/* The image used */
+/* background-image: url("logo192.png"); */
 
-  /* Set a specific height */
-  /* height: 500px;  */
+/* Set a specific height */
+/* height: 500px;  */
 
-  /* Create the parallax scrolling effect */
-  /* background-attachment: fixed; */
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+/* Create the parallax scrolling effect */
+/* background-attachment: fixed; */
+/* background-position: center; */
+/* background-repeat: no-repeat; */
+/* background-size: cover; */
 
 /* } */
 
-.jobpostbtn{
+.jobpostbtn {
   padding: 20px 0 7px 0;
-  justify-content: center !important
+  justify-content: center !important;
 }
 .myform {
   width: 75%;
 }
 
-.react-datepicker__input-container{
-  width:300%  !important
+.react-datepicker__input-container {
+  width: 300% !important;
 }
 .posts{
   width:75% !important;
@@ -116,21 +116,20 @@
   .desktop{
     display: none;
   }
-  .mobile{
+  .mobile {
     display: inline !important;
-    
   }
-  .margin{
-    margin: 10% auto auto auto !important
+  .margin {
+    margin: 10% auto auto auto !important;
   }
-  .login{
+  .login {
     border-radius: 10px;
   }
-  .font{
+  .font {
     font-size: 25px;
   }
-  .bottom{
-    margin-bottom: 10px
+  .bottom {
+    margin-bottom: 10px;
   }
   .posts{
     width:100% !important
@@ -140,3 +139,8 @@
   }
 }
 
+
+@media print {
+  body {margin-top: 30mm; margin-bottom: 20mm; 
+        margin-left: 0mm; margin-right: 0mm}
+}
