@@ -29,27 +29,38 @@ router.get('/:userid', authMidWare, function (req, res) {
         })
 })
 
+//get user avatarURL
+router.get('/img/:userid', authMidWare, function(req,res){
+    db.UserProfile.findOne({_id: req.params.userid})
+    .then((data)=>{
+        res.send(data.avatarURL)
+    })
+    .catch((err) => {
+        res.send(err)
+    })
+})
+
 
 //add userprofile
-router.post('/', authMidWare, function (req, res, next) {
-    const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
-    db.UserProfile.create({
-        bio,
-        current_company,
-        employment_status,
-        github,
-        twitter,
-        linkedIn,
-        avatarURL: req.body.avatarURL || "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
+// router.post('/', authMidWare, function (req, res, next) {
+//     const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
+//     db.UserProfile.create({
+//         bio,
+//         current_company,
+//         employment_status,
+//         github,
+//         twitter,
+//         linkedIn,
+//         avatarURL: "https://cdn.elawoman.com/profilepic/female_dummy.jpg",
 
-    })
-        .then(() => {
-            res.send(req.body)
-        })
-        .catch((err) => {
-            res.send(err)
-        })
-})
+//     })
+//         .then(() => {
+//             res.send(req.body)
+//         })
+//         .catch((err) => {
+//             res.send(err)
+//         })
+// })
 
 // update 
 

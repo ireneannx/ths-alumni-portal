@@ -14,6 +14,10 @@ class Jobs extends Component {
   componentDidMount() {
     this.props.getJobs();
   }
+  handleClick = job => {
+    // console.log('author is ',this.props)
+    this.props.history.push(`/profile/${job.user_id}`);
+  };
 
   handleModal = job => {
     console.log("previous state:", this.state.currentJob);
@@ -108,7 +112,7 @@ class Jobs extends Component {
                 );
               })}
             </div>
-            <Modal job={this.state.currentJob} />
+            <Modal job={this.state.currentJob} handleClick={this.handleClick}/>
           </div>
         </div>
       );
@@ -181,7 +185,7 @@ const Modal = props => {
             </button>
           </div>
           <div className="modal-body">
-            <p>Posted by: {props.job.name}</p>
+            <p>Posted by: <span onClick={() => props.handleClick(props.job)} data-dismiss="modal" className="user">{props.job.name}</span></p>
             <p>Deadline: {props.job.deadline ? `${new Date(props.job.deadline).getDate()}-${new Date(props.job.deadline).getMonth() + 1}-${new Date(props.job.deadline).getFullYear()}` : "Not specified by author"}</p>
 
             <p>{props.job.job_description}</p>

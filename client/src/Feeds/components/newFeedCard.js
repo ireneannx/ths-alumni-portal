@@ -25,9 +25,7 @@ class NewFeedCard extends React.Component {
           {this.props.data.map((posts, index) => (
             <div key={index} >
               {/* CARD */}
-              {/* <li>
-                                {posts.content}
-                            </li> */}
+            
               <div className="card gedf-card posts" > 
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center">
@@ -36,13 +34,13 @@ class NewFeedCard extends React.Component {
                         <img
                           className="rounded-circle"
                           width="45"
-                          src="https://picsum.photos/50/50"
+                          src={posts.avatarURL}
                           alt=""
                         />
                       </div>
                       <div className="ml-2">
                         <div
-                          className="h5 m-0"
+                          className="h5 m-0 user"
                           onClick={() => this.handleClick(posts)}
                         >
                           {posts.name}

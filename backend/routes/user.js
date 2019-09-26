@@ -76,7 +76,16 @@ router.post(
 
       await user.save(function (err, data) {
         if (!err) {
-          db.UserProfile.create({ _id: data._id })
+          const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
+          db.UserProfile.create({ _id: data._id,
+            bio,
+            current_company,
+            employment_status,
+            github,
+            twitter,
+            linkedIn,
+            avatarURL: "https://themango.co/wp-content/uploads/2018/03/Mango-Default-Profile-Pic.png"
+          })
         }
       })
 
