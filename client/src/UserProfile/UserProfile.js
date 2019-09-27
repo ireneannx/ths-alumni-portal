@@ -1,7 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux'
+import { addUserDetails } from './useraction';
+
 import "../App.css";
 class UserProfile extends React.Component {
   state = {
@@ -26,10 +29,11 @@ class UserProfile extends React.Component {
           user1: res1.data
         });
       });
+      this.props.addUserDetails(res.data)
     });
   }
   async componentWillUpdate(nextProps) {
-    if(nextProps.userId !== this.props.userId){
+    if (nextProps.userId !== this.props.userId) {
       const res = await axios.get(`/users/${nextProps.userId}`);
       const res1 = await axios.get(`/user/${nextProps.userId}`);
       await this.setState({
@@ -38,7 +42,7 @@ class UserProfile extends React.Component {
       });
     }
   }
- 
+
   render() {
     const { user, user1 } = this.state;
     return (
@@ -75,7 +79,7 @@ class UserProfile extends React.Component {
               </a>
             ) : null}
             {user.github ? (
-              <a href={user.github} className="card-link black">
+              <a href={`https://github.com/${user.github}`} className="card-link black">
                 <i className="fab fa-github fa-2x"></i>
               </a>
             ) : null}
@@ -105,11 +109,17 @@ class UserProfile extends React.Component {
 const mapStateToProps = state => {
   return {
     data: state.Feed.feeds,
-    authdata: state.Auth.authData
+    authdata: state.Auth.authData,
+    userDetails: state.userProfile.userProfile
   };
 };
 
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  addUserDetails
+}, dispatch)
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(UserProfile);
+
