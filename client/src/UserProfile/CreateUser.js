@@ -14,7 +14,7 @@ export default class UpdateDetails extends Component {
     editing: false,
     _id: ""
   };
-  
+
   async componentDidMount() {
     if (this.props.match.params.id) {
       const res = await axios.get(`/users/${this.props.match.params.id}`);
@@ -30,7 +30,7 @@ export default class UpdateDetails extends Component {
         linkedIn: res.data.linkedIn,
         _id: res.data._id
       });
-      console.log("rizwan",this.state)
+
     }
   }
   onSubmit = async e => {
@@ -46,7 +46,7 @@ export default class UpdateDetails extends Component {
         linkedIn: this.state.linkedIn,
         date: this.state.date
       };
-      console.log("line 60",updatedUser)
+
       const url = `/users/${this.state._id}`;
       await axios.put(url, updatedUser);
     } else {
@@ -74,9 +74,9 @@ export default class UpdateDetails extends Component {
     this.setState({ date });
   };
   render() {
-    console.log("editing", this.state.editing);
+
     return (
-      <div className="col-md-6 offset-md-3" style={{marginTop:"20vh"}}>
+      <div className="col-md-6 offset-md-3" style={{ marginTop: "20vh" }}>
         <div className="card card-body">
           <h4>Edit User Details</h4>
           <form onSubmit={this.onSubmit}>
@@ -122,7 +122,7 @@ export default class UpdateDetails extends Component {
                 value={this.state.employment_status}
                 onChange={this.onInputChange}
               >
-                <option selected>Choose</option>
+                <option >Choose</option>
                 <option value="true">Employed</option>
                 <option value="false">Unemployed</option>
               </select>

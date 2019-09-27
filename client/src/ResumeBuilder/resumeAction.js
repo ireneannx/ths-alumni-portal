@@ -69,3 +69,9 @@ export const addReferences = (data, addPage) => async dispatch => {
     })
     addPage()
 }
+
+export const resetResume = () => dispatch => {
+    dispatch({
+        type: "RESET_RESUME",
+    })
+}

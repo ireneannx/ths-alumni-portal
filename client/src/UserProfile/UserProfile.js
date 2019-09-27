@@ -32,7 +32,7 @@ class UserProfile extends React.Component {
       this.props.addUserDetails(res.data)
     });
   }
-  async componentWillUpdate(nextProps) {
+  async componentDidUpdate(nextProps) {
     if (nextProps.userId !== this.props.userId) {
       const res = await axios.get(`/users/${nextProps.userId}`);
       const res1 = await axios.get(`/user/${nextProps.userId}`);

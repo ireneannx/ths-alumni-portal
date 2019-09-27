@@ -2,11 +2,11 @@ import React from 'react';
 
 const ComSkills = (props) => {
     const { skills } = props
-    if (skills.skill === "")
+    if (skills.skill === undefined)
         return (
             null
         )
-    else if (skills.skill2 === "")
+    else if (skills.skill2 === undefined)
         return (
             <div style={{ marginTop: "43px" }}>
                 <h5>SKILLS</h5>
@@ -22,7 +22,7 @@ const ComSkills = (props) => {
                 </div>
             </div>
         )
-    else if (skills.skill3 === "")
+    else if (skills.skill3 === undefined)
         return (
             <div style={{ marginTop: "43px" }}>
                 <h5>SKILLS</h5>

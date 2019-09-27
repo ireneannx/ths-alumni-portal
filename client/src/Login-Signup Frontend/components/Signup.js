@@ -25,7 +25,7 @@ class SignUpForm extends React.PureComponent {
     if (this.state.password === this.state.password2) {
       await axios.post('/user/register', authData)
         .then(() => {
-          console.log('success')
+
           this.setState({
             name: '',
             email: '',
@@ -36,7 +36,7 @@ class SignUpForm extends React.PureComponent {
     } else {
       console.log("passwords don't match")
     }
-    console.log(this.state)
+
   }
 
 
@@ -44,15 +44,15 @@ class SignUpForm extends React.PureComponent {
     return (
 
       <div class="container" >
-      
+
         <div class="row">
           <div className="margin">
-            <h1 style={{ marginBottom: '50px' }} className="font">Create an<br/> Account</h1>
+            <h1 style={{ marginBottom: '50px' }} className="font">Create an<br /> Account</h1>
             <div class="col-md-8 mx-auto" >
 
               <div class="myform form center" >
 
-                <form action="" method="post" name="login"  onSubmit={(e) => this.handleSubmit(e)}>
+                <form action="" method="post" name="login" onSubmit={(e) => this.handleSubmit(e)}>
                   <div class="form-group">
                     <input type="text" name="name" class="form-control my-input" id="name" placeholder="Name" onChange={(e) => this.handleChange(e)} />
                   </div>
@@ -76,7 +76,7 @@ class SignUpForm extends React.PureComponent {
                   </div>
                   <p class="small mt-3">By signing up, you are indicating that you have read and agree to the  <a href="https://www.website.com/terms-and-conditions/" class="ps-hero__content__link">Terms of Use</a> and <a href="https://policies.google.com/">Privacy Policy</a>.
                   </p>
-                  <p> Already have an account? <br/> <button className="btn btn-primary btn-sm" onClick={this.props.clickButton}>Login</button></p>
+                  <p> Already have an account? <br /> <button className="btn btn-primary btn-sm" onClick={this.props.clickButton}>Login</button></p>
                 </form>
               </div>
             </div>

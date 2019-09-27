@@ -76,9 +76,9 @@ router.post(
 
       await user.save(function (err, data) {
         if (!err) {
-          const { bio, current_company, employment_status, github, twitter, linkedIn } = req.body;
+          const { current_company, employment_status, github, twitter, linkedIn } = req.body;
           db.UserProfile.create({ _id: data._id,
-            bio,
+            bio:"...",
             current_company,
             employment_status,
             github,

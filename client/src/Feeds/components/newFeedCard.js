@@ -33,7 +33,7 @@ class NewFeedCard extends React.Component {
                       <div className="mr-2">
                         <img
                           className="rounded-circle"
-                          width="45"
+                          width="45" height="45"
                           src={posts.avatarURL}
                           alt=""
                         />

@@ -4,9 +4,12 @@ import ComEmp from './CompEmp'
 import ComSkills from './ComSkills'
 import ComRef from './ComRef'
 import ReactToPrint from 'react-to-print'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { resetResume } from './resumeAction';
+import { bindActionCreators } from 'redux';
 
 class DownloadResume extends React.Component {
+
     render() {
         const { resume } = this.props
         return (
@@ -32,10 +35,10 @@ class DownloadResume extends React.Component {
                             <p>{resume.summary.summary}</p>
                         </div>
                         <div style={{ marginTop: "45px" }}>
-                            <CompEdu edu={resume.education}/>
+                            <CompEdu edu={resume.education} />
                             <ComEmp emp={resume.employment} />
                             <ComSkills skills={resume.skills} />
-                            <ComRef references={resume.references}/>
+                            <ComRef references={resume.references} />
                         </div>
                     </div>
                 </div>
@@ -47,9 +50,11 @@ class DownloadResume extends React.Component {
 
 
 class Print extends React.Component {
+    componentWillUnmount() {
 
+        this.props.resetResume()
+    }
     render() {
-        console.log("****&^%^$%^&*$%%^&")
         return (
             <div className="d-print-none">
                 <ReactToPrint
@@ -67,4 +72,7 @@ const mapStateToProps = state => {
         resume: state.Resume
     }
 }
-export default connect(mapStateToProps)(Print);
+
+const mapDispatchToProps = dispatch => bindActionCreators({ resetResume }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Print);
