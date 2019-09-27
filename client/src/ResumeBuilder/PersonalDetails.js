@@ -55,37 +55,37 @@ class PersonalDetails extends React.PureComponent {
         <h6>Lets get started with creating your resume. <br /> Enter your contact details to get started. <br /></h6>
 
         <form onSubmit={(e) => this.handleSubmit(e)} >
-          <div class="form-row">
-            <div class="form-group col-md-6">
+          <div className="form-row">
+            <div className="form-group col-md-6">
               <label for="inputEmail4">Name</label>
-              <input type="text" class="form-control" name="name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
+              <input type="text" className="form-control" name="name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
             </div>
-            <div class="form-group col-md-6">
+            <div className="form-group col-md-6">
               <label for="inputPassword4">Profession</label>
-              <input type="text" class="form-control" name="profession" value={this.state.profession} onChange={(e) => this.handleChange(e)} />
+              <input type="text" className="form-control" name="profession" value={this.state.profession} onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" name="address" value={this.state.address} onChange={(e) => this.handleChange(e)} />
+            <input type="text" className="form-control" name="address" value={this.state.address} onChange={(e) => this.handleChange(e)} />
           </div>
 
           <div className="form-row">
-            <div class="form-group col-md-6">
+            <div className="form-group col-md-6">
               <label for="inputEmail4">Phone</label>
-              <input type="text" class="form-control" name="phone" value={this.state.phone} onChange={(e) => this.handleChange(e)} />
+              <input type="text" className="form-control" name="phone" value={this.state.phone} onChange={(e) => this.handleChange(e)} />
             </div>
-            <div class="form-group col-md-6">
+            <div className="form-group col-md-6">
               <label for="inputPassword4">Email</label>
-              <input type="text" class="form-control" name="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />
+              <input type="text" className="form-control" name="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="inputAddress">Website</label>
-            <input type="text" class="form-control" name="website" value={this.state.website} onChange={(e) => this.handleChange(e)} />
+            <input type="text" className="form-control" name="website" value={this.state.website} onChange={(e) => this.handleChange(e)} />
           </div>
 
-          <button type="submit" class="btn btn-primary" >Continue </button>
+          <button type="submit" className="btn btn-primary" >Continue </button>
         </form>
 
       </div>

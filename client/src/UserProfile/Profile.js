@@ -12,7 +12,7 @@ class Profile extends React.Component {
     loading: false
   };
   componentDidMount() {
-    console.log("cdidmount")
+    // console.log("cdidmount")
     this.setState({
       loading: true
     })

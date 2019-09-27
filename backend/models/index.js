@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  'mongodb://localhost/alumni-test',
+  'mongodb+srv://rizwan-user:rizwan-user@ths-alumni-portal-g3lyi.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false },
   () => console.log('Connected to mongoDB')  
 );

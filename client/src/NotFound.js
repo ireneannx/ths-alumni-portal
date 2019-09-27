@@ -1,5 +1,5 @@
 import React from 'react';
-import Four04 from './404.png';
+import Four04 from './images/404.png';
 //import { Link } from 'react-router-dom';
 import history from './history'
 
