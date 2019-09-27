@@ -16,11 +16,13 @@ class LikeBar extends React.PureComponent {
 
     checkForId = () => {
 
-        for (let i = 0; i < this.props.upvote_count.upvote_count.length; i++) {
-            if (this.props.upvote_count.upvote_count[i] === this.props.userData.authData._id || this.props.userData.authData.user._id) {
-                return true
+       return this.props.upvote_count.upvote_count.find((data)=>{
+                if((data === this.props.userData.authData._id) || (data === this.props.userData.authData.user._id)){
+                return true;
             }
-        }
+        
+        })
+
     }
     render() {
         if (this.checkForId()) {
