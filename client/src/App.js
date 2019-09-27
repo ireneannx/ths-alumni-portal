@@ -1,6 +1,6 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { changeAuth } from './Login-Signup Frontend/authaction'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -16,28 +16,50 @@ const NotFound = lazy(() => import('./NotFound'));
 
 //auth components
 
+const ProtectedRoute = ({ component: Component, isLoggedIn }) => {
 
-function App() {
-  return (
-    <div>
-      <React.Fragment>
-
-        <Suspense fallback={<Loading />}>
-          <Switch>
-            <Route exact path="/" component={SignUpForm} />
-
-            <Route path="/user" component={UserApp} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </Suspense>
-
-      </React.Fragment>
-    </div>
-  );
+  return <Route
+    render={() => isLoggedIn === true ?
+      <Component />
+      :
+      <Redirect to={{ pathname: '/' }} />
+    }
+  />
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  changeAuth
-}, dispatch)
+class App extends Component {
+  state = {}
+  render() {
 
-export default connect(mapDispatchToProps)(App);
+    return (
+      <div>
+        <React.Fragment>
+
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route exact path="/" component={SignUpForm} />
+
+              {/* <Route path="/user" component={UserApp} /> */}
+              <ProtectedRoute path='/user' isLoggedIn={this.props.Auth.isLoggedIn} component={UserApp} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </Suspense>
+
+        </React.Fragment>
+      </div>
+    );
+  }
+}
+
+
+// const mapDispatchToProps = (dispatch) => bindActionCreators({
+//   changeAuth
+// }, dispatch)
+
+const mapStateToProps = state => {
+  return {
+    Auth: state.Auth
+  }
+}
+
+export default connect(mapStateToProps, null)(App);
