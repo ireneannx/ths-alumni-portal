@@ -74,17 +74,17 @@ class UserProfile extends React.Component {
 
           <div className="card-body center">
             {user.twitter ? (
-              <a href={user.twitter} className="card-link black">
+              <a href={user.twitter} className="card-link black" target="blank" >
                 <i className="fab fa-twitter fa-2x"></i>
               </a>
             ) : null}
             {user.github ? (
-              <a href={`https://github.com/${user.github}`} className="card-link black">
+              <a href={user.github} className="card-link black" target="blank">
                 <i className="fab fa-github fa-2x"></i>
               </a>
             ) : null}
             {user.linkedIn ? (
-              <a href={user.linkedIn} className="card-link black">
+              <a href={user.linkedIn} className="card-link black" target="blank" >
                 <i className="fab fa-linkedin fa-2x "></i>
               </a>
             ) : null}
